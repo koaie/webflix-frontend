@@ -1,6 +1,5 @@
 <script>
   // Component imports:
-  // import Sidebar from "../components/layout/Sidebar.svelte";
   import Sidebar from "../components/layout/Sidebar.svelte";
   import Header from "../components/layout/Header.svelte";
 

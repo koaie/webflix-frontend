@@ -26,7 +26,7 @@
         input$autocomplete="email"
       >
         <Icon class="material-icons" slot="leadingIcon">email</Icon>
-        <HelperText validationMsg slot="helper">Helper Text</HelperText>
+        <HelperText validationMsg slot="helper">Invalid email</HelperText>
       </Textfield>
     </Cell>
     <Cell span={6}>
@@ -34,12 +34,12 @@
         type="password"
         bind:invalid
         updateInvalid
-        bind:value={email}
+        bind:value={password}
         label="Password"
         input$autocomplete="password"
       >
-        <Icon class="material-icons" slot="leadingIcon">email</Icon>
-        <HelperText validationMsg slot="helper">Helper Text</HelperText>
+        <Icon class="material-icons" slot="leadingIcon">password</Icon>
+        <HelperText validationMsg slot="helper">Invalid password</HelperText>
       </Textfield>
     </Cell>
     <Cell span={6}>
