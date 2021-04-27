@@ -76,6 +76,8 @@
     "@smui/button": "^4.0.0",
     "@smui/icon-button": "^4.0.0",
     "@smui/list": "^4.0.0",
-    "@smui/top-app-bar": "^4.0.0"
+    "@smui/top-app-bar": "^4.0.0",
+    "@vime/core": "^5.0.28",
+    "@vime/svelte": "^5.0.28"
   }
 }

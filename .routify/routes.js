@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.15.1
- * File generated Tue Apr 27 2021 20:50:27 GMT+0100 (British Summer Time)
+ * File generated Tue Apr 27 2021 23:05:36 GMT+0100 (British Summer Time)
  */
 
 export const __version = "2.15.1"
-export const __timestamp = "2021-04-27T19:50:27.351Z"
+export const __timestamp = "2021-04-27T22:05:36.216Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -24,7 +24,7 @@ export const _tree = {
   "ownMeta": {
     "preload": "proximity"
   },
-  "absolutePath": "/home/user/Routify-SMUI-Template/src/pages/_layout.svelte",
+  "absolutePath": "/home/user/webflix/src/pages/_layout.svelte",
   "children": [
     {
       "isFile": true,
@@ -34,7 +34,7 @@ export const _tree = {
       "name": "_fallback",
       "ext": "svelte",
       "badExt": false,
-      "absolutePath": "/home/user/Routify-SMUI-Template/src/pages/_fallback.svelte",
+      "absolutePath": "/home/user/webflix/src/pages/_fallback.svelte",
       "importPath": "../src/pages/_fallback.svelte",
       "isLayout": false,
       "isReset": false,
@@ -59,7 +59,7 @@ export const _tree = {
       "name": "index",
       "ext": "svelte",
       "badExt": false,
-      "absolutePath": "/home/user/Routify-SMUI-Template/src/pages/index.svelte",
+      "absolutePath": "/home/user/webflix/src/pages/index.svelte",
       "importPath": "../src/pages/index.svelte",
       "isLayout": false,
       "isReset": false,
@@ -84,7 +84,7 @@ export const _tree = {
       "name": "login",
       "ext": "svelte",
       "badExt": false,
-      "absolutePath": "/home/user/Routify-SMUI-Template/src/pages/login.svelte",
+      "absolutePath": "/home/user/webflix/src/pages/login.svelte",
       "importPath": "../src/pages/login.svelte",
       "isLayout": false,
       "isReset": false,
@@ -109,7 +109,7 @@ export const _tree = {
       "name": "register",
       "ext": "svelte",
       "badExt": false,
-      "absolutePath": "/home/user/Routify-SMUI-Template/src/pages/register.svelte",
+      "absolutePath": "/home/user/webflix/src/pages/register.svelte",
       "importPath": "../src/pages/register.svelte",
       "isLayout": false,
       "isReset": false,
@@ -125,6 +125,31 @@ export const _tree = {
       "path": "/register",
       "id": "_register",
       "component": () => import('../src/pages/register.svelte').then(m => m.default)
+    },
+    {
+      "isFile": true,
+      "isDir": false,
+      "file": "watch.svelte",
+      "filepath": "/watch.svelte",
+      "name": "watch",
+      "ext": "svelte",
+      "badExt": false,
+      "absolutePath": "/home/user/webflix/src/pages/watch.svelte",
+      "importPath": "../src/pages/watch.svelte",
+      "isLayout": false,
+      "isReset": false,
+      "isIndex": false,
+      "isFallback": false,
+      "isPage": true,
+      "ownMeta": {},
+      "meta": {
+        "recursive": true,
+        "preload": "proximity",
+        "prerender": true
+      },
+      "path": "/watch",
+      "id": "_watch",
+      "component": () => import('../src/pages/watch.svelte').then(m => m.default)
     }
   ],
   "isLayout": true,

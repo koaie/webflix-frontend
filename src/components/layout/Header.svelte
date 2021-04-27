@@ -1,38 +1,50 @@
 <script>
-    import { goto } from '@roxi/routify'
-    // Components:
-    import TopAppBar from "@smui/top-app-bar";
+  import { goto } from "@roxi/routify";
+  // Components:
+  import TopAppBar from "@smui/top-app-bar";
 
-    // Logic imports:
-    import { mobileNav } from '../../logic/stores';
+  // Logic imports:
+  import { mobileNav, sideNav } from "../../logic/stores";
 
-    // Funcs:
-    function toggleMobileNav() { mobileNav.update(val => val = !val); }
+  // Funcs:
+  function toggleSideNav() {
+    sideNav.update((val) => (val = !val));
+  }
 </script>
 
 <TopAppBar variant="static">
-    <div class="headerContainer">
+  <div class="headerContainer">
+    <!-- Menu toggle for mobile -->
+    <div class="clickable mobileOnly">
+      <div class="flexCentered">
+        <button
+          style="background-color: transparent; border: none; color: white;"
+          on:click={toggleSideNav}
+        >
+          <i class="material-icons" style="font-size: 48px;">menu</i>
+        </button>
+      </div>
+    </div>
+    <!-- Empty div for layout -->
+    <div class="desktopOnly">
+        <!-- <div class="flexCentered">
+            <button
+              style="background-color: transparent; border: none; color: white;"
+              on:click={toggleSideNav}
+            >
+              <i class="material-icons" style="font-size: 48px;">menu</i>
+            </button>
+          </div> -->
+    </div>
 
-        <!-- Menu toggle for mobile -->
-        <div class="clickable mobileOnly">
-            <div class="flexCentered">
-                <button style="background-color: transparent; border: none; color: white;" on:click={toggleMobileNav}>
-                    <i class="material-icons" style="font-size: 48px;">menu</i>
-                </button>
-            </div>
-        </div>
-        <!-- Empty div for layout -->
-        <div class="desktopOnly"></div> 
-
-
-        <!-- Desktop text -->
-        <!-- <div class="flexCentered flexColumn bgPrimary desktopOnly">
+    <!-- Desktop text -->
+    <!-- <div class="flexCentered flexColumn bgPrimary desktopOnly">
             <h3 class="noMargin whiteText">Student Central</h3>
             <p class="noMargin" style="color: lightgrey">John Smith - Coach</p>
         </div> -->
 
-        <!-- Search bar -->
-        <!-- <div class="searchBar small desktopOnly">
+    <!-- Search bar -->
+    <!-- <div class="searchBar small desktopOnly">
             <div class="flexCentered">
                 <input type="text" placeholder="Class ID, Coach, Location, Etc..." />
                 <i class="material-icons">search</i>
@@ -44,24 +56,24 @@
                 <i class="material-icons">search</i>
             </div>
         </div> -->
-        <div class="logo">
-            <h1><a href="" on:click={() => $goto("./")}>webflix</a></h1>
-        </div>
-
-        <!-- Account -->
-        <div class="desktopOnly">
-        </div>
+    <div class="logo">
+      <!-- svelte-ignore a11y-label-has-associated-control -->
+      <h1><label on:click={() => $goto("./")}>webflix</label></h1>
     </div>
+
+    <!-- Account -->
+    <div class="desktopOnly" />
+  </div>
 </TopAppBar>
 
 <style>
-    .headerContainer {
-        display: flex;
-        justify-content: space-between;
-        padding: 0.5em;
-    }
+  .headerContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em;
+  }
 
-    /* .searchBar {
+  /* .searchBar {
         height: 48px;
         background-color: var(--darkGreen);
         border-radius: 2em;
@@ -90,17 +102,20 @@
     .searchBar input:focus {
         outline: none;
     } */
-    .logo {
+  .logo {
     position: absolute;
     right: 1.5rem;
     top: -1%;
     font-size: 20;
-    color: #7F91EC;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
-    .logo a {
-    color: #7F91EC;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #7f91ec;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+  .logo label {
+    color: #7f91ec;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     text-decoration: none;
-    }
+    cursor: pointer;
+  }
 </style>
