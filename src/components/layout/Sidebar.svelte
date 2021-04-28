@@ -13,7 +13,7 @@
 
   export let open = false;
   export let desktop = false;
-  export let active = "TV Shows";
+  export let active = "";
 
   function setActive(value) {
     active = value;
