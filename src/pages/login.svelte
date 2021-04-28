@@ -1,6 +1,18 @@
 <script>
-  import { apiUrl, userId, surname, name, email as userEmail } from "../logic/stores";
+  import {
+    apiUrl,
+    userId,
+    surname,
+    name,
+    email as userEmail,
+    loggedIn,
+    admin,
+    paid,
+    createdAt
+  } from "../logic/stores";
   import axios from "axios";
+  import { goto } from "@roxi/routify";
+
 
   import LayoutGrid, { Cell } from "@smui/layout-grid";
   import Textfield from "@smui/textfield";
@@ -31,11 +43,21 @@
         "Content-type": "application/json",
       })
       .then((res) => {
-        result = res;
+        if (res.data) {
+          console.log(res.data)
+          userId.update((val) => (val = res.data.id));
+          userEmail.update((val) => (val = res.data.email));
+          name.update((val) => (val = res.data.name));
+          surname.update((val) => (val = res.data.surname));
+          paid.update((val) => (val = res.data.paid));
+          admin.update((val) => (val = res.data.admin));
+          createdAt.update((val) => (val = res.data.createdAt));
+          loggedIn.update((val) => (val = true));
+          $goto("./shows");
+        }
       })
       .catch((err) => {
         console.log(err);
-        error = err;
       });
     return result;
   };
@@ -45,14 +67,7 @@
       email: email,
       password: password,
     });
-    console.log(call());
-    // userId.update((val) => (val = false));
-    // email.update((val) => (val = false));
-    // name.update((val) => (val = false));
-    // surname.update((val) => (val = false));
-    // paid.update((val) => (val = false));
-    // admin.update((val) => (val = false));
-    // createdAt.update((val) => (val = false));
+    call();
   };
 </script>
 
@@ -87,9 +102,7 @@
       <Wrapper>
         <FormField>
           <Checkbox bind:rememberMe />
-          <span type="Label">
-            Remember me
-          </span>
+          <span type="Label"> Remember me </span>
         </FormField>
         <Tooltip>Remember me</Tooltip>
       </Wrapper>
@@ -97,7 +110,13 @@
 
     <Cell span={4}>
       <div class="right">
-        <Button on:click={() => {login()}} color="secondary" variant="outlined">
+        <Button
+          on:click={() => {
+            login();
+          }}
+          color="secondary"
+          variant="outlined"
+        >
           <Label>Login</Label>
         </Button>
       </div>
