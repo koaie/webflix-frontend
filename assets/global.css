@@ -39,7 +39,7 @@ body {
 }
 
 /* Desktops */
-@media only screen and (min-width: 600px){
+@media only screen and (min-width: 850px){
 	.mobileOnly {
 		display: none;
 	}
@@ -50,7 +50,7 @@ body {
 }
 
 /* Mobile screens */
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 850px){
 	.mobileOnly {
 		display: initial;
 	}

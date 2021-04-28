@@ -25,18 +25,13 @@
     <Header />
   </div>
 
-  <!-- Desktop Sidebar: -->
-  <div class="desktopOnly">
+  <div class="desktopOnly sidebar">
     <Sidebar desktop={true} open={true} />
   </div>
 
   <div id="pageContent">
-    <!-- Mobile Nav: -->
     <Sidebar on:click={toggleSideNav} {open} />
-    <div
-      style="height: 100%; width: 100%"
-      on:click={() => sideNav.update((val) => (val = false))}
-    >
+    <div class="page" on:click={() => sideNav.update((val) => (val = false))}>
       <slot />
     </div>
   </div>
@@ -56,11 +51,25 @@
     grid-column: span 2;
   }
 
-  #pageContent {
-    position: relative;
+  .sidebar {
+    position: absolute;
+    height: 100%;
+    background: transparent;
+    z-index: 10;
   }
 
-  @media only screen and (max-width: 600px) {
+  #pageContent .page {
+    margin: 0;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    margin-left: 8.3rem;
+    width: 80%;
+    height: 60%;
+    transform: translate(-50%, -25%);
+  }
+
+  @media only screen and (max-width: 850px) {
     .layout {
       display: grid;
       grid-template-rows: 72px 1fr;
@@ -71,6 +80,17 @@
 
     #header {
       grid-column: 1;
+    }
+
+    #pageContent .page {
+      margin: 0;
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      margin-right: -50%;
+      width: 80%;
+      height: 60%;
+      transform: translate(-50%, -25%);
     }
   }
 </style>

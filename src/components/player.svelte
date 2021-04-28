@@ -14,7 +14,11 @@
 </div>
 
 <style>
-      .container {
+
+
+  /* Desktops */
+@media only screen and (min-width: 850px){
+  .container {
     margin: 0;
     position: absolute;
     top: 15%;
@@ -24,4 +28,19 @@
     height: 60%;
     transform: translate(-50%, -15%);
   }
+}
+
+/* Mobile screens */
+@media only screen and (max-width: 850px){
+  .container {
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-right: -50%;
+    width: 100%;
+    height: 90%;
+    transform: translate(-50%, -40%);
+  }
+}
 </style>
