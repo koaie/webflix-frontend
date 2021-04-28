@@ -43,7 +43,7 @@
         "Content-type": "application/json",
       })
       .then((res) => {
-        if (res.data) {
+        if (res.data.id) {
           console.log(res.data)
           userId.update((val) => (val = res.data.id));
           userEmail.update((val) => (val = res.data.email));
@@ -54,6 +54,10 @@
           createdAt.update((val) => (val = res.data.createdAt));
           loggedIn.update((val) => (val = true));
           $goto("./shows");
+        }
+        else if(res.data.error)
+        {
+          invalid = true;
         }
       })
       .catch((err) => {
