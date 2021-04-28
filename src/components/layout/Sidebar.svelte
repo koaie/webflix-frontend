@@ -52,22 +52,6 @@
         <Graphic class="material-icons" aria-hidden="true">movie</Graphic>
         <Text>Movies</Text>
       </Item>
-      <Item
-        href="javascript:void(0)"
-        on:click={() => setActive("Sent Mail")}
-        activated={active === "Sent Mail"}
-      >
-        <Graphic class="material-icons" aria-hidden="true">send</Graphic>
-        <Text>Sent Mail</Text>
-      </Item>
-      <Item
-        href="javascript:void(0)"
-        on:click={() => setActive("Drafts")}
-        activated={active === "Drafts"}
-      >
-        <Graphic class="material-icons" aria-hidden="true">drafts</Graphic>
-        <Text>Drafts</Text>
-      </Item>
 
       <Separator />
       <Subheader component={H6}>Labels</Subheader>
@@ -84,19 +68,14 @@
       </Item>
       <Item
         href="javascript:void(0)"
-        on:click={() => setActive("Friends")}
-        activated={active === "Friends"}
+        on:click={() => {
+          setActive("Youtube Player");
+          $goto("./watch");
+        }}
+        activated={active === "Youtube Player"}
       >
-        <Graphic class="material-icons" aria-hidden="true">bookmark</Graphic>
-        <Text>Friends</Text>
-      </Item>
-      <Item
-        href="javascript:void(0)"
-        on:click={() => setActive("Work")}
-        activated={active === "Work"}
-      >
-        <Graphic class="material-icons" aria-hidden="true">bookmark</Graphic>
-        <Text>Work</Text>
+        <Graphic class="material-icons" aria-hidden="true">tv</Graphic>
+        <Text>Youtube Player</Text>
       </Item>
       <Separator />
       <Item
