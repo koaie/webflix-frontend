@@ -1,24 +1,41 @@
 <script>
-    import { url } from '@roxi/routify'
+  import { url } from "@roxi/routify";
+  import Button, { Label } from "@smui/button";
+  import Card, {
+    Content,
+    PrimaryAction,
+    Actions,
+    ActionButtons,
+    ActionIcons,
+  } from "@smui/card";
 </script>
 
+<div class="container">
+  <Card>
+    <Content>Whoops something went wrong!</Content>
+    <Actions fullBleed>
+      <Button
+        color="secondary"
+        on:click={() => {
+          $url("../");
+        }}
+      >
+        <Label>Go back</Label>
+        <i class="material-icons" aria-hidden="true">arrow_forward</i>
+      </Button>
+    </Actions>
+  </Card>
+</div>
+
 <style>
-  .huge {
-    font-size: 12rem;
-  }
-  .e404 {
+  .container {
+    margin: 0;
     position: absolute;
+    top: 70%;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    margin-right: -50%;
+    width: 50%;
+    height: 80%;
+    transform: translate(-50%, -70%);
   }
 </style>
-
-<div class="e404">
-  <div class="huge">404</div>
-  <div class="big">Page not found. 
-  <!-- link to the parent folder of _fallback.svelte -->
-  <a href={$url('../')}>Go back</a>
-  </div>
-</div>

@@ -29,11 +29,13 @@
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
     "@roxi/routify": "^2.12.4",
+    "@smui/card": "^4.0.0",
     "@smui/checkbox": "^4.0.0",
     "@smui/chips": "^4.0.0",
     "@smui/drawer": "^4.0.0",
     "@smui/form-field": "^4.0.0",
     "@smui/layout-grid": "^4.0.0",
+    "@smui/paper": "^4.0.0",
     "@smui/radio": "^4.0.0",
     "@smui/select": "^4.0.0",
     "@smui/slider": "^4.0.0",
@@ -78,6 +80,7 @@
     "@smui/list": "^4.0.0",
     "@smui/top-app-bar": "^4.0.0",
     "@vime/core": "^5.0.28",
-    "@vime/svelte": "^5.0.28"
+    "@vime/svelte": "^5.0.28",
+    "axios": "^0.21.1"
   }
 }

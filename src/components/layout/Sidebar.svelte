@@ -24,8 +24,6 @@
   }
 </script>
 
-<!-- Don't include fixed={false} if this is a page wide drawer.
-          It adds a style for absolute positioning. -->
 <Drawer variant="modal" bind:open>
   <Header>
     <Title>User user</Title>

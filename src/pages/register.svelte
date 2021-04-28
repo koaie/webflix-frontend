@@ -101,12 +101,12 @@
   .container {
     margin: 0;
     position: absolute;
-    top: 15%;
+    top: 4%;
     left: 50%;
     margin-right: -50%;
     background-color: #232324;
     border-radius: 1rem;
-    transform: translate(-50%, -15%);
+    transform: translate(-50%, 4%);
   }
   .right {
     float: right;

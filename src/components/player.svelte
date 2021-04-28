@@ -35,12 +35,12 @@
   .container {
     margin: 0;
     position: absolute;
-    top: 40%;
+    top: 70%;
     left: 50%;
     margin-right: -50%;
     width: 100%;
-    height: 90%;
-    transform: translate(-50%, -40%);
+    height: 80%;
+    transform: translate(-50%, -70%);
   }
 }
 </style>

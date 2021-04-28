@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.15.1
- * File generated Wed Apr 28 2021 06:48:32 GMT+0100 (British Summer Time)
+ * File generated Wed Apr 28 2021 11:20:14 GMT+0100 (British Summer Time)
  */
 
 export const __version = "2.15.1"
-export const __timestamp = "2021-04-28T05:48:32.405Z"
+export const __timestamp = "2021-04-28T10:20:14.517Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -50,6 +50,31 @@ export const _tree = {
       "path": "/_fallback",
       "id": "__fallback",
       "component": () => import('../src/pages/_fallback.svelte').then(m => m.default)
+    },
+    {
+      "isFile": true,
+      "isDir": false,
+      "file": "[watch].svelte",
+      "filepath": "/[watch].svelte",
+      "name": "[watch]",
+      "ext": "svelte",
+      "badExt": false,
+      "absolutePath": "/home/user/webflix/src/pages/[watch].svelte",
+      "importPath": "../src/pages/[watch].svelte",
+      "isLayout": false,
+      "isReset": false,
+      "isIndex": false,
+      "isFallback": false,
+      "isPage": true,
+      "ownMeta": {},
+      "meta": {
+        "recursive": true,
+        "preload": "proximity",
+        "prerender": true
+      },
+      "path": "/:watch",
+      "id": "__watch",
+      "component": () => import('../src/pages/[watch].svelte').then(m => m.default)
     },
     {
       "isFile": true,
@@ -125,31 +150,6 @@ export const _tree = {
       "path": "/register",
       "id": "_register",
       "component": () => import('../src/pages/register.svelte').then(m => m.default)
-    },
-    {
-      "isFile": true,
-      "isDir": false,
-      "file": "watch.svelte",
-      "filepath": "/watch.svelte",
-      "name": "watch",
-      "ext": "svelte",
-      "badExt": false,
-      "absolutePath": "/home/user/webflix/src/pages/watch.svelte",
-      "importPath": "../src/pages/watch.svelte",
-      "isLayout": false,
-      "isReset": false,
-      "isIndex": false,
-      "isFallback": false,
-      "isPage": true,
-      "ownMeta": {},
-      "meta": {
-        "recursive": true,
-        "preload": "proximity",
-        "prerender": true
-      },
-      "path": "/watch",
-      "id": "_watch",
-      "component": () => import('../src/pages/watch.svelte').then(m => m.default)
     }
   ],
   "isLayout": true,
