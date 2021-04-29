@@ -13,10 +13,12 @@
     import IconButton, { Icon } from "@smui/icon-button";
     import LayoutGrid, { Cell } from "@smui/layout-grid";
     import ActionCard from "../components/card/action.svelte";
-    import { LoggedIn, Paid } from "../logic/stores";
+    import { LoggedIn, Paid, UserId , apiUrl} from "../logic/stores";
 
     let loggedIn = null;
     let paid = null;
+    let userId = null;
+    let api = null;
 
     LoggedIn.subscribe((value) => {
         loggedIn = value;
@@ -24,6 +26,33 @@
     Paid.subscribe((value) => {
         paid = value;
     });
+    apiUrl.subscribe((value) => {
+        api = value;
+    });
+    UserId.subscribe((value) => {
+        userId = value;
+    });
+
+    const body = JSON.stringify({
+        id: userId,
+    });
+
+    const call = async () => {
+        let result;
+        await axios
+            .post(`${api}/content/view.php`, body, {
+                "Content-type": "application/json",
+            })
+            .then((res) => {
+                result = res;
+                console.log(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        return result;
+    };
+    const res = call();
 </script>
 
 {#if loggedIn}
