@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.15.1
- * File generated Thu Apr 29 2021 15:33:39 GMT+0100 (British Summer Time)
+ * File generated Thu Apr 29 2021 22:08:05 GMT+0100 (British Summer Time)
  */
 
 export const __version = "2.15.1"
-export const __timestamp = "2021-04-29T14:33:39.213Z"
+export const __timestamp = "2021-04-29T21:08:05.801Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -24,7 +24,7 @@ export const _tree = {
   "ownMeta": {
     "preload": "proximity"
   },
-  "absolutePath": "/Users/koa/Documents/webflix-frontend/src/pages/_layout.svelte",
+  "absolutePath": "/home/user/webflix/src/pages/_layout.svelte",
   "children": [
     {
       "isFile": true,
@@ -34,7 +34,7 @@ export const _tree = {
       "name": "_fallback",
       "ext": "svelte",
       "badExt": false,
-      "absolutePath": "/Users/koa/Documents/webflix-frontend/src/pages/_fallback.svelte",
+      "absolutePath": "/home/user/webflix/src/pages/_fallback.svelte",
       "importPath": "../src/pages/_fallback.svelte",
       "isLayout": false,
       "isReset": false,
@@ -59,7 +59,7 @@ export const _tree = {
       "name": "[watch]",
       "ext": "svelte",
       "badExt": false,
-      "absolutePath": "/Users/koa/Documents/webflix-frontend/src/pages/[watch].svelte",
+      "absolutePath": "/home/user/webflix/src/pages/[watch].svelte",
       "importPath": "../src/pages/[watch].svelte",
       "isLayout": false,
       "isReset": false,
@@ -84,7 +84,7 @@ export const _tree = {
       "name": "index",
       "ext": "svelte",
       "badExt": false,
-      "absolutePath": "/Users/koa/Documents/webflix-frontend/src/pages/index.svelte",
+      "absolutePath": "/home/user/webflix/src/pages/index.svelte",
       "importPath": "../src/pages/index.svelte",
       "isLayout": false,
       "isReset": false,
@@ -109,7 +109,7 @@ export const _tree = {
       "name": "login",
       "ext": "svelte",
       "badExt": false,
-      "absolutePath": "/Users/koa/Documents/webflix-frontend/src/pages/login.svelte",
+      "absolutePath": "/home/user/webflix/src/pages/login.svelte",
       "importPath": "../src/pages/login.svelte",
       "isLayout": false,
       "isReset": false,
@@ -134,7 +134,7 @@ export const _tree = {
       "name": "logout",
       "ext": "svelte",
       "badExt": false,
-      "absolutePath": "/Users/koa/Documents/webflix-frontend/src/pages/logout.svelte",
+      "absolutePath": "/home/user/webflix/src/pages/logout.svelte",
       "importPath": "../src/pages/logout.svelte",
       "isLayout": false,
       "isReset": false,
@@ -159,7 +159,7 @@ export const _tree = {
       "name": "register",
       "ext": "svelte",
       "badExt": false,
-      "absolutePath": "/Users/koa/Documents/webflix-frontend/src/pages/register.svelte",
+      "absolutePath": "/home/user/webflix/src/pages/register.svelte",
       "importPath": "../src/pages/register.svelte",
       "isLayout": false,
       "isReset": false,
@@ -184,7 +184,7 @@ export const _tree = {
       "name": "shows",
       "ext": "svelte",
       "badExt": false,
-      "absolutePath": "/Users/koa/Documents/webflix-frontend/src/pages/shows.svelte",
+      "absolutePath": "/home/user/webflix/src/pages/shows.svelte",
       "importPath": "../src/pages/shows.svelte",
       "isLayout": false,
       "isReset": false,

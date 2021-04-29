@@ -14,11 +14,13 @@
   import LayoutGrid, { Cell } from "@smui/layout-grid";
   import ActionCard from "../components/card/action.svelte";
   import { LoggedIn, Paid, UserId, apiUrl } from "../logic/stores";
+  import LargeDialog from "../components/dialog/large.svelte";
 
   let loggedIn = null;
   let paid = null;
   let userId = null;
   let api = null;
+  let showLargeDialog = false;
   $: data = null;
 
   LoggedIn.subscribe((value) => {
@@ -57,6 +59,7 @@
   const res = call();
 </script>
 
+<LargeDialog bind:open={showLargeDialog} />
 {#if loggedIn}
   <LayoutGrid>
     {#if data}
@@ -66,6 +69,7 @@
             <PrimaryAction
               on:click={() => {
                 console.log(title, desc, genres);
+                showLargeDialog = true;
               }}
             >
               <Media
@@ -94,7 +98,12 @@
                     {/if}
                   </Label>
                 </Button>
-                <Button color="secondary" on:click={() => {}}>
+                <Button
+                  color="secondary"
+                  on:click={() => {
+                    showLargeDialog = true;
+                  }}
+                >
                   <Label>Details</Label>
                 </Button>
               </ActionButtons>
