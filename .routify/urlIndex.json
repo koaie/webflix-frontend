@@ -2,5 +2,6 @@
   "/index",
   "/login",
   "/logout",
-  "/register"
+  "/register",
+  "/shows"
 ]
