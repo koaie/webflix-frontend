@@ -44,7 +44,6 @@
       })
       .then((res) => {
         if (res.data.id) {
-          console.log(res.data)
           UserId.update((val) => (val = res.data.id));
           Email.update((val) => (val = res.data.email));
           Name.update((val) => (val = res.data.name));

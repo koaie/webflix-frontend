@@ -46,7 +46,6 @@
     return result;
   };
   const res = call();
-  console.log($params);
 </script>
 
 {#if $params.id}
