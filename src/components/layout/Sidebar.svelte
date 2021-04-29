@@ -11,6 +11,41 @@
   import List, { Item, Text, Graphic, Separator, Subheader } from "@smui/list";
   import H6 from "@smui/common/H6.svelte";
 
+  import {
+    Surname,
+    Name,
+    Email,
+    LoggedIn,
+    Admin,
+    Paid
+  } from "../../logic/stores";
+
+  let name = null;
+  let surname = null;
+  let email = null;
+  let loggedIn = null;
+  let admin = null;
+  let paid = null;
+
+  Name.subscribe((value) => {
+    name = value;
+  });
+  Surname.subscribe((value) => {
+    surname = value;
+  });
+  Email.subscribe((value) => {
+    email = value;
+  });
+  LoggedIn.subscribe((value) => {
+    loggedIn = value;
+  });
+  Admin.subscribe((value) => {
+    admin = value;
+  });
+  Paid.subscribe((value) => {
+    paid = value;
+  });
+
   export let open = false;
   export let desktop = false;
   export let active = "";
@@ -26,8 +61,14 @@
 
 <Drawer variant="modal" bind:open>
   <Header>
-    <Title>User user</Title>
-    <Subtitle>email@email.com</Subtitle>
+    {#if loggedIn}
+    <Title>{name} {surname}</Title>
+    <Subtitle>{email}</Subtitle>
+    {:else}
+    <Title>Hello!</Title>
+    <Subtitle>please login :)</Subtitle>
+    {/if}
+
   </Header>
   <Content>
     <List>
@@ -76,31 +117,13 @@
         <Text>Youtube Player</Text>
       </Item>
       <Separator />
-      <Item
+      {#if loggedIn}
+        <Item
         href="javascript:void(0)"
         on:click={() => {
-          setActive("Login");
-          $goto("./login");
+          setActive("Logout");
+          $goto("./logout");
         }}
-        activated={active === "Login"}
-      >
-        <Graphic class="material-icons" aria-hidden="true">login</Graphic>
-        <Text>Login</Text>
-      </Item>
-      <Item
-        href="javascript:void(0)"
-        on:click={() => {
-          setActive("Register");
-          $goto("./register");
-        }}
-        activated={active === "Register"}
-      >
-        <Graphic class="material-icons" aria-hidden="true">history_edu</Graphic>
-        <Text>Register</Text>
-      </Item>
-      <Item
-        href="javascript:void(0)"
-        on:click={() => setActive("Logout")}
         activated={active === "Logout"}
         align="bottom"
       >
@@ -125,6 +148,30 @@
         <Graphic class="material-icons" aria-hidden="true">settings</Graphic>
         <Text>Settings</Text>
       </Item>
+      {:else}
+      <Item
+        href="javascript:void(0)"
+        on:click={() => {
+          setActive("Login");
+          $goto("./login");
+        }}
+        activated={active === "Login"}
+      >
+        <Graphic class="material-icons" aria-hidden="true">login</Graphic>
+        <Text>Login</Text>
+      </Item>
+      <Item
+        href="javascript:void(0)"
+        on:click={() => {
+          setActive("Register");
+          $goto("./register");
+        }}
+        activated={active === "Register"}
+      >
+        <Graphic class="material-icons" aria-hidden="true">history_edu</Graphic>
+        <Text>Register</Text>
+      </Item>
+      {/if}
     </List>
   </Content>
 </Drawer>

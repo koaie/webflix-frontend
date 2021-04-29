@@ -1,14 +1,14 @@
 <script>
   import {
     apiUrl,
-    userId,
-    surname,
-    name,
-    email as userEmail,
-    loggedIn,
-    admin,
-    paid,
-    createdAt
+    UserId,
+    Surname,
+    Name,
+    Email,
+    LoggedIn,
+    Admin,
+    Paid,
+    CreatedAt
   } from "../logic/stores";
   import axios from "axios";
   import { goto } from "@roxi/routify";
@@ -45,14 +45,14 @@
       .then((res) => {
         if (res.data.id) {
           console.log(res.data)
-          userId.update((val) => (val = res.data.id));
-          userEmail.update((val) => (val = res.data.email));
-          name.update((val) => (val = res.data.name));
-          surname.update((val) => (val = res.data.surname));
-          paid.update((val) => (val = res.data.paid));
-          admin.update((val) => (val = res.data.admin));
-          createdAt.update((val) => (val = res.data.createdAt));
-          loggedIn.update((val) => (val = true));
+          UserId.update((val) => (val = res.data.id));
+          Email.update((val) => (val = res.data.email));
+          Name.update((val) => (val = res.data.name));
+          Surname.update((val) => (val = res.data.surname));
+          Paid.update((val) => (val = res.data.paid));
+          Admin.update((val) => (val = res.data.admin));
+          CreatedAt.update((val) => (val = res.data.createdAt));
+          LoggedIn.update((val) => (val = true));
           $goto("./shows");
         }
         else if(res.data.error)

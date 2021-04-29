@@ -4,14 +4,14 @@ export const sideNav = writable(false);
 
 export const apiUrl = writable(false);
 
-export const userId = writable(false);
-export const name = writable(false);
-export const surname = writable(false);
-export const dob = writable(false);
-export const email = writable(false);
-export const loggedIn = writable(false);
-export const country = writable(false);
-export const admin = writable(false);
-export const paid = writable(false);
-export const createdAt = writable(false);
+export const UserId = writable(false);
+export const Name = writable(false);
+export const Surname = writable(false);
+export const Dob = writable(false);
+export const Email = writable(false);
+export const LoggedIn = writable(false);
+export const Country = writable(false);
+export const Admin = writable(false);
+export const Paid = writable(false);
+export const CreatedAt = writable(false);
 

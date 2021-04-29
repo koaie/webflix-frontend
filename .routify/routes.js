@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.15.1
- * File generated Wed Apr 28 2021 15:35:28 GMT+0100 (British Summer Time)
+ * File generated Thu Apr 29 2021 08:45:28 GMT+0100 (British Summer Time)
  */
 
 export const __version = "2.15.1"
-export const __timestamp = "2021-04-28T14:35:28.418Z"
+export const __timestamp = "2021-04-29T07:45:28.374Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -125,6 +125,31 @@ export const _tree = {
       "path": "/login",
       "id": "_login",
       "component": () => import('../src/pages/login.svelte').then(m => m.default)
+    },
+    {
+      "isFile": true,
+      "isDir": false,
+      "file": "logout.svelte",
+      "filepath": "/logout.svelte",
+      "name": "logout",
+      "ext": "svelte",
+      "badExt": false,
+      "absolutePath": "/home/user/webflix/src/pages/logout.svelte",
+      "importPath": "../src/pages/logout.svelte",
+      "isLayout": false,
+      "isReset": false,
+      "isIndex": false,
+      "isFallback": false,
+      "isPage": true,
+      "ownMeta": {},
+      "meta": {
+        "recursive": true,
+        "preload": "proximity",
+        "prerender": true
+      },
+      "path": "/logout",
+      "id": "_logout",
+      "component": () => import('../src/pages/logout.svelte').then(m => m.default)
     },
     {
       "isFile": true,
