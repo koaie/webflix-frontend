@@ -118,7 +118,6 @@
           on:click={() => {
             login();
           }}
-          color="secondary"
           variant="outlined"
         >
           <Label>Login</Label>

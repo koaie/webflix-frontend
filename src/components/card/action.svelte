@@ -17,7 +17,6 @@
   <Content>{text}</Content>
   <Actions fullBleed>
     <Button
-    color="secondary"
     on:click={() => {
       $goto(direct);
     }}

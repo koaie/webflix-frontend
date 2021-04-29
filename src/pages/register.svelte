@@ -83,13 +83,13 @@
     </Cell>
     <Cell span={12}>
       <FormField>
-        <Switch bind:checked={agree} />
+        <Switch color="primary" bind:checked={agree} />
         <span slot="label"> I agree to the Terms and Conditions </span>
       </FormField>
     </Cell>
     <Cell span={12}>
       <div class="right">
-        <Button width={120} color="secondary" variant="outlined">
+        <Button width={120} variant="outlined">
           <Label>Register</Label>
         </Button>
       </div>
