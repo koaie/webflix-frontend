@@ -72,6 +72,7 @@
   </Header>
   <Content>
     <List>
+      {#if loggedIn}
       <Item
         href="javascript:void(0)"
         on:click={() => {
@@ -91,7 +92,8 @@
         <Graphic class="material-icons" aria-hidden="true">movie</Graphic>
         <Text>Movies</Text>
       </Item>
-
+      {/if}
+      {#if admin}
       <Separator />
       <Subheader component={H6}>Labels</Subheader>
       <Item
@@ -116,6 +118,7 @@
         <Graphic class="material-icons" aria-hidden="true">tv</Graphic>
         <Text>Youtube Player</Text>
       </Item>
+      {/if}
       <Separator />
       {#if loggedIn}
         <Item

@@ -1,6 +1,5 @@
 :root {
-	--mdc-theme-primary: #111111;
-	--darkGreen: #1d1d1d67;
+	--mdc-theme-primary: #7F91EC;
 }
 
 * {
@@ -22,7 +21,7 @@ body {
 }
 
 .bgPrimary {
-	background-color: var(--mdc-theme-primary);
+	background-color: #151515;
 }
 
 .colorPrimary {

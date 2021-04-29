@@ -5,7 +5,7 @@
 // Svelte Colors! (Dark Theme)
 @use '@material/theme/index' as theme with (
   $primary: #7F91EC,
-  $secondary: color.scale(#9A9A9A),
+  $secondary: #9A9A9A,
   $surface: color.adjust(color-palette.$grey-900, $blue: +4),
   $background: #151515,
   $error: color-palette.$red-700
