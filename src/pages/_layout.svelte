@@ -2,10 +2,14 @@
   // Component imports:
   import Sidebar from "../components/layout/Sidebar.svelte";
   import Header from "../components/layout/Header.svelte";
-
-  import { sideNav } from "../logic/stores";
+  import { sideNav, Path } from "../logic/stores";
 
   let open = false;
+  let path = null;
+
+  Path.subscribe((value) => {
+    path = value;
+  });
 
   sideNav.subscribe((value) => {
     open = value;
@@ -31,8 +35,10 @@
 
   <div id="pageContent">
     <Sidebar on:click={toggleSideNav} {open} />
-    <div class="page" on:click={() => sideNav.update((val) => (val = false))}>
-      <slot />
+    <div class="page">
+        <div on:click={() => sideNav.update((val) => (val = false))}>
+          <slot />
+        </div>
     </div>
   </div>
 </div>

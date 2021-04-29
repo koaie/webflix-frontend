@@ -4,6 +4,8 @@ export const sideNav = writable(false);
 
 export const apiUrl = writable(false);
 
+export const Path = writable(false);
+
 export const UserId = writable(false);
 export const Name = writable(false);
 export const Surname = writable(false);

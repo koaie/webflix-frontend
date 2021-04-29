@@ -1,5 +1,5 @@
 <script>
-  import { goto } from "@roxi/routify";
+  import { goto, isActive, params } from "@roxi/routify";
   import Drawer, {
     AppContent,
     Content,

@@ -1,21 +1,14 @@
 <script>
   import axios from "axios";
 
-  import Player from "../components/player.svelte";
-  import YoutubePlayer from "../components/youtubePlayer.svelte";
-  import { apiUrl } from "../logic/stores";
-  import { params, goto } from "@roxi/routify";
-
-  import Button, { Label } from "@smui/button";
-  import Card, {
-    Content,
-    PrimaryAction,
-    Actions,
-    ActionButtons,
-    ActionIcons,
-  } from "@smui/card";
+  import Player from "../components/player/player.svelte";
+  import YoutubePlayer from "../components/player/youtubePlayer.svelte";
+  import ActionCard from "../components/card/action.svelte";
+  import { apiUrl, UserId } from "../logic/stores";
+  import { params } from "@roxi/routify";
 
   export let api;
+  export let userId
   export let url;
   export let cover =
     "https://upload.wikimedia.org/wikipedia/commons/d/d5/Big_Buck_Bunny_loves_Creative_Commons.png";
@@ -24,11 +17,13 @@
   apiUrl.subscribe((value) => {
     api = value;
   });
+  UserId.subscribe((value) => {
+    userId = value;
+  });
 
-  let episodeId = $params.id;
   const body = JSON.stringify({
-    id: "59A01BBE-171A-4268-A175-C2A0D8E45E07",
-    episodeId: episodeId,
+    id: userId,
+    episodeId: $params.id,
   });
 
   const call = async () => {
@@ -51,9 +46,7 @@
     return result;
   };
   const res = call();
-  console.log(res);
-  console.log(url);
-  console.log(id)
+  console.log($params);
 </script>
 
 {#if $params.id}
@@ -63,38 +56,12 @@
     <Player {url} {cover} />
   {:else}
     <div class="container">
-      <Card>
-        <Content>Whoops something went wrong!</Content>
-        <Actions fullBleed>
-          <Button
-            color="secondary"
-            on:click={() => {
-              $goto("./");
-            }}
-          >
-            <Label>Go back</Label>
-            <i class="material-icons" aria-hidden="true">arrow_forward</i>
-          </Button>
-        </Actions>
-      </Card>
+      <ActionCard />
     </div>
   {/if}
 {:else}
   <div class="container">
-    <Card>
-      <Content>Whoops something went wrong!</Content>
-      <Actions fullBleed>
-        <Button
-          color="secondary"
-          on:click={() => {
-            $goto("./");
-          }}
-        >
-          <Label>Go back</Label>
-          <i class="material-icons" aria-hidden="true">arrow_forward</i>
-        </Button>
-      </Actions>
-    </Card>
+    <ActionCard />
   </div>
 {/if}
 
