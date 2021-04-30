@@ -6,10 +6,6 @@
 
   let open = false;
 
-  Path.subscribe((value) => {
-    path = value;
-  });
-
   sideNav.subscribe((value) => {
     open = value;
   });
