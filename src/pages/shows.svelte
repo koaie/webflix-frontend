@@ -73,7 +73,7 @@
   </Menu>
 {/if}
 
-<div class="container">
+<div class="container" id="media">
   {#if $user.id}
     <LayoutGrid>
       {#if $data}

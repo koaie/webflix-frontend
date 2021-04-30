@@ -38,8 +38,6 @@
   if ($user.id && $params.id) {
     watch();
   }
-  console.log($params.id);
-  console.log($user.id);
 </script>
 
 {#if $params.id}
