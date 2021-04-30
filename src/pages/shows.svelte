@@ -19,39 +19,25 @@
   import { user, data, largeDialog, API_URL, content } from "../logic/stores";
 
   let playMenu = false;
+  let episodes = null;
+
   const body = JSON.stringify({
     id: $user.id,
   });
 
-  const showDialog = () => {
-    largeDialog.update((val) => true);
-  };
-
   const contentRegex = /([\w-]{36}).(\d+):(\d+)@(\d+)/;
 
-  // [
-  //   {episodeId: epsiodeId => {episode: episode, season: season, duration: duration}}
-  // ]
-
-  // let episodes = $content.data.split(",").map((el) => {
-  //     const res = el.match(contentRegex)
-  //     return [
-  //       { episodeId: res[1] },
-  //       { episode: res[3] },
-  //       { season: res[4] },
-  //       { duration: res[2] },
-  //     ]
-  //   });
-
-  $: episodes = $content.data.split(",").map((el) => {
-    const res = el.match(contentRegex);
-    return {
-      episodeId: res[1],
-      episode: res[3],
-      season: res[4],
-      duration: res[2],
-    };
-  });
+  const updateEpisodes = async () => {
+    episodes = $content.data.split(",").map((el) => {
+      const res = el.match(contentRegex);
+      return {
+        episodeId: res[1],
+        episode: res[3],
+        season: res[4],
+        duration: res[2],
+      };
+    });
+  };
 
   const call = async () => {
     let result = await axios
@@ -64,16 +50,15 @@
     return result.data;
   };
   const fetch = async () => {
-    await call().then((res) => {
-      data.update((val) => res);
-    });
+    let res = await call();
+    data.update((val) => res);
   };
   if ($user.id) {
     fetch();
   }
 </script>
 
-<div class="test">
+{#if episodes}
   <Menu bind:this={playMenu}>
     <List>
       {#each episodes as { episode, season, episodeId, duration }}
@@ -86,7 +71,7 @@
       {/each}
     </List>
   </Menu>
-</div>
+{/if}
 
 <div class="container">
   {#if $user.id}
@@ -116,20 +101,27 @@
               </PrimaryAction>
               <Actions>
                 <ActionButtons>
-                  <Button
-                    on:click={() => {
-                      content.update((val) => card);
-                      playMenu.setOpen(true);
-                    }}
-                  >
-                    <Label
-                      >{#if $user.paid}
-                        Play
-                      {:else}
-                        Trailer
-                      {/if}
-                    </Label>
-                  </Button>
+                  {#if $user.paid}
+                    <Button
+                      on:click={async () => {
+                        content.update((val) => card);
+                        await updateEpisodes();
+                        await playMenu.setOpen(true);
+                      }}
+                    >
+                      <Label>Play</Label>
+                    </Button>
+                  {:else}
+                    <Button
+                      on:click={async () => {
+                        content.update((val) => card);
+                        await updateEpisodes();
+                        $goto(`./watch?id=${episodes[0].episodeId}`);
+                      }}
+                    >
+                      <Label>trailer</Label>
+                    </Button>
+                  {/if}
                   <Button
                     color="secondary"
                     on:click={() => {
