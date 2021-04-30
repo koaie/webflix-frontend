@@ -1,18 +1,7 @@
 <script>
-  import {
-    apiUrl,
-    UserId,
-    Surname,
-    Name,
-    Email,
-    LoggedIn,
-    Admin,
-    Paid,
-    CreatedAt
-  } from "../logic/stores";
+  import { apiUrl, user } from "../logic/stores";
   import axios from "axios";
   import { goto } from "@roxi/routify";
-
 
   import LayoutGrid, { Cell } from "@smui/layout-grid";
   import Textfield from "@smui/textfield";
@@ -33,36 +22,24 @@
   let password = null;
   let rememberMe = false;
   let invalid = false;
-
   let body = null;
 
   const call = async () => {
-    let result;
-    await axios
+    let result = await axios
       .post(`${api}/auth/login.php`, body, {
         "Content-type": "application/json",
       })
       .then((res) => {
         if (res.data.id) {
-          UserId.update((val) => (val = res.data.id));
-          Email.update((val) => (val = res.data.email));
-          Name.update((val) => (val = res.data.name));
-          Surname.update((val) => (val = res.data.surname));
-          Paid.update((val) => (val = res.data.paid));
-          Admin.update((val) => (val = res.data.admin));
-          CreatedAt.update((val) => (val = res.data.createdAt));
-          LoggedIn.update((val) => (val = true));
           $goto("./shows");
-        }
-        else if(res.data.error)
-        {
+        } else if (res.data.error) {
           invalid = true;
         }
       })
       .catch((err) => {
         console.log(err);
       });
-    return result;
+    return result.data;
   };
 
   const login = async () => {
@@ -70,7 +47,7 @@
       email: email,
       password: password,
     });
-    call();
+    user.update(async (val) => await call());
   };
 </script>
 
