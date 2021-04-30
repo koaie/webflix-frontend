@@ -4,7 +4,7 @@
 </script>
 
 <div class="container">
-  <Player theme="dark" style="--vm-player-theme: #7F91EC;">
+  <Player theme="dark">
     <Youtube videoId={id} />
     <DefaultUi />
   </Player>

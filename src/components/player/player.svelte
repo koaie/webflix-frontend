@@ -5,7 +5,7 @@
 </script>
 
 <div class="container">
-  <Player theme="dark" style="--vm-player-theme: var(--mdc-theme-primary);">
+  <Player theme="dark">
     <Video crossOrigin poster={cover}>
       <source data-src={url} type="video/mp4" />
     </Video>
