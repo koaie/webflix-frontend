@@ -40,6 +40,12 @@ body {
   display: none;
 }
 
+vm-player {
+  --vm-player-theme: var(--mdc-theme-primary);
+  width: 100%;
+  max-width: 980px;
+}
+
 #media .mdc-layout-grid__inner {
   display: grid;
   margin: 0;
