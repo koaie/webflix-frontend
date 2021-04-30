@@ -61,13 +61,11 @@
   }
 
   #pageContent {
-    position: relative;
     width: 100%;
     z-index: 4;
   }
 
   #pageContent .page {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;

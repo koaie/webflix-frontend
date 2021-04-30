@@ -12,8 +12,6 @@
   import Button, { Label } from "@smui/button";
   import Tooltip, { Wrapper } from "@smui/tooltip";
 
-  console.log($API_URL);
-
   let email = null;
   let password = null;
   let rememberMe = false;

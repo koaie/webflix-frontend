@@ -38,7 +38,7 @@
   </Header>
   <Content>
     <List>
-      {#if $user}
+      {#if $user.id}
         <Item
           href="javascript:void(0)"
           on:click={() => {
