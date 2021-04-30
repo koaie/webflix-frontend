@@ -45,6 +45,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0.5em;
+    background-color: var(--mdc-theme--background);
   }
 
   .logo {
@@ -71,7 +72,7 @@
       top: 0;
       width: 100%;
       padding: 0.5em;
-      background-color: #151515;
+      background-color: var(--mdc-theme--background);
     }
 
     .logo {

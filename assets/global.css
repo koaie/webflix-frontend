@@ -1,5 +1,6 @@
 :root {
   --mdc-theme-primary: #7f91ec;
+  --mdc-theme--background: #151515;
 }
 
 * {
