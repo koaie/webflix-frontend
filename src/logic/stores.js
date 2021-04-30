@@ -7,3 +7,4 @@ export const sideNav = writable(false);
 export const path = writable(false);
 export const user = writable(false);
 export const data = writable(false);
+export const content = writable(false);

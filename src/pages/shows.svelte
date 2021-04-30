@@ -1,4 +1,5 @@
 <script>
+  import { goto } from "@roxi/routify";
   import axios from "axios";
   import Card, {
     Content,
@@ -11,11 +12,11 @@
   } from "@smui/card";
   import Button, { Label } from "@smui/button";
   import Menu from "@smui/menu";
-  import List, { Item, Text } from "@smui/list";
+  import List, { Item, Text, PrimaryText, SecondaryText } from "@smui/list";
   import IconButton from "@smui/icon-button";
   import LayoutGrid, { Cell } from "@smui/layout-grid";
   import ActionCard from "../components/card/action.svelte";
-  import { user, data, largeDialog, API_URL } from "../logic/stores";
+  import { user, data, largeDialog, API_URL, content } from "../logic/stores";
 
   let playMenu = false;
   const body = JSON.stringify({
@@ -25,6 +26,32 @@
   const showDialog = () => {
     largeDialog.update((val) => true);
   };
+
+  const contentRegex = /([\w-]{36}).(\d+):(\d+)@(\d+)/;
+
+  // [
+  //   {episodeId: epsiodeId => {episode: episode, season: season, duration: duration}}
+  // ]
+
+  // let episodes = $content.data.split(",").map((el) => {
+  //     const res = el.match(contentRegex)
+  //     return [
+  //       { episodeId: res[1] },
+  //       { episode: res[3] },
+  //       { season: res[4] },
+  //       { duration: res[2] },
+  //     ]
+  //   });
+
+  $: episodes = $content.data.split(",").map((el) => {
+    const res = el.match(contentRegex);
+    return {
+      episodeId: res[1],
+      episode: res[3],
+      season: res[4],
+      duration: res[2],
+    };
+  });
 
   const call = async () => {
     let result = await axios
@@ -49,9 +76,14 @@
 <div class="test">
   <Menu bind:this={playMenu}>
     <List>
-      <Item on:SMUI:action={() => {}}>
-        <Text>dsfgsdfsd</Text>
-      </Item>
+      {#each episodes as { episode, season, episodeId, duration }}
+        <Item on:SMUI:action={() => $goto(`./watch?id=${episodeId}`)}>
+          <Text>
+            <PrimaryText>Episode: {episode}</PrimaryText>
+            <SecondaryText>season: {season}</SecondaryText>
+          </Text>
+        </Item>
+      {/each}
     </List>
   </Menu>
 </div>
@@ -60,23 +92,23 @@
   {#if $user.id}
     <LayoutGrid>
       {#if $data}
-        {#each $data as { title, desc, genres, language }}
+        {#each $data as card}
           <Cell span={4}>
             <Card>
               <PrimaryAction
                 on:click={() => {
-                  console.log(title, desc, genres);
+                  content.update((val) => card);
                   largeDialog.update((val) => true);
                 }}
               >
                 <Media
-                  style="background-image: url({`https://place-hold.it/320x180?text=16x9&fontsize=23`});"
+                  style="background-image: url({card.cover});"
                   aspectRatio="16x9"
                 >
                   <MediaContent>
                     <div class="media">
-                      <h2 class="mdc-typography--headline6" style="margin: 0;">
-                        {title}
+                      <h2 class="mdc-typography--headline6">
+                        {card.title}
                       </h2>
                     </div>
                   </MediaContent>
@@ -84,7 +116,12 @@
               </PrimaryAction>
               <Actions>
                 <ActionButtons>
-                  <Button on:click={() => playMenu.setOpen(true)}>
+                  <Button
+                    on:click={() => {
+                      content.update((val) => card);
+                      playMenu.setOpen(true);
+                    }}
+                  >
                     <Label
                       >{#if $user.paid}
                         Play
@@ -93,7 +130,13 @@
                       {/if}
                     </Label>
                   </Button>
-                  <Button color="secondary" on:click={() => showDialog()}>
+                  <Button
+                    color="secondary"
+                    on:click={() => {
+                      content.update((val) => card);
+                      largeDialog.update((val) => true);
+                    }}
+                  >
                     <Label>Details</Label>
                   </Button>
                 </ActionButtons>

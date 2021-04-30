@@ -1,6 +1,6 @@
 <script>
   import Dialog, { Header, Title, Content, Actions } from "@smui/dialog";
-  import IconButton from "@smui/icon-button";
+  import { card } from "../../logic/stores";
   import Button, { Label } from "@smui/button";
 
   export let open = false;
@@ -18,9 +18,7 @@
     <Title id="fullscreen-title">{title}</Title>
   </Header>
   <Content id="fullscreen-content">
-    {#each Array(10) as _item}
-      {text}
-    {/each}
+    {text}
   </Content>
   <Actions>
     <Button action="accept">

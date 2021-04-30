@@ -28,11 +28,18 @@
     return result.data[0];
   };
   const watch = async () => {
-    await call();
+    const res = await call();
+    if (res.path) {
+      url = res.path;
+    } else if (res.trailer) {
+      id = res.trailer;
+    }
   };
   if ($user.id && $params.id) {
     watch();
   }
+  console.log($params.id);
+  console.log($user.id);
 </script>
 
 {#if $params.id}
