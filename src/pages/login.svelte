@@ -1,5 +1,5 @@
 <script>
-  import { apiUrl, user } from "../logic/stores";
+  import { API_URL, user } from "../logic/stores";
   import axios from "axios";
   import { goto } from "@roxi/routify";
 
@@ -12,11 +12,7 @@
   import Button, { Label } from "@smui/button";
   import Tooltip, { Wrapper } from "@smui/tooltip";
 
-  let api = null;
-
-  apiUrl.subscribe((value) => {
-    api = value;
-  });
+  console.log($API_URL);
 
   let email = null;
   let password = null;
@@ -26,15 +22,8 @@
 
   const call = async () => {
     let result = await axios
-      .post(`${api}/auth/login.php`, body, {
+      .post(`${$API_URL}/auth/login.php`, body, {
         "Content-type": "application/json",
-      })
-      .then((res) => {
-        if (res.data.id) {
-          $goto("./shows");
-        } else if (res.data.error) {
-          invalid = true;
-        }
       })
       .catch((err) => {
         console.log(err);
@@ -47,11 +36,19 @@
       email: email,
       password: password,
     });
-    user.update(async (val) => await call());
+    await call().then((res) => {
+      user.update((val) => res);
+    });
+    if ($user.id) {
+      $goto("./shows");
+    }
+    if ($user.error) {
+      invalid = true;
+    }
   };
 </script>
 
-<div class="container">
+<div class="container" id="form">
   <LayoutGrid>
     <Cell span={6}>
       <Textfield
@@ -88,7 +85,7 @@
       </Wrapper>
     </Cell>
 
-    <Cell span={4}>
+    <Cell span={6}>
       <div class="right">
         <Button
           on:click={() => {
@@ -105,18 +102,15 @@
 
 <style>
   .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0;
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    margin-right: -50%;
     background-color: #232324;
     border-radius: 1rem;
-    transform: translate(-50%, -15%);
   }
   .right {
-    position: absolute;
-    right: 1.5rem;
-    bottom: 2rem;
+    display: flex;
+    justify-content: right;
   }
 </style>

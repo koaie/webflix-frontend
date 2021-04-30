@@ -13,37 +13,20 @@
   import IconButton, { Icon } from "@smui/icon-button";
   import LayoutGrid, { Cell } from "@smui/layout-grid";
   import ActionCard from "../components/card/action.svelte";
-  import { LoggedIn, Paid, UserId, apiUrl } from "../logic/stores";
+  import { user, API_URL } from "../logic/stores";
   import LargeDialog from "../components/dialog/large.svelte";
 
-  let loggedIn = null;
-  let paid = null;
-  let userId = null;
-  let api = null;
   let showLargeDialog = false;
-  $: data = null;
-
-  LoggedIn.subscribe((value) => {
-    loggedIn = value;
-  });
-  Paid.subscribe((value) => {
-    paid = value;
-  });
-  apiUrl.subscribe((value) => {
-    api = value;
-  });
-  UserId.subscribe((value) => {
-    userId = value;
-  });
+  let data = null;
 
   const body = JSON.stringify({
-    id: userId,
+    id: $user.id,
   });
 
   const call = async () => {
     let result;
     await axios
-      .post(`${api}/content/view.php`, body, {
+      .post(`${$API_URL}/content/view.php`, body, {
         "Content-type": "application/json",
       })
       .then((res) => {
@@ -56,11 +39,13 @@
       });
     return result;
   };
-  const res = call();
+  if ($user.id) {
+    const res = call();
+  }
 </script>
 
 <LargeDialog bind:open={showLargeDialog} />
-{#if loggedIn}
+{#if $user.id}
   <LayoutGrid>
     {#if data}
       {#each data as { title, desc, genres, language }}
@@ -91,7 +76,7 @@
               <ActionButtons>
                 <Button on:click={() => {}}>
                   <Label
-                    >{#if paid}
+                    >{#if $user.paid}
                       Play
                     {:else}
                       Trailer
@@ -134,12 +119,6 @@
 <style>
   .container {
     margin: 0;
-    position: absolute;
-    top: 70%;
-    left: 50%;
     margin-right: -50%;
-    width: 50%;
-    height: 80%;
-    transform: translate(-50%, -70%);
   }
 </style>

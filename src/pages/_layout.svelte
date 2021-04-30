@@ -14,11 +14,11 @@
   sideNav.subscribe((value) => {
     open = value;
   });
-  function closeSideNav() {
+  const closeSideNav = () => {
     if (open) {
-      sideNav.update((val) => (val = false));
+      sideNav.update((val) => false);
     }
-  }
+  };
   function toggleSideNav() {
     open = !open;
   }
@@ -36,9 +36,9 @@
   <div id="pageContent">
     <Sidebar on:click={toggleSideNav} {open} />
     <div class="page">
-        <div on:click={() => sideNav.update((val) => (val = false))}>
-          <slot />
-        </div>
+      <div on:click={() => closeSideNav()}>
+        <slot />
+      </div>
     </div>
   </div>
 </div>
@@ -59,23 +59,28 @@
 
   .sidebar {
     position: absolute;
+    top: 0px;
     height: 100%;
     background: transparent;
-    z-index: 10;
+    z-index: 5;
+  }
+
+  #pageContent {
+    position: relative;
+    width: 100%;
+    z-index: 4;
   }
 
   #pageContent .page {
-    margin: 0;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    margin-left: 8.3rem;
-    width: 80%;
-    height: 60%;
-    transform: translate(-50%, -25%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+    margin-top: 5%;
   }
 
-  @media only screen and (max-width: 850px) {
+  @media only screen and (max-width: 910px) {
     .layout {
       display: grid;
       grid-template-rows: 72px 1fr;
@@ -83,20 +88,21 @@
       height: 100%;
       width: 100%;
     }
+    #pageContent {
+      width: 100%;
+      z-index: 6;
+    }
 
     #header {
       grid-column: 1;
     }
 
     #pageContent .page {
-      margin: 0;
-      position: absolute;
-      top: 25%;
-      left: 50%;
-      margin-right: -50%;
-      width: 80%;
-      height: 60%;
-      transform: translate(-50%, -25%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 0rem;
+      margin-top: 5rem;
     }
   }
 </style>
