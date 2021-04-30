@@ -1,18 +1,7 @@
 <script>
-  import {
-    apiUrl,
-    UserId,
-    Surname,
-    Name,
-    Email,
-    LoggedIn,
-    Admin,
-    Paid,
-    CreatedAt
-  } from "../logic/stores";
+  import { API_URL, user } from "../logic/stores";
   import axios from "axios";
   import { goto } from "@roxi/routify";
-
 
   import LayoutGrid, { Cell } from "@smui/layout-grid";
   import Textfield from "@smui/textfield";
@@ -23,46 +12,21 @@
   import Button, { Label } from "@smui/button";
   import Tooltip, { Wrapper } from "@smui/tooltip";
 
-  let api = null;
-
-  apiUrl.subscribe((value) => {
-    api = value;
-  });
-
   let email = null;
   let password = null;
   let rememberMe = false;
   let invalid = false;
-
   let body = null;
 
   const call = async () => {
-    let result;
-    await axios
-      .post(`${api}/auth/login.php`, body, {
+    let result = await axios
+      .post(`${$API_URL}/auth/login.php`, body, {
         "Content-type": "application/json",
-      })
-      .then((res) => {
-        if (res.data.id) {
-          UserId.update((val) => (val = res.data.id));
-          Email.update((val) => (val = res.data.email));
-          Name.update((val) => (val = res.data.name));
-          Surname.update((val) => (val = res.data.surname));
-          Paid.update((val) => (val = res.data.paid));
-          Admin.update((val) => (val = res.data.admin));
-          CreatedAt.update((val) => (val = res.data.createdAt));
-          LoggedIn.update((val) => (val = true));
-          $goto("./shows");
-        }
-        else if(res.data.error)
-        {
-          invalid = true;
-        }
       })
       .catch((err) => {
         console.log(err);
       });
-    return result;
+    return result.data;
   };
 
   const login = async () => {
@@ -70,11 +34,19 @@
       email: email,
       password: password,
     });
-    call();
+    await call().then((res) => {
+      user.update((val) => res);
+    });
+    if ($user.id) {
+      $goto("./shows");
+    }
+    if ($user.error) {
+      invalid = true;
+    }
   };
 </script>
 
-<div class="container">
+<div class="container" id="form">
   <LayoutGrid>
     <Cell span={6}>
       <Textfield
@@ -111,7 +83,7 @@
       </Wrapper>
     </Cell>
 
-    <Cell span={4}>
+    <Cell span={6}>
       <div class="right">
         <Button
           on:click={() => {
@@ -128,18 +100,14 @@
 
 <style>
   .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0;
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    margin-right: -50%;
     background-color: #232324;
     border-radius: 1rem;
-    transform: translate(-50%, -15%);
   }
   .right {
-    position: absolute;
-    right: 1.5rem;
-    bottom: 2rem;
+    float: right;
   }
 </style>

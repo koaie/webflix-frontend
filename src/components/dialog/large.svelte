@@ -1,5 +1,6 @@
 <script>
-  import Dialog, { Title, Content, Actions } from "@smui/dialog";
+  import Dialog, { Header, Title, Content, Actions } from "@smui/dialog";
+  import { card } from "../../logic/stores";
   import Button, { Label } from "@smui/button";
 
   export let open = false;
@@ -12,13 +13,12 @@
   bind:open
   aria-labelledby="fullscreen-title"
   aria-describedby="fullscreen-content"
-  surface$style="width: 850px; max-width: calc(100vw - 32px);"
 >
-  <Title id="large-scroll-title">{title}</Title>
-  <Content id="large-scroll-content">
-    {#each Array(10) as _item}
-      {text}
-    {/each}
+  <Header>
+    <Title id="fullscreen-title">{title}</Title>
+  </Header>
+  <Content id="fullscreen-content">
+    {text}
   </Content>
   <Actions>
     <Button action="accept">

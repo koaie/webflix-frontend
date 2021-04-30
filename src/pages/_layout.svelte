@@ -2,25 +2,16 @@
   // Component imports:
   import Sidebar from "../components/layout/Sidebar.svelte";
   import Header from "../components/layout/Header.svelte";
-  import { sideNav, Path } from "../logic/stores";
+  import LargeDialog from "../components/dialog/large.svelte";
+  import { sideNav, largeDialog } from "../logic/stores";
 
-  let open = false;
-  let path = null;
-
-  Path.subscribe((value) => {
-    path = value;
-  });
-
-  sideNav.subscribe((value) => {
-    open = value;
-  });
-  function closeSideNav() {
-    if (open) {
-      sideNav.update((val) => (val = false));
+  const closeSideNav = () => {
+    if ($sideNav) {
+      sideNav.update((val) => false);
     }
-  }
+  };
   function toggleSideNav() {
-    open = !open;
+    sideNav.update((val) => !val);
   }
 </script>
 
@@ -29,16 +20,18 @@
     <Header />
   </div>
 
+  <LargeDialog bind:open={$largeDialog} />
+
   <div class="desktopOnly sidebar">
     <Sidebar desktop={true} open={true} />
   </div>
 
   <div id="pageContent">
-    <Sidebar on:click={toggleSideNav} {open} />
+    <Sidebar on:click={toggleSideNav} open={$sideNav} />
     <div class="page">
-        <div on:click={() => sideNav.update((val) => (val = false))}>
-          <slot />
-        </div>
+      <div on:click={() => closeSideNav()}>
+        <slot />
+      </div>
     </div>
   </div>
 </div>
@@ -59,23 +52,26 @@
 
   .sidebar {
     position: absolute;
+    top: 0px;
     height: 100%;
     background: transparent;
-    z-index: 10;
+    z-index: 4;
+  }
+
+  #pageContent {
+    width: 100%;
+    z-index: 3;
+    grid-column-start: 2;
   }
 
   #pageContent .page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    margin-left: 8.3rem;
-    width: 80%;
-    height: 60%;
-    transform: translate(-50%, -25%);
   }
 
-  @media only screen and (max-width: 850px) {
+  @media only screen and (max-width: 910px) {
     .layout {
       display: grid;
       grid-template-rows: 72px 1fr;
@@ -83,20 +79,22 @@
       height: 100%;
       width: 100%;
     }
+    #pageContent {
+      width: 100%;
+      z-index: 4;
+      grid-column-start: 1;
+    }
 
     #header {
       grid-column: 1;
     }
 
     #pageContent .page {
-      margin: 0;
-      position: absolute;
-      top: 25%;
-      left: 50%;
-      margin-right: -50%;
-      width: 80%;
-      height: 60%;
-      transform: translate(-50%, -25%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 0rem;
+      margin-top: 5rem;
     }
   }
 </style>

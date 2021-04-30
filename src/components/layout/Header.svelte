@@ -8,21 +8,16 @@
 
   // Funcs:
   function toggleSideNav() {
-    sideNav.update((val) => (val = !val));
+    sideNav.update((val) => !val);
   }
 </script>
 
-<TopAppBar style="--mdc-theme-primary: #151515;" variant="static">
+<TopAppBar variant="static">
   <div class="headerContainer">
-
-    <!-- Menu toggle for mobile -->
     <div class="clickable mobileOnly">
       <div class="flexCentered">
-        <button
-          style="background-color: transparent; border: none; color: white;"
-          on:click={toggleSideNav}
-        >
-          <i class="material-icons" style="font-size: 48px;">menu</i>
+        <button class="icoBot" on:click={toggleSideNav}>
+          <i class="material-icons">menu</i>
         </button>
       </div>
     </div>
@@ -32,14 +27,25 @@
     <div class="logo">
       <!-- svelte-ignore a11y-label-has-associated-control -->
       <h1><label on:click={() => $goto("./")}>webflix</label></h1>
-  </div>
-</TopAppBar>
+    </div>
+  </div></TopAppBar
+>
 
 <style>
+  .icoBot {
+    background-color: transparent;
+    border: none;
+    color: white;
+  }
+  .material-icons {
+    font-size: 48px;
+  }
+
   .headerContainer {
     display: flex;
     justify-content: space-between;
     padding: 0.5em;
+    background-color: var(--mdc-theme--background);
   }
 
   .logo {
@@ -58,25 +64,25 @@
     text-decoration: none;
     cursor: pointer;
   }
-  @media only screen and (max-width: 850px){
+  @media only screen and (max-width: 850px) {
     .headerContainer {
-    display: inline-flex;
-    justify-content: space-between;
-    position: fixed;
-    top: 0; 
-    width: 100%;
-    padding: 0.5em;
-    background-color: #151515;
-  }
+      display: inline-flex;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 0.5em;
+      background-color: var(--mdc-theme--background);
+    }
 
-  .logo {
-    position: absolute;
-    right: 1.5rem;
-    top: -10%;
-    font-size: 20;
-    color: #7f91ec;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    .logo {
+      position: absolute;
+      right: 1.5rem;
+      top: -10%;
+      font-size: 20;
+      color: #7f91ec;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
   }
-}
 </style>

@@ -1,23 +1,16 @@
 <script>
-  import { Player, Youtube, DefaultUi} from "@vime/svelte";
+  import { Player, Youtube, DefaultUi } from "@vime/svelte";
   export let id;
 </script>
+
 <div class="container">
-<Player theme="dark" style="--vm-player-theme: #7F91EC;">
-  <Youtube videoId="{id}" />
-  <DefaultUi />
-</Player>
+  <Player theme="dark">
+    <Youtube videoId={id} />
+    <DefaultUi />
+  </Player>
 </div>
 
 <style>
-      .container {
-    margin: 0;
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    margin-right: -50%;
-    width: 80%;
-    height: 60%;
-    transform: translate(-50%, -15%);
+  .container {
   }
 </style>

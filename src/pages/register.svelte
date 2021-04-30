@@ -14,9 +14,9 @@
   let invalid = false;
 </script>
 
-<div class="container">
+<div class="container" id="form">
   <LayoutGrid>
-    <Cell span={12}>
+    <Cell span={6}>
       <Textfield
         type="email"
         bind:invalid
@@ -29,7 +29,7 @@
         <HelperText validationMsg slot="helper">Helper Text</HelperText>
       </Textfield>
     </Cell>
-    <Cell span={12}>
+    <Cell span={6}>
       <Textfield
         type="password"
         bind:invalid
@@ -42,7 +42,7 @@
         <HelperText validationMsg slot="helper">Helper Text</HelperText>
       </Textfield>
     </Cell>
-    <Cell span={12}>
+    <Cell span={6}>
       <Textfield
         type="password"
         bind:invalid
@@ -55,7 +55,7 @@
         <HelperText validationMsg slot="helper">Helper Text</HelperText>
       </Textfield>
     </Cell>
-    <Cell span={12}>
+    <Cell span={6}>
       <Textfield
         type="password"
         bind:invalid
@@ -68,7 +68,7 @@
         <HelperText validationMsg slot="helper">Helper Text</HelperText>
       </Textfield>
     </Cell>
-    <Cell span={12}>
+    <Cell span={6}>
       <Textfield
         type="password"
         bind:invalid
@@ -99,14 +99,12 @@
 
 <style>
   .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0;
-    position: absolute;
-    top: 4%;
-    left: 50%;
-    margin-right: -50%;
     background-color: #232324;
     border-radius: 1rem;
-    transform: translate(-50%, 4%);
   }
   .right {
     float: right;
