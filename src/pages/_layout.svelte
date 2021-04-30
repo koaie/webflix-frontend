@@ -2,10 +2,9 @@
   // Component imports:
   import Sidebar from "../components/layout/Sidebar.svelte";
   import Header from "../components/layout/Header.svelte";
-  import { sideNav, Path } from "../logic/stores";
+  import { sideNav } from "../logic/stores";
 
   let open = false;
-  let path = null;
 
   Path.subscribe((value) => {
     path = value;
