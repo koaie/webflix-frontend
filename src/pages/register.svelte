@@ -99,14 +99,12 @@
 
 <style>
   .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0;
-    position: absolute;
-    top: 4%;
-    left: 50%;
-    margin-right: -50%;
     background-color: #232324;
     border-radius: 1rem;
-    transform: translate(-50%, 4%);
   }
   .right {
     float: right;

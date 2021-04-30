@@ -2,20 +2,16 @@
   // Component imports:
   import Sidebar from "../components/layout/Sidebar.svelte";
   import Header from "../components/layout/Header.svelte";
-  import { sideNav } from "../logic/stores";
+  import LargeDialog from "../components/dialog/large.svelte";
+  import { sideNav, largeDialog } from "../logic/stores";
 
-  let open = false;
-
-  sideNav.subscribe((value) => {
-    open = value;
-  });
   const closeSideNav = () => {
-    if (open) {
+    if ($sideNav) {
       sideNav.update((val) => false);
     }
   };
   function toggleSideNav() {
-    open = !open;
+    sideNav.update((val) => !val);
   }
 </script>
 
@@ -24,12 +20,14 @@
     <Header />
   </div>
 
+  <LargeDialog bind:open={$largeDialog} />
+
   <div class="desktopOnly sidebar">
     <Sidebar desktop={true} open={true} />
   </div>
 
   <div id="pageContent">
-    <Sidebar on:click={toggleSideNav} {open} />
+    <Sidebar on:click={toggleSideNav} open={$sideNav} />
     <div class="page">
       <div on:click={() => closeSideNav()}>
         <slot />
@@ -57,12 +55,12 @@
     top: 0px;
     height: 100%;
     background: transparent;
-    z-index: 5;
+    z-index: 4;
   }
 
   #pageContent {
     width: 100%;
-    z-index: 4;
+    z-index: 3;
     grid-column-start: 2;
   }
 
@@ -70,8 +68,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 0;
-    margin-top: 5%;
+    margin: 0;
   }
 
   @media only screen and (max-width: 910px) {
@@ -84,7 +81,7 @@
     }
     #pageContent {
       width: 100%;
-      z-index: 6;
+      z-index: 4;
       grid-column-start: 1;
     }
 

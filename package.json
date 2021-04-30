@@ -37,6 +37,8 @@
     "@smui/drawer": "^4.0.0",
     "@smui/form-field": "^4.0.0",
     "@smui/layout-grid": "^4.0.0",
+    "@smui/menu": "^4.1.0",
+    "@smui/menu-surface": "^4.1.0",
     "@smui/paper": "^4.0.0",
     "@smui/radio": "^4.0.0",
     "@smui/select": "^4.0.0",

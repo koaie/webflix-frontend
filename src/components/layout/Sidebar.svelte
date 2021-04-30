@@ -1,5 +1,5 @@
 <script>
-  import { goto, isActive, params } from "@roxi/routify";
+  import { url, isActive, params } from "@roxi/routify";
   import Drawer, {
     AppContent,
     Content,
@@ -40,18 +40,15 @@
     <List>
       {#if $user.id}
         <Item
-          href="javascript:void(0)"
-          on:click={() => {
-            setActive("TV Shows");
-            $goto("./shows");
-          }}
+          href={$url("./shows")}
+          on:click={() => setActive("TV Shows")}
           activated={active === "TV Shows"}
         >
           <Graphic class="material-icons" aria-hidden="true">live_tv</Graphic>
           <Text>TV Shows</Text>
         </Item>
         <Item
-          href="javascript:void(0)"
+          href={$url("./movies")}
           on:click={() => setActive("Movies")}
           activated={active === "Movies"}
         >
@@ -63,22 +60,16 @@
         <Separator />
         <Subheader component={H6}>Labels</Subheader>
         <Item
-          href="javascript:void(0)"
-          on:click={() => {
-            setActive("Player");
-            $goto("./watch");
-          }}
+          href={$url("./watch")}
+          on:click={() => setActive("Player")}
           activated={active === "Player"}
         >
           <Graphic class="material-icons" aria-hidden="true">tv</Graphic>
           <Text>Player</Text>
         </Item>
         <Item
-          href="javascript:void(0)"
-          on:click={() => {
-            setActive("Youtube Player");
-            $goto("./watch");
-          }}
+          href={$url("./watch")}
+          on:click={() => setActive("Youtube Player")}
           activated={active === "Youtube Player"}
         >
           <Graphic class="material-icons" aria-hidden="true">tv</Graphic>
@@ -88,10 +79,9 @@
       <Separator />
       {#if $user.id}
         <Item
-          href="javascript:void(0)"
+          href={$url("./logout")}
           on:click={() => {
             setActive("Logout");
-            $goto("./logout");
           }}
           activated={active === "Logout"}
           align="bottom"
@@ -110,7 +100,7 @@
           <Text>Profile</Text>
         </Item>
         <Item
-          href="javascript:void(0)"
+          href={$url("./settings")}
           on:click={() => setActive("Settings")}
           activated={active === "Settings"}
         >
@@ -119,21 +109,17 @@
         </Item>
       {:else}
         <Item
-          href="javascript:void(0)"
-          on:click={() => {
-            setActive("Login");
-            $goto("./login");
-          }}
+          href={$url("./login")}
+          on:click={() => setActive("Login")}
           activated={active === "Login"}
         >
           <Graphic class="material-icons" aria-hidden="true">login</Graphic>
           <Text>Login</Text>
         </Item>
         <Item
-          href="javascript:void(0)"
+          href={$url("./register")}
           on:click={() => {
             setActive("Register");
-            $goto("./register");
           }}
           activated={active === "Register"}
         >

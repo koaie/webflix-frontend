@@ -12,23 +12,26 @@
     "https://upload.wikimedia.org/wikipedia/commons/d/d5/Big_Buck_Bunny_loves_Creative_Commons.png";
   export let id = "";
 
-  if ($user.id && $params.id) {
-    const body = JSON.stringify({
-      id: $user.id,
-      episodeId: $params.id,
-    });
+  const body = JSON.stringify({
+    id: $user.id,
+    episodeId: $params.id,
+  });
 
-    const call = async () => {
-      let result = await axios
-        .post(`${$API_URL}/content/play.php`, body, {
-          "Content-type": "application/json",
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      return result.data[0];
-    };
-    const res = call();
+  const call = async () => {
+    let result = await axios
+      .post(`${$API_URL}/content/play.php`, body, {
+        "Content-type": "application/json",
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    return result.data[0];
+  };
+  const watch = async () => {
+    await call();
+  };
+  if ($user.id && $params.id) {
+    watch();
   }
 </script>
 

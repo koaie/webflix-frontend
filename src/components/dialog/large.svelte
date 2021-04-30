@@ -1,5 +1,6 @@
 <script>
-  import Dialog, { Title, Content, Actions } from "@smui/dialog";
+  import Dialog, { Header, Title, Content, Actions } from "@smui/dialog";
+  import IconButton from "@smui/icon-button";
   import Button, { Label } from "@smui/button";
 
   export let open = false;
@@ -12,10 +13,11 @@
   bind:open
   aria-labelledby="fullscreen-title"
   aria-describedby="fullscreen-content"
-  surface$style="width: 850px; max-width: calc(100vw - 32px);"
 >
-  <Title id="large-scroll-title">{title}</Title>
-  <Content id="large-scroll-content">
+  <Header>
+    <Title id="fullscreen-title">{title}</Title>
+  </Header>
+  <Content id="fullscreen-content">
     {#each Array(10) as _item}
       {text}
     {/each}

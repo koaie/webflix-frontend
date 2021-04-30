@@ -24,7 +24,7 @@ body {
 }
 
 .bgPrimary {
-  background-color: #151515;
+  background-color: var(--mdc-theme--background);
 }
 
 .colorPrimary {
@@ -37,6 +37,14 @@ body {
 
 .hide {
   display: none;
+}
+
+.mdc-dialog .mdc-dialog__scrim {
+  background-color: transparent;
+}
+
+.mdc-top-app-bar {
+  background-color: var(--mdc-theme--background);
 }
 
 /* Desktops */

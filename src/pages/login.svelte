@@ -108,7 +108,6 @@
     border-radius: 1rem;
   }
   .right {
-    display: flex;
-    justify-content: right;
+    float: right;
   }
 </style>
