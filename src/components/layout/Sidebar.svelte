@@ -28,7 +28,7 @@
 
 <Drawer variant="modal" bind:open>
   <Header>
-    {#if $user}
+    {#if $user.name}
       <Title>{$user.name} {$user.surname}</Title>
       <Subtitle>{$user.email}</Subtitle>
     {:else}

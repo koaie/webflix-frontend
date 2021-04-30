@@ -63,6 +63,7 @@
   #pageContent {
     width: 100%;
     z-index: 4;
+    grid-column-start: 2;
   }
 
   #pageContent .page {
@@ -84,6 +85,7 @@
     #pageContent {
       width: 100%;
       z-index: 6;
+      grid-column-start: 1;
     }
 
     #header {
