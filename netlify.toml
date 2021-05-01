@@ -2,7 +2,7 @@
 [build]
   publish = "dist"
   functions = "api/netlify"
-  command = " printf '@charset \"utf-8"\n@import \"../../plyr/src/sass/plyr.scss\"' > node_modules/svelte-plyr/src/plyr.scss && npm run build && cd api/netlify && npm run build"
+  command = " printf '@import "../../plyr/src/sass/plyr.scss"' > node_modules/svelte-plyr/src/plyr.scss && npm run build && cd api/netlify && npm run build"
 
 # Dev doesn't work yet. Any takers?
 # [dev]  
