@@ -64,7 +64,7 @@
     text-decoration: none;
     cursor: pointer;
   }
-  @media only screen and (max-width: 850px) {
+  @media only screen and (max-width: 910px) {
     .headerContainer {
       display: inline-flex;
       justify-content: space-between;
@@ -72,7 +72,7 @@
       top: 0;
       width: 100%;
       padding: 0.5em;
-      background-color: var(--mdc-theme--background);
+      background-color: var(--mdc-secondary-background);
     }
 
     .logo {
