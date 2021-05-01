@@ -49,6 +49,10 @@ body {
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
+#media .mdc-card {
+  min-width: 300px;
+}
+
 .mdc-dialog .mdc-dialog__scrim {
   background-color: transparent;
 }
@@ -113,7 +117,12 @@ body {
     grid-gap: var(--mdc-layout-grid-gutter-desktop, 24px);
     grid-template-columns: repeat(8, minmax(0, 1fr));
   }
+
+  #media .mdc-card {
+    min-width: 250px;
+  }
 }
+
 
 .flexCentered {
   width: 100%;
