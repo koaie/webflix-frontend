@@ -73,7 +73,7 @@
     margin-top: 2rem;
   }
 
-  @media only screen and (max-width: 910px) {
+  @media only screen and (max-width: 1100px) {
     .layout {
       display: grid;
       grid-template-rows: 72px 1fr;

@@ -64,7 +64,7 @@
     text-decoration: none;
     cursor: pointer;
   }
-  @media only screen and (max-width: 910px) {
+  @media only screen and (max-width: 1100px) {
     .headerContainer {
       display: inline-flex;
       justify-content: space-between;

@@ -132,13 +132,6 @@
                     <Label>Details</Label>
                   </Button>
                 </ActionButtons>
-                <ActionIcons>
-                  <IconButton
-                    class="material-icons"
-                    on:click={() => {}}
-                    title="Share">share</IconButton
-                  >
-                </ActionIcons>
               </Actions>
             </Card>
           </Cell>
