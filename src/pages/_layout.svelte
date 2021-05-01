@@ -48,6 +48,7 @@
 
   #header {
     grid-column: span 2;
+    z-index: 1;
   }
 
   .sidebar {
@@ -69,6 +70,7 @@
     align-items: center;
     justify-content: center;
     margin: 0;
+    margin-top: 2rem;
   }
 
   @media only screen and (max-width: 910px) {
@@ -87,6 +89,7 @@
 
     #header {
       grid-column: 1;
+      z-index: 10;
     }
 
     #pageContent .page {
@@ -94,7 +97,7 @@
       align-items: center;
       justify-content: center;
       margin-left: 0rem;
-      margin-top: 5rem;
+      margin-top: 1rem;
     }
   }
 </style>

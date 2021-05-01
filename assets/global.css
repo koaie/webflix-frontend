@@ -99,6 +99,8 @@ vm-player {
   }
   .bgPrimary {
     background-color: var(--mdc-secondary-background);
+    position: sticky;
+    top: 0px;
   }
 }
 
