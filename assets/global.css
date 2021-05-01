@@ -102,6 +102,11 @@ vm-player {
     position: sticky;
     top: 0px;
   }
+
+  .mdc-drawer--modal.mdc-drawer--open {
+    display: flex;
+    z-index: 200;
+  }
 }
 
 .flexCentered {
