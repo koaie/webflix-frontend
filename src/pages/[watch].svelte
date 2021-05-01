@@ -1,15 +1,13 @@
 <script>
   import axios from "axios";
 
-  import Player from "../components/player/player.svelte";
-  import YoutubePlayer from "../components/player/youtubePlayer.svelte";
+  import Plyr from "../components/player/Plyr.svelte";
+  import YoutubePlyr from "../components/player/YoutubePlyr.svelte";
   import ActionCard from "../components/card/action.svelte";
   import { API_URL, user } from "../logic/stores";
   import { params } from "@roxi/routify";
 
-  export let url;
-  export let cover =
-    "https://upload.wikimedia.org/wikipedia/commons/d/d5/Big_Buck_Bunny_loves_Creative_Commons.png";
+  export let url ;
   export let id = "";
 
   const body = JSON.stringify({
@@ -42,9 +40,9 @@
 
 {#if $params.id}
   {#if id}
-    <YoutubePlayer {id} />
+    <YoutubePlyr {id} />
   {:else if url}
-    <Player {url} {cover} />
+    <Plyr {url} />
   {:else}
     <div class="flexCentered">
       <ActionCard />

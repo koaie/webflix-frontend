@@ -2,6 +2,7 @@
   --mdc-theme-primary: #7f91ec;
   --mdc-theme--background: #151515;
   --mdc-secondary-background: #121112;
+  --plyr-color-main: #7f91ec;
 }
 
 * {
@@ -41,12 +42,6 @@ body {
   display: none;
 }
 
-vm-player {
-  --vm-player-theme: var(--mdc-theme-primary);
-  width: 100%;
-  max-width: 980px;
-}
-
 #media .mdc-layout-grid__inner {
   display: grid;
   margin: 0;
@@ -77,6 +72,10 @@ vm-player {
     display: initial;
   }
 }
+
+.page .plyr--video {
+  border-radius: 0.5rem;
+  }
 
 /* Mobile screens */
 @media only screen and (max-width: 910px) {
