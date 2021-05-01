@@ -46,7 +46,7 @@ body {
   display: grid;
   margin: 0;
   grid-gap: var(--mdc-layout-grid-gutter-desktop, 24px);
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-columns: repeat(8, minmax(0, 1fr));
 }
 
 #media .mdc-card {
@@ -115,7 +115,7 @@ body {
     display: grid;
     margin: 0;
     grid-gap: var(--mdc-layout-grid-gutter-desktop, 24px);
-    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   #media .mdc-card {
