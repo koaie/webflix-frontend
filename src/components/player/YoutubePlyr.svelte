@@ -1,5 +1,5 @@
 <script>
-    import { Plyr } from "svelte-plyr";
+    import { Plyr } from "svelte-plyr-fixed";
     export let id;
   
     function logEvent(event) {
