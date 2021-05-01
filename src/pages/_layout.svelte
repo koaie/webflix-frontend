@@ -83,13 +83,13 @@
     }
     #pageContent {
       width: 100%;
-      z-index: 4;
+      z-index: 3;
       grid-column-start: 1;
     }
 
     #header {
       grid-column: 1;
-      z-index: 10;
+      z-index: 5;
     }
 
     #pageContent .page {
