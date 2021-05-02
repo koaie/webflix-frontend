@@ -117,6 +117,14 @@
           <Text>Login</Text>
         </Item>
         <Item
+          href={$url("./forgot-password")}
+          on:click={() => setActive("Forgot Password")}
+          activated={active === "Forgot Password"}
+        >
+          <Graphic class="material-icons" aria-hidden="true">vpn_key</Graphic>
+          <Text>Forgot Password</Text>
+        </Item>
+        <Item
           href={$url("./register")}
           on:click={() => {
             setActive("Register");

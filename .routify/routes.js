@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.15.1
- * File generated Sun May 02 2021 13:14:53 GMT+0100 (British Summer Time)
+ * File generated Sun May 02 2021 15:01:22 GMT+0100 (British Summer Time)
  */
 
 export const __version = "2.15.1"
-export const __timestamp = "2021-05-02T12:14:53.964Z"
+export const __timestamp = "2021-05-02T14:01:22.083Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -50,6 +50,31 @@ export const _tree = {
       "path": "/:watch",
       "id": "__watch",
       "component": () => import('../src/pages/[watch].svelte').then(m => m.default)
+    },
+    {
+      "isFile": true,
+      "isDir": false,
+      "file": "forgot-password.svelte",
+      "filepath": "/forgot-password.svelte",
+      "name": "forgot-password",
+      "ext": "svelte",
+      "badExt": false,
+      "absolutePath": "/home/user/webflix/src/pages/forgot-password.svelte",
+      "importPath": "../src/pages/forgot-password.svelte",
+      "isLayout": false,
+      "isReset": false,
+      "isIndex": false,
+      "isFallback": false,
+      "isPage": true,
+      "ownMeta": {},
+      "meta": {
+        "recursive": true,
+        "preload": "proximity",
+        "prerender": true
+      },
+      "path": "/forgot-password",
+      "id": "_forgotPassword",
+      "component": () => import('../src/pages/forgot-password.svelte').then(m => m.default)
     },
     {
       "isFile": true,
