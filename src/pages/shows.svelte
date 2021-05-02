@@ -81,8 +81,9 @@
           <Cell span={4}>
             <Card>
               <PrimaryAction
-                on:click={() => {
+                on:click={async () => {
                   content.update((val) => card);
+                  console.log($content);
                   largeDialog.update((val) => true);
                 }}
               >

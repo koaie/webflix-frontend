@@ -3,7 +3,7 @@
   import Sidebar from "../components/layout/Sidebar.svelte";
   import Header from "../components/layout/Header.svelte";
   import LargeDialog from "../components/dialog/large.svelte";
-  import { sideNav, largeDialog } from "../logic/stores";
+  import { sideNav, largeDialog, content } from "../logic/stores";
 
   const closeSideNav = () => {
     if ($sideNav) {
