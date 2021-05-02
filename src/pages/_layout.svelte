@@ -3,7 +3,8 @@
   import Sidebar from "../components/layout/Sidebar.svelte";
   import Header from "../components/layout/Header.svelte";
   import LargeDialog from "../components/dialog/large.svelte";
-  import { sideNav, largeDialog, content } from "../logic/stores";
+  import ListDialog from "../components/dialog/list.svelte";
+  import { sideNav, largeDialog, listDialog } from "../logic/stores";
 
   const closeSideNav = () => {
     if ($sideNav) {
@@ -20,6 +21,7 @@
     <Header />
   </div>
 
+  <ListDialog bind:open={$listDialog} />
   <LargeDialog bind:open={$largeDialog} />
 
   <div class="desktopOnly sidebar">
