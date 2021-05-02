@@ -72,7 +72,12 @@
       </Textfield>
     </Cell>
     <Cell span={6}>
-      <Textfield type="text" bind:value={lock} label="Security key">
+      <Textfield
+        type="text"
+        bind:invalid
+        bind:value={lock}
+        label="Security key"
+      >
         <Icon class="material-icons" slot="leadingIcon">lock</Icon>
         <HelperText validationMsg slot="helper">Invalid key or email</HelperText
         >
