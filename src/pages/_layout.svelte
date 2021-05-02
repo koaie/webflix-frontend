@@ -54,7 +54,7 @@
   }
 
   .sidebar {
-    position: absolute;
+    position: fixed;
     top: 0px;
     height: 100%;
     background: transparent;
