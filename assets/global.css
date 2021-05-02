@@ -42,6 +42,27 @@ body {
   display: none;
 }
 
+.plyr {
+  align-items: center;
+  direction: ltr;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--plyr-font-family, inherit);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--plyr-font-weight-regular, 400);
+  line-height: var(--plyr-line-height, 1.7);
+  max-width: 500px;
+  min-width: 200px;
+  position: relative;
+  text-shadow: none;
+  transition: box-shadow 0.3s ease;
+  z-index: 0;
+  border-radius: 1rem;
+  padding: 0;
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+}
+
 #media .mdc-card {
   min-width: 250px;
 }
@@ -110,6 +131,25 @@ body {
   .mdc-drawer--modal.mdc-drawer--open {
     display: flex;
     z-index: 200;
+  }
+
+  .plyr {
+    align-items: center;
+    direction: ltr;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--plyr-font-family, inherit);
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--plyr-font-weight-regular, 400);
+    line-height: var(--plyr-line-height, 1.7);
+    max-width: 650px;
+    min-width: 200px;
+    position: relative;
+    text-shadow: none;
+    transition: box-shadow 0.3s ease;
+    z-index: 0;
+    margin-left: 0.6rem;
+    margin-right: 0.6rem;
   }
 }
 
