@@ -44,50 +44,83 @@
     </Cell>
     <Cell span={6}>
       <Textfield
-        type="password"
+        type="text"
         bind:invalid
         updateInvalid
         bind:value={email}
-        label="Password"
-        input$autocomplete="password"
+        label="First name"
       >
-        <Icon class="material-icons" slot="leadingIcon">email</Icon>
+        <Icon class="material-icons" slot="leadingIcon">perm_identity</Icon>
         <HelperText validationMsg slot="helper">Helper Text</HelperText>
       </Textfield>
     </Cell>
     <Cell span={6}>
       <Textfield
-        type="password"
+        type="text"
         bind:invalid
         updateInvalid
         bind:value={email}
-        label="Password"
-        input$autocomplete="password"
+        label="Last name"
       >
-        <Icon class="material-icons" slot="leadingIcon">email</Icon>
+        <Icon class="material-icons" slot="leadingIcon">perm_identity</Icon>
         <HelperText validationMsg slot="helper">Helper Text</HelperText>
       </Textfield>
     </Cell>
     <Cell span={6}>
       <Textfield
-        type="password"
+        type="text"
         bind:invalid
         updateInvalid
         bind:value={email}
-        label="Password"
-        input$autocomplete="password"
+        label="Date of birth"
       >
-        <Icon class="material-icons" slot="leadingIcon">email</Icon>
+        <Icon class="material-icons" slot="leadingIcon">today</Icon>
         <HelperText validationMsg slot="helper">Helper Text</HelperText>
       </Textfield>
     </Cell>
-    <Cell span={12}>
+    <Cell span={6}>
+      <Textfield
+        type="text"
+        bind:invalid
+        updateInvalid
+        bind:value={email}
+        label="Phone number"
+      >
+        <Icon class="material-icons" slot="leadingIcon">phone</Icon>
+        <HelperText validationMsg slot="helper">Helper Text</HelperText>
+      </Textfield>
+    </Cell>
+    <Cell span={6}>
+      <Textfield
+        type="text"
+        bind:invalid
+        updateInvalid
+        bind:value={email}
+        label="Security key"
+      >
+        <Icon class="material-icons" slot="leadingIcon">lock</Icon>
+        <HelperText validationMsg slot="helper">Helper Text</HelperText>
+      </Textfield>
+    </Cell>
+    <Cell span={6}>
+      <Textfield
+        type="text"
+        bind:invalid
+        updateInvalid
+        bind:value={email}
+        label="Country"
+      >
+        <Icon class="material-icons" slot="leadingIcon">place</Icon>
+        <HelperText validationMsg slot="helper">Helper Text</HelperText>
+      </Textfield>
+    </Cell>
+    <Cell span={6}>
       <FormField>
         <Switch color="primary" bind:checked={agree} />
-        <span slot="label"> I agree to the Terms and Conditions </span>
+        <span slot="label">I agree to the T.O.S</span>
       </FormField>
     </Cell>
-    <Cell span={12}>
+    <Cell span={6}>
       <div class="right">
         <Button width={120} variant="outlined">
           <Label>Register</Label>
