@@ -9,7 +9,7 @@
   let player;
 </script>
 
-<div class="youtube-plyr">
+<div class="plyr">
   <Plyr on:timeupdate={logEvent} bind:player>
     <div class="plyr__video-embed">
       <!-- svelte-ignore a11y-missing-attribute -->
@@ -22,20 +22,3 @@
     </div>
   </Plyr>
 </div>
-
-<style>
-  @media only screen and (min-width: 1100px) {
-    .youtube-plyr {
-      width: 650px;
-      border-radius: 1rem;
-    }
-  }
-
-  /* Mobile screens */
-  @media only screen and (max-width: 1100px) {
-    .youtube-plyr {
-      width: 450px;
-      border-radius: 1rem;
-    }
-  }
-</style>
