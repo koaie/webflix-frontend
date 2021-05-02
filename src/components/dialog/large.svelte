@@ -8,6 +8,8 @@
   } from "@smui/paper";
   import { content } from "../../logic/stores";
   import Button, { Label } from "@smui/button";
+  import { Plyr } from "svelte-plyr-fixed";
+  let player;
 
   export let open = false;
   export let buttonText = "Done";
@@ -30,7 +32,19 @@
   <Content id="fullscreen-content">
     <div class="paper">
       <Paper>
-        <PaperTitle>Description</PaperTitle>
+        <Content>
+          <Plyr bind:player>
+            <div class="plyr__video-embed">
+              <!-- svelte-ignore a11y-missing-attribute -->
+              <iframe
+                src="https://www.youtube.com/embed/{$content.trailer}?iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1"
+                allowfullscreen
+                allowtransparency
+                allow="autoplay"
+              />
+            </div>
+          </Plyr>
+        </Content>
         <Subtitle>{$content.desc}</Subtitle>
         <Content
           >Genres

@@ -94,6 +94,10 @@ body {
   border-radius: 0.5rem;
 }
 
+.plyr--video {
+  border-radius: 0.5rem;
+}
+
 .paper .smui-paper.smui-paper--elevation-z1 {
   box-shadow: none;
 }
