@@ -23,3 +23,11 @@
     <video crossorigin playsinline src={url} />
   </Plyr>
 </div>
+
+<style>
+  .plyr {
+    max-width: 650px;
+    border-radius: 1rem;
+    padding: 0;
+  }
+</style>
