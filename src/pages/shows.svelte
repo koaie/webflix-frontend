@@ -105,7 +105,7 @@
                       on:click={async () => {
                         content.update((val) => card);
                         await updateEpisodes();
-                        $goto(`./watch?id=${episodes[0].episodeId}`);
+                        $goto(`./watch?id=${$episodes[0].episodeId}`);
                       }}
                     >
                       <Label>trailer</Label>
