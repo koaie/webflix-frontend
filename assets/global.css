@@ -42,7 +42,7 @@ body {
   display: none;
 }
 
-.plyr {
+.page .plyr {
   align-items: center;
   direction: ltr;
   display: flex;
@@ -51,13 +51,12 @@ body {
   font-variant-numeric: tabular-nums;
   font-weight: var(--plyr-font-weight-regular, 400);
   line-height: var(--plyr-line-height, 1.7);
-  max-width: 500px;
+  max-width: 650px;
   min-width: 200px;
   position: relative;
   text-shadow: none;
   transition: box-shadow 0.3s ease;
   z-index: 0;
-  border-radius: 1rem;
   padding: 0;
   margin-left: 0.3rem;
   margin-right: 0.3rem;
@@ -133,7 +132,7 @@ body {
     z-index: 200;
   }
 
-  .plyr {
+  .page .plyr {
     align-items: center;
     direction: ltr;
     display: flex;
@@ -142,7 +141,7 @@ body {
     font-variant-numeric: tabular-nums;
     font-weight: var(--plyr-font-weight-regular, 400);
     line-height: var(--plyr-line-height, 1.7);
-    max-width: 650px;
+    max-width: 100%;
     min-width: 200px;
     position: relative;
     text-shadow: none;
