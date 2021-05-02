@@ -78,6 +78,10 @@ body {
   box-shadow: none;
 }
 
+.mdc-dialog__content .mdc-deprecated-list:first-child:last-child {
+  padding: 6px 0 0;
+  margin-bottom: 1rem;
+}
 /* Mobile screens */
 @media only screen and (max-width: 1100px) {
   .mobileOnly {
