@@ -78,7 +78,8 @@
         >
       </Textfield>
     </Cell>
-    <Cell span={6}>
+    <Cell span={6} />
+    <Cell span={12}>
       <div class="right">
         <Button
           on:click={() => {
