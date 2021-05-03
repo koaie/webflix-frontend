@@ -82,6 +82,7 @@
     ]
   },
   "dependencies": {
+    "@paypal/paypal-js": "^3.1.9",
     "@smui/button": "^4.0.0",
     "@smui/icon-button": "^4.0.0",
     "@smui/list": "^4.0.0",

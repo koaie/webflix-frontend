@@ -55,6 +55,19 @@
           <Graphic class="material-icons" aria-hidden="true">movie</Graphic>
           <Text>Movies</Text>
         </Item>
+        {#if !$user.paid}
+          <Separator />
+          <Item
+            href={$url("./premium")}
+            on:click={() => setActive("Premium")}
+            activated={active === "Premium"}
+          >
+            <Graphic class="material-icons" aria-hidden="true"
+              >local_activity</Graphic
+            >
+            <Text>Premium</Text>
+          </Item>
+        {/if}
       {/if}
       {#if $user.admin}
         <Separator />

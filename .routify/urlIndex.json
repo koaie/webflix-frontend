@@ -1,9 +1,11 @@
 [
+  "/checkout",
   "/forgot-password",
   "/index",
   "/login",
   "/logout",
   "/movies",
+  "/premium",
   "/register",
   "/shows"
 ]

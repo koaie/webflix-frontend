@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.15.1
- * File generated Mon May 03 2021 17:14:48 GMT+0100 (British Summer Time)
+ * File generated Mon May 03 2021 20:20:00 GMT+0100 (British Summer Time)
  */
 
 export const __version = "2.15.1"
-export const __timestamp = "2021-05-03T16:14:48.417Z"
+export const __timestamp = "2021-05-03T19:20:00.780Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -50,6 +50,31 @@ export const _tree = {
       "path": "/:watch",
       "id": "__watch",
       "component": () => import('../src/pages/[watch].svelte').then(m => m.default)
+    },
+    {
+      "isFile": true,
+      "isDir": false,
+      "file": "checkout.svelte",
+      "filepath": "/checkout.svelte",
+      "name": "checkout",
+      "ext": "svelte",
+      "badExt": false,
+      "absolutePath": "/home/user/webflix/src/pages/checkout.svelte",
+      "importPath": "../src/pages/checkout.svelte",
+      "isLayout": false,
+      "isReset": false,
+      "isIndex": false,
+      "isFallback": false,
+      "isPage": true,
+      "ownMeta": {},
+      "meta": {
+        "recursive": true,
+        "preload": "proximity",
+        "prerender": true
+      },
+      "path": "/checkout",
+      "id": "_checkout",
+      "component": () => import('../src/pages/checkout.svelte').then(m => m.default)
     },
     {
       "isFile": true,
@@ -175,6 +200,31 @@ export const _tree = {
       "path": "/movies",
       "id": "_movies",
       "component": () => import('../src/pages/movies.svelte').then(m => m.default)
+    },
+    {
+      "isFile": true,
+      "isDir": false,
+      "file": "premium.svelte",
+      "filepath": "/premium.svelte",
+      "name": "premium",
+      "ext": "svelte",
+      "badExt": false,
+      "absolutePath": "/home/user/webflix/src/pages/premium.svelte",
+      "importPath": "../src/pages/premium.svelte",
+      "isLayout": false,
+      "isReset": false,
+      "isIndex": false,
+      "isFallback": false,
+      "isPage": true,
+      "ownMeta": {},
+      "meta": {
+        "recursive": true,
+        "preload": "proximity",
+        "prerender": true
+      },
+      "path": "/premium",
+      "id": "_premium",
+      "component": () => import('../src/pages/premium.svelte').then(m => m.default)
     },
     {
       "isFile": true,
