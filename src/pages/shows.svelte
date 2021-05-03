@@ -71,7 +71,6 @@
               <PrimaryAction
                 on:click={async () => {
                   content.update((val) => card);
-                  console.log($content);
                   largeDialog.update((val) => true);
                 }}
               >
