@@ -23,7 +23,6 @@
       open = false;
     }
   }
-  console.log($user);
 </script>
 
 <Drawer variant="modal" bind:open>

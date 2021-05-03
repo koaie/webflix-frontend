@@ -1,4 +1,6 @@
 <script>
+  import { user } from "../logic/stores";
+
   import { goto } from "@roxi/routify";
   import axios from "axios";
   import Card, {
@@ -14,6 +16,10 @@
   import ActionCard from "../components/card/action.svelte";
   import Paper, { Title, Subtitle, Content as PaperContent } from "@smui/paper";
   import Fab, { Icon } from "@smui/fab";
+
+  if ($user.paid) {
+    $goto("./shows");
+  }
 </script>
 
 <div id="index">

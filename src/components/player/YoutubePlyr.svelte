@@ -1,16 +1,11 @@
 <script>
   import { Plyr } from "svelte-plyr-fixed";
   export let id;
-
-  function logEvent(event) {
-    console.log(event);
-  }
-
   let player;
 </script>
 
 <div class="youtube-plyr">
-  <Plyr on:timeupdate={logEvent} bind:player>
+  <Plyr bind:player>
     <div class="plyr__video-embed">
       <!-- svelte-ignore a11y-missing-attribute -->
       <iframe

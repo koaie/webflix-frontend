@@ -1,5 +1,5 @@
 <script>
-  import { API_URL, user } from "../logic/stores";
+  import { API_URL, user, rememberMe } from "../logic/stores";
   import axios from "axios";
   import { goto } from "@roxi/routify";
 
@@ -14,10 +14,13 @@
 
   let email = null;
   let password = null;
-  let rememberMe = false;
   let invalid = false;
   let body = null;
+  let checkbox = false;
 
+  $: {
+    rememberMe.update((val) => checkbox);
+  }
   const call = async () => {
     let result = await axios
       .post(`${$API_URL}/auth/login.php`, body, {
@@ -76,7 +79,7 @@
     <Cell span={6}>
       <Wrapper>
         <FormField>
-          <Checkbox bind:rememberMe />
+          <Checkbox bind:checked={checkbox} />
           <span type="Label"> Remember me </span>
         </FormField>
         <Tooltip>Remember me</Tooltip>

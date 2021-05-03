@@ -1,9 +1,8 @@
 <script>
-  import { user } from "../logic/stores";
+  import { user, logout } from "../logic/stores";
   import { redirect } from "@roxi/routify";
 
-  console.log($user);
+  logout.update((val) => true);
   user.set(0);
-  console.log($user);
   $redirect("/");
 </script>
