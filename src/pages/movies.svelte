@@ -17,7 +17,6 @@
     largeDialog,
     API_URL,
     content,
-    listDialog,
     episodes,
   } from "../logic/stores";
 
@@ -64,7 +63,7 @@
     <LayoutGrid>
       {#if $data}
         {#each $data as card}
-          {#if card.type == "TV show"}
+          {#if card.type == "Movie"}
             <Cell span={4}>
               <Card>
                 <PrimaryAction
@@ -93,7 +92,7 @@
                         on:click={async () => {
                           content.update((val) => card);
                           await updateEpisodes();
-                          listDialog.update((val) => true);
+                          $goto(`./watch?id=${$episodes[0].episodeId}`);
                         }}
                       >
                         <Label>Play</Label>

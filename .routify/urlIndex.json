@@ -3,6 +3,7 @@
   "/index",
   "/login",
   "/logout",
+  "/movies",
   "/register",
   "/shows"
 ]

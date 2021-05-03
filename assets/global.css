@@ -99,7 +99,7 @@ body {
 }
 
 .smui-paper__content .plyr--fullscreen-enabled [data-plyr="fullscreen"] {
-  display: none;
+  display: block;
 }
 
 .paper .smui-paper.smui-paper--elevation-z1 {
@@ -157,6 +157,10 @@ body {
     z-index: 0;
     margin-left: 0.6rem;
     margin-right: 0.6rem;
+  }
+
+  .smui-paper__content .plyr--fullscreen-enabled [data-plyr="fullscreen"] {
+    display: none;
   }
 }
 

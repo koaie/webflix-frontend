@@ -10,14 +10,6 @@
 </script>
 
 <div class="plyr">
-  <!-- <Plyr on:timeupdate={logEvent} bind:player={player}>
-      <div class="plyr__video-embed">
-        <source
-          src="{url}"
-          type="video/mp4" />
-      </div>
-    </Plyr> -->
-
   <Plyr on:timeupdate={logEvent} bind:player>
     <!-- svelte-ignore a11y-media-has-caption -->
     <video crossorigin playsinline src={url} />
