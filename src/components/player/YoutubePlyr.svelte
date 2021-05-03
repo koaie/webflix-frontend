@@ -21,7 +21,7 @@
 <style>
   @media only screen and (min-width: 910px) {
     .youtube-plyr {
-      width: 650px;
+      width: 800px;
       border-radius: 1rem;
       padding: 0;
       margin-left: 0.3rem;
