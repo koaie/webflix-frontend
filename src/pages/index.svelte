@@ -19,6 +19,8 @@
 
   if ($user.paid) {
     $goto("./shows");
+  } else if ($user.id) {
+    $goto("./premium");
   }
 </script>
 
