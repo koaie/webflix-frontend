@@ -51,7 +51,7 @@ body {
   font-variant-numeric: tabular-nums;
   font-weight: var(--plyr-font-weight-regular, 400);
   line-height: var(--plyr-line-height, 1.7);
-  max-width: 650px;
+  max-width: 800px;
   min-width: 200px;
   position: relative;
   text-shadow: none;
