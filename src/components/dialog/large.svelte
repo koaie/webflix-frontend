@@ -1,7 +1,11 @@
 <script>
   import Dialog, { Header, Title, Content, Actions } from "@smui/dialog";
   import Chip, { Set, Text } from "@smui/chips";
-  import Paper, { Subtitle, Content as PaperContent } from "@smui/paper";
+  import Paper, {
+    Title as PaperTitle,
+    Subtitle,
+    Content as PaperContent,
+  } from "@smui/paper";
   import { content } from "../../logic/stores";
   import Button, { Label } from "@smui/button";
   import { Plyr } from "svelte-plyr-fixed";
@@ -29,8 +33,8 @@
     <Content id="fullscreen-content">
       <div class="paper">
         <Paper>
-          {#if $content.trailer}
-            <Content>
+          <PaperContent>
+            {#if $content.trailer}
               <Plyr bind:player>
                 <div class="plyr__video-embed">
                   <!-- svelte-ignore a11y-missing-attribute -->
@@ -42,11 +46,14 @@
                   />
                 </div>
               </Plyr>
-            </Content>
-          {/if}
-          <Subtitle>{$content.desc}</Subtitle>
-          <Content
-            >Genres
+            {/if}
+          </PaperContent>
+
+          <Content>
+            <Subtitle>{$content.desc}</Subtitle></Content
+          >
+          <Content>
+            Genres
             <Set chips={genres} let:chip nonInteractive>
               <Chip {chip}>
                 <Text>{chip}</Text>

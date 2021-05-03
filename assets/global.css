@@ -98,6 +98,10 @@ body {
   border-radius: 0.5rem;
 }
 
+.smui-paper__content .plyr--fullscreen-enabled [data-plyr="fullscreen"] {
+  display: none;
+}
+
 .paper .smui-paper.smui-paper--elevation-z1 {
   box-shadow: none;
 }
