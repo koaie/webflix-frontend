@@ -26,10 +26,6 @@ body {
   cursor: pointer;
 }
 
-.bgPrimary {
-  background-color: var(--mdc-theme--background);
-}
-
 .colorPrimary {
   color: var(--mdc-theme-primary);
 }

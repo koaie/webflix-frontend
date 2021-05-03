@@ -44,7 +44,7 @@
   .headerContainer {
     display: flex;
     justify-content: space-between;
-    padding: 0.5em;
+    padding: 0.7em;
     background-color: var(--mdc-theme--background);
   }
 
@@ -71,7 +71,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      padding: 0.5em;
+      padding: 0.7em;
       background-color: var(--mdc-secondary-background);
     }
 
