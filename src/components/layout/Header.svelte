@@ -56,6 +56,7 @@
     color: #7f91ec;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    margin-right: 0rem;
   }
   .logo label {
     color: #7f91ec;
@@ -83,6 +84,7 @@
       color: #7f91ec;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      margin-right: 1rem;
     }
   }
 </style>
