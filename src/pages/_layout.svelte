@@ -68,11 +68,11 @@
   }
 
   #pageContent .page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    margin-top: 2rem;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    margin-top: 2rem !important;
   }
 
   @media only screen and (max-width: 1100px) {
@@ -95,11 +95,11 @@
     }
 
     #pageContent .page {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 0rem;
-      margin-top: 1rem;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin-left: 0rem !important;
+      margin-top: 1rem !important;
     }
   }
 </style>
