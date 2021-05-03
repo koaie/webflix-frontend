@@ -35,6 +35,7 @@
     "@smui/circular-progress": "^4.1.0",
     "@smui/dialog": "^4.1.0",
     "@smui/drawer": "^4.0.0",
+    "@smui/fab": "^4.1.0",
     "@smui/form-field": "^4.0.0",
     "@smui/image-list": "^4.1.0",
     "@smui/layout-grid": "^4.0.0",
