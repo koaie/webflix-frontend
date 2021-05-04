@@ -31,6 +31,7 @@ rememberMe.subscribe((val) => {
 
 logout.subscribe((val) => {
   if (val) {
+    console.log(val)
     localStorage.user = 0;
   }
 });
