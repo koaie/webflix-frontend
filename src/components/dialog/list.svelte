@@ -6,7 +6,6 @@
   import { content, episodes } from "../../logic/stores";
   export let open = false;
 </script>
-<div id="list">
 {#if $episodes}
   <Dialog
     bind:open
@@ -16,6 +15,7 @@
   >
     <Title id="list-title">{$content.title}</Title>
     <Content id="list-content">
+      <div id="list">
       <List>
         {#each $episodes as { episode, season, episodeId, duration }}
           <Item
@@ -31,7 +31,7 @@
           </Item>
         {/each}
       </List>
+    </div>
     </Content>
   </Dialog>
 {/if}
-</div>
