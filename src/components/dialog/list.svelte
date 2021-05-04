@@ -6,7 +6,7 @@
   import { content, episodes } from "../../logic/stores";
   export let open = false;
 </script>
-
+<div id="list">
 {#if $episodes}
   <Dialog
     bind:open
@@ -34,3 +34,4 @@
     </Content>
   </Dialog>
 {/if}
+</div>

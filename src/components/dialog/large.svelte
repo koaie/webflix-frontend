@@ -20,7 +20,7 @@
     }
   }
 </script>
-
+<div id="large">
 {#if open}
   <Dialog
     bind:open
@@ -83,3 +83,4 @@
     </Actions>
   </Dialog>
 {/if}
+</div>
