@@ -31,7 +31,7 @@ rememberMe.subscribe((val) => {
 
 logout.subscribe((val) => {
   if (val) {
-    localStorage.removeItem(user);
+    localStorage.user = 0;
   }
 });
 
