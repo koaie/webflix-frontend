@@ -75,6 +75,11 @@ body {
   text-shadow: #000 1px 0 10px;
 }
 
+:not(.mdc-deprecated-list-item--disabled).mdc-deprecated-list-item.mdc-ripple-upgraded {
+  --mdc-ripple-fg-opacity: var(--mdc-ripple-press-opacity, 0.24);
+  padding-bottom: 1rem;
+}
+
 #index .smui-card__content {
   max-width: 200px;
   color: #bbb;
