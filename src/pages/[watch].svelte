@@ -5,7 +5,7 @@
   import YoutubePlyr from "../components/player/YoutubePlyr.svelte";
   import ActionCard from "../components/card/action.svelte";
   import { API_URL, user } from "../logic/stores";
-  import { params } from "@roxi/routify";
+  import { params, goto } from "@roxi/routify";
 
   export let url ;
   export let id = "";
@@ -40,16 +40,44 @@
 
 {#if $params.id}
   {#if id}
+  <div class="youtube-plyr">
     <YoutubePlyr {id} />
+  </div>
   {:else if url}
+  <div class="plyr">
     <Plyr {url} />
+  </div>
   {:else}
     <div class="flexCentered">
-      <ActionCard />
+      <ActionCard on:click={$goto("./shows")}/>
     </div>
   {/if}
 {:else}
   <div class="flexCentered">
-    <ActionCard />
+    <ActionCard on:click={$goto("./shows")}
+  />
   </div>
 {/if}
+
+
+<style>
+  @media only screen and (min-width: 910px) {
+    .youtube-plyr {
+      width: 800px;
+      border-radius: 1rem;
+      padding: 0;
+      margin-left: 0.3rem;
+      margin-right: 0.3rem;
+    }
+  }
+  /* Mobile screens */
+  @media only screen and (max-width: 910px) {
+    .youtube-plyr {
+      width: 450px;
+      border-radius: 1rem;
+      padding: 0;
+      margin-left: 0.3rem;
+      margin-right: 0.3rem;
+    }
+  }
+</style>

@@ -1,6 +1,7 @@
 <script>
   import Dialog, { Header, Title, Content, Actions } from "@smui/dialog";
   import Chip, { Set, Text } from "@smui/chips";
+  import YoutubePlyr from "../player/YoutubePlyr.svelte"
   import Paper, {
     Title as PaperTitle,
     Subtitle,
@@ -12,6 +13,7 @@
   let player;
   export let open = false;
   export let buttonText = "Done";
+  
   let genres;
   let id;
   $: {
@@ -34,17 +36,7 @@
         <Paper>
           <PaperContent>
             {#if $content.trailer}
-              <Plyr bind:player>
-                <div class="plyr__video-embed">
-                  <!-- svelte-ignore a11y-missing-attribute -->
-                  <iframe
-                    src="https://www.youtube.com/embed/{$content.trailer}?iv_load_policy=3&modestbranding=1&playsinline=1&showinfo=0&rel=0&enablejsapi=1"
-                    allowfullscreen
-                    allowtransparency
-                    allow="autoplay"
-                  />
-                </div>
-              </Plyr>
+            <YoutubePlyr id={$content.trailer} />
             {/if}
           </PaperContent>
 
@@ -73,7 +65,6 @@
         action="accept"
         on:click={() => {
           open = false;
-          content.update((val) => 0);
           player = null;
         }}
       >
