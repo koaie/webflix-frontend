@@ -30,7 +30,7 @@
     </Cell>
     <Cell span={12}>
       <div class="flexCentered">
-        <Button on:click={() => $goto("./pay/checkout")} variant="raised">
+        <Button on:click={() => $goto("./checkout")} variant="raised">
           <Label>upgrade now</Label>
         </Button>
       </div>
