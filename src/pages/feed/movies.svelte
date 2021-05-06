@@ -10,7 +10,7 @@
   } from "@smui/card";
   import Button, { Label } from "@smui/button";
   import LayoutGrid, { Cell } from "@smui/layout-grid";
-  import ActionCard from "../components/card/action.svelte";
+  import ActionCard from "../../components/card/action.svelte";
   import {
     user,
     data,
@@ -18,7 +18,7 @@
     API_URL,
     content,
     episodes,
-  } from "../logic/stores";
+  } from "../../logic/stores";
 
   const body = JSON.stringify({
     id: $user.id,

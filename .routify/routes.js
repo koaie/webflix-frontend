@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.15.1
- * File generated Fri May 07 2021 00:34:04 GMT+0100 (British Summer Time)
+ * File generated Fri May 07 2021 00:39:11 GMT+0100 (British Summer Time)
  */
 
 export const __version = "2.15.1"
-export const __timestamp = "2021-05-06T23:34:04.749Z"
+export const __timestamp = "2021-05-06T23:39:11.644Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -224,6 +224,80 @@ export const _tree = {
       "path": "/auth"
     },
     {
+      "isFile": false,
+      "isDir": true,
+      "file": "feed",
+      "filepath": "/feed",
+      "name": "feed",
+      "ext": "",
+      "badExt": false,
+      "absolutePath": "/home/user/webflix/src/pages/feed",
+      "children": [
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "movies.svelte",
+          "filepath": "/feed/movies.svelte",
+          "name": "movies",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "/home/user/webflix/src/pages/feed/movies.svelte",
+          "importPath": "../src/pages/feed/movies.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": "proximity",
+            "prerender": true
+          },
+          "path": "/feed/movies",
+          "id": "_feed_movies",
+          "component": () => import('../src/pages/feed/movies.svelte').then(m => m.default)
+        },
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "shows.svelte",
+          "filepath": "/feed/shows.svelte",
+          "name": "shows",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "/home/user/webflix/src/pages/feed/shows.svelte",
+          "importPath": "../src/pages/feed/shows.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": "proximity",
+            "prerender": true
+          },
+          "path": "/feed/shows",
+          "id": "_feed_shows",
+          "component": () => import('../src/pages/feed/shows.svelte').then(m => m.default)
+        }
+      ],
+      "isLayout": false,
+      "isReset": false,
+      "isIndex": false,
+      "isFallback": false,
+      "isPage": false,
+      "ownMeta": {},
+      "meta": {
+        "recursive": true,
+        "preload": "proximity",
+        "prerender": true
+      },
+      "path": "/feed"
+    },
+    {
       "isFile": true,
       "isDir": false,
       "file": "index.svelte",
@@ -247,31 +321,6 @@ export const _tree = {
       "path": "/index",
       "id": "_index",
       "component": () => import('../src/pages/index.svelte').then(m => m.default)
-    },
-    {
-      "isFile": true,
-      "isDir": false,
-      "file": "movies.svelte",
-      "filepath": "/movies.svelte",
-      "name": "movies",
-      "ext": "svelte",
-      "badExt": false,
-      "absolutePath": "/home/user/webflix/src/pages/movies.svelte",
-      "importPath": "../src/pages/movies.svelte",
-      "isLayout": false,
-      "isReset": false,
-      "isIndex": false,
-      "isFallback": false,
-      "isPage": true,
-      "ownMeta": {},
-      "meta": {
-        "recursive": true,
-        "preload": "proximity",
-        "prerender": true
-      },
-      "path": "/movies",
-      "id": "_movies",
-      "component": () => import('../src/pages/movies.svelte').then(m => m.default)
     },
     {
       "isFile": false,
@@ -346,31 +395,6 @@ export const _tree = {
         "prerender": true
       },
       "path": "/premium"
-    },
-    {
-      "isFile": true,
-      "isDir": false,
-      "file": "shows.svelte",
-      "filepath": "/shows.svelte",
-      "name": "shows",
-      "ext": "svelte",
-      "badExt": false,
-      "absolutePath": "/home/user/webflix/src/pages/shows.svelte",
-      "importPath": "../src/pages/shows.svelte",
-      "isLayout": false,
-      "isReset": false,
-      "isIndex": false,
-      "isFallback": false,
-      "isPage": true,
-      "ownMeta": {},
-      "meta": {
-        "recursive": true,
-        "preload": "proximity",
-        "prerender": true
-      },
-      "path": "/shows",
-      "id": "_shows",
-      "component": () => import('../src/pages/shows.svelte').then(m => m.default)
     }
   ],
   "isLayout": true,

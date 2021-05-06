@@ -3,9 +3,9 @@
   "/auth/login",
   "/auth/logout",
   "/auth/register",
+  "/feed/movies",
+  "/feed/shows",
   "/index",
-  "/movies",
   "/premium/checkout",
-  "/premium/index",
-  "/shows"
+  "/premium/index"
 ]
