@@ -36,7 +36,7 @@
               val.paid = true;
               return val;
             });
-            $goto("./shows");
+            $goto("/feed/shows");
           }
           if (res.error) {
             errorText = res.error;

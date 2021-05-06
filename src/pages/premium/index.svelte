@@ -10,7 +10,7 @@
   import Fab, { Icon } from "@smui/fab";
 
   if ($user.paid) {
-    $goto("./shows");
+    $goto("/feed/shows");
   }
 </script>
 

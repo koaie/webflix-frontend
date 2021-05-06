@@ -18,9 +18,9 @@
   import Fab, { Icon } from "@smui/fab";
 
   if ($user.paid) {
-    $goto("./shows");
+    $goto("/feed/shows");
   } else if ($user.id) {
-    $goto("./premium");
+    $goto("/premium/index");
   }
 </script>
 
@@ -39,7 +39,7 @@
     </Cell>
     <Cell span={12}>
       <div class="flexCentered">
-        <Button on:click={() => $goto("./login")} variant="raised">
+        <Button on:click={() => $goto("/auth/login")} variant="raised">
           <Label>Join Webflix</Label>
         </Button>
       </div>

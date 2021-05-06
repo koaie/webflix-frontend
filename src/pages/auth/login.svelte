@@ -41,7 +41,7 @@
       user.update((val) => res);
     });
     if ($user.id) {
-      $goto("/shows");
+      $goto("/feed/shows");
     }
     if ($user.error) {
       invalid = true;
