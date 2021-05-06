@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.15.1
- * File generated Wed May 05 2021 21:44:27 GMT+0100 (British Summer Time)
+ * File generated Thu May 06 2021 18:52:26 GMT+0100 (British Summer Time)
  */
 
 export const __version = "2.15.1"
-export const __timestamp = "2021-05-05T20:44:27.996Z"
+export const __timestamp = "2021-05-06T17:52:26.545Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -26,6 +26,31 @@ export const _tree = {
   },
   "absolutePath": "/home/user/webflix/src/pages/_layout.svelte",
   "children": [
+    {
+      "isFile": true,
+      "isDir": false,
+      "file": "_fallback.svelte",
+      "filepath": "/_fallback.svelte",
+      "name": "_fallback",
+      "ext": "svelte",
+      "badExt": false,
+      "absolutePath": "/home/user/webflix/src/pages/_fallback.svelte",
+      "importPath": "../src/pages/_fallback.svelte",
+      "isLayout": false,
+      "isReset": false,
+      "isIndex": false,
+      "isFallback": true,
+      "isPage": false,
+      "ownMeta": {},
+      "meta": {
+        "recursive": true,
+        "preload": "proximity",
+        "prerender": true
+      },
+      "path": "/_fallback",
+      "id": "__fallback",
+      "component": () => import('../src/pages/_fallback.svelte').then(m => m.default)
+    },
     {
       "isFile": true,
       "isDir": false,

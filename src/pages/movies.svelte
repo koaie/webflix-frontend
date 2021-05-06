@@ -126,13 +126,14 @@
       {/if}
     </LayoutGrid>
   {:else}
-  <div class="container">
-    <ActionCard on:click={$goto("./login")}
-      text="Whoops, you are not logged in!"
-      icon="login"
-      action="Login"
-    />
-  </div>
+    <div class="container">
+      <ActionCard
+        on:click={$goto("./login")}
+        text="Whoops, you are not logged in!"
+        icon="login"
+        action="Login"
+      />
+    </div>
   {/if}
 </div>
 

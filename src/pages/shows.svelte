@@ -128,7 +128,8 @@
     </LayoutGrid>
   {:else}
     <div class="container">
-      <ActionCard on:click={$goto("./login")}
+      <ActionCard
+        on:click={$goto("./login")}
         text="Whoops, you are not logged in!"
         icon="login"
         action="Login"

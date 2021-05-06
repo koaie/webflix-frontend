@@ -7,7 +7,7 @@
   import { API_URL, user } from "../logic/stores";
   import { params, goto } from "@roxi/routify";
 
-  export let url ;
+  export let url;
   export let id = "";
 
   const body = JSON.stringify({
@@ -40,25 +40,23 @@
 
 {#if $params.id}
   {#if id}
-  <div class="youtube-plyr">
-    <YoutubePlyr {id} />
-  </div>
+    <div class="youtube-plyr">
+      <YoutubePlyr {id} />
+    </div>
   {:else if url}
-  <div class="plyr">
-    <Plyr {url} />
-  </div>
+    <div class="plyr">
+      <Plyr {url} />
+    </div>
   {:else}
     <div class="flexCentered">
-      <ActionCard on:click={$goto("./shows")}/>
+      <ActionCard on:click={$goto(history.back())} />
     </div>
   {/if}
 {:else}
   <div class="flexCentered">
-    <ActionCard on:click={$goto("./shows")}
-  />
+    <ActionCard on:click={$goto(history.back())} />
   </div>
 {/if}
-
 
 <style>
   @media only screen and (min-width: 910px) {
