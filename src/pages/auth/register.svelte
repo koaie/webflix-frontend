@@ -1,5 +1,5 @@
 <script>
-  import { API_URL, user } from "../logic/stores";
+  import { API_URL, user } from "../../logic/stores";
   import axios from "axios";
 
   import Snackbar, { Actions, Label as LabelSnack } from "@smui/snackbar";

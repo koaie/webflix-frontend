@@ -1,11 +1,11 @@
 [
-  "/checkout",
-  "/forgot-password",
+  "/auth/forgot-password",
+  "/auth/login",
+  "/auth/logout",
+  "/auth/register",
   "/index",
-  "/login",
-  "/logout",
   "/movies",
-  "/premium",
-  "/register",
+  "/premium/checkout",
+  "/premium/index",
   "/shows"
 ]

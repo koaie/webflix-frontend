@@ -103,7 +103,7 @@
                         on:click={async () => {
                           content.update((val) => card);
                           await updateEpisodes();
-                          $goto(`./watch?id=${$episodes[0].episodeId}`);
+                          $goto(`/watch?id=${$episodes[0].episodeId}`);
                         }}
                       >
                         <Label>trailer</Label>
@@ -129,7 +129,7 @@
   {:else}
     <div class="container">
       <ActionCard
-        on:click={$goto("./login")}
+        on:click={$goto("/auth/login")}
         text="Whoops, you are not logged in!"
         icon="login"
         action="Login"

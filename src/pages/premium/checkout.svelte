@@ -1,9 +1,9 @@
 <script>
   import { loadScript } from "@paypal/paypal-js";
   import Snackbar, { Actions, Label as LabelSnack } from "@smui/snackbar";
-  import ActionCard from "../components/card/action.svelte";
+  import ActionCard from "../../components/card/action.svelte";
   import IconButton from "@smui/icon-button";
-  import { API_URL, user } from "../logic/stores";
+  import { API_URL, user } from "../../logic/stores";
   import axios from "axios";
   import { goto } from "@roxi/routify";
 

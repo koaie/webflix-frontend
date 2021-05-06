@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.15.1
- * File generated Thu May 06 2021 18:52:26 GMT+0100 (British Summer Time)
+ * File generated Fri May 07 2021 00:34:04 GMT+0100 (British Summer Time)
  */
 
 export const __version = "2.15.1"
-export const __timestamp = "2021-05-06T17:52:26.545Z"
+export const __timestamp = "2021-05-06T23:34:04.749Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -77,54 +77,151 @@ export const _tree = {
       "component": () => import('../src/pages/[watch].svelte').then(m => m.default)
     },
     {
-      "isFile": true,
-      "isDir": false,
-      "file": "checkout.svelte",
-      "filepath": "/checkout.svelte",
-      "name": "checkout",
-      "ext": "svelte",
+      "isFile": false,
+      "isDir": true,
+      "file": "admin",
+      "filepath": "/admin",
+      "name": "admin",
+      "ext": "",
       "badExt": false,
-      "absolutePath": "/home/user/webflix/src/pages/checkout.svelte",
-      "importPath": "../src/pages/checkout.svelte",
+      "absolutePath": "/home/user/webflix/src/pages/admin",
+      "children": [],
       "isLayout": false,
       "isReset": false,
       "isIndex": false,
       "isFallback": false,
-      "isPage": true,
+      "isPage": false,
       "ownMeta": {},
       "meta": {
         "recursive": true,
         "preload": "proximity",
         "prerender": true
       },
-      "path": "/checkout",
-      "id": "_checkout",
-      "component": () => import('../src/pages/checkout.svelte').then(m => m.default)
+      "path": "/admin"
     },
     {
-      "isFile": true,
-      "isDir": false,
-      "file": "forgot-password.svelte",
-      "filepath": "/forgot-password.svelte",
-      "name": "forgot-password",
-      "ext": "svelte",
+      "isFile": false,
+      "isDir": true,
+      "file": "auth",
+      "filepath": "/auth",
+      "name": "auth",
+      "ext": "",
       "badExt": false,
-      "absolutePath": "/home/user/webflix/src/pages/forgot-password.svelte",
-      "importPath": "../src/pages/forgot-password.svelte",
+      "absolutePath": "/home/user/webflix/src/pages/auth",
+      "children": [
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "forgot-password.svelte",
+          "filepath": "/auth/forgot-password.svelte",
+          "name": "forgot-password",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "/home/user/webflix/src/pages/auth/forgot-password.svelte",
+          "importPath": "../src/pages/auth/forgot-password.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": "proximity",
+            "prerender": true
+          },
+          "path": "/auth/forgot-password",
+          "id": "_auth_forgotPassword",
+          "component": () => import('../src/pages/auth/forgot-password.svelte').then(m => m.default)
+        },
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "login.svelte",
+          "filepath": "/auth/login.svelte",
+          "name": "login",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "/home/user/webflix/src/pages/auth/login.svelte",
+          "importPath": "../src/pages/auth/login.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": "proximity",
+            "prerender": true
+          },
+          "path": "/auth/login",
+          "id": "_auth_login",
+          "component": () => import('../src/pages/auth/login.svelte').then(m => m.default)
+        },
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "logout.svelte",
+          "filepath": "/auth/logout.svelte",
+          "name": "logout",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "/home/user/webflix/src/pages/auth/logout.svelte",
+          "importPath": "../src/pages/auth/logout.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": "proximity",
+            "prerender": true
+          },
+          "path": "/auth/logout",
+          "id": "_auth_logout",
+          "component": () => import('../src/pages/auth/logout.svelte').then(m => m.default)
+        },
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "register.svelte",
+          "filepath": "/auth/register.svelte",
+          "name": "register",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "/home/user/webflix/src/pages/auth/register.svelte",
+          "importPath": "../src/pages/auth/register.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": "proximity",
+            "prerender": true
+          },
+          "path": "/auth/register",
+          "id": "_auth_register",
+          "component": () => import('../src/pages/auth/register.svelte').then(m => m.default)
+        }
+      ],
       "isLayout": false,
       "isReset": false,
       "isIndex": false,
       "isFallback": false,
-      "isPage": true,
+      "isPage": false,
       "ownMeta": {},
       "meta": {
         "recursive": true,
         "preload": "proximity",
         "prerender": true
       },
-      "path": "/forgot-password",
-      "id": "_forgotPassword",
-      "component": () => import('../src/pages/forgot-password.svelte').then(m => m.default)
+      "path": "/auth"
     },
     {
       "isFile": true,
@@ -154,56 +251,6 @@ export const _tree = {
     {
       "isFile": true,
       "isDir": false,
-      "file": "login.svelte",
-      "filepath": "/login.svelte",
-      "name": "login",
-      "ext": "svelte",
-      "badExt": false,
-      "absolutePath": "/home/user/webflix/src/pages/login.svelte",
-      "importPath": "../src/pages/login.svelte",
-      "isLayout": false,
-      "isReset": false,
-      "isIndex": false,
-      "isFallback": false,
-      "isPage": true,
-      "ownMeta": {},
-      "meta": {
-        "recursive": true,
-        "preload": "proximity",
-        "prerender": true
-      },
-      "path": "/login",
-      "id": "_login",
-      "component": () => import('../src/pages/login.svelte').then(m => m.default)
-    },
-    {
-      "isFile": true,
-      "isDir": false,
-      "file": "logout.svelte",
-      "filepath": "/logout.svelte",
-      "name": "logout",
-      "ext": "svelte",
-      "badExt": false,
-      "absolutePath": "/home/user/webflix/src/pages/logout.svelte",
-      "importPath": "../src/pages/logout.svelte",
-      "isLayout": false,
-      "isReset": false,
-      "isIndex": false,
-      "isFallback": false,
-      "isPage": true,
-      "ownMeta": {},
-      "meta": {
-        "recursive": true,
-        "preload": "proximity",
-        "prerender": true
-      },
-      "path": "/logout",
-      "id": "_logout",
-      "component": () => import('../src/pages/logout.svelte').then(m => m.default)
-    },
-    {
-      "isFile": true,
-      "isDir": false,
       "file": "movies.svelte",
       "filepath": "/movies.svelte",
       "name": "movies",
@@ -227,54 +274,78 @@ export const _tree = {
       "component": () => import('../src/pages/movies.svelte').then(m => m.default)
     },
     {
-      "isFile": true,
-      "isDir": false,
-      "file": "premium.svelte",
-      "filepath": "/premium.svelte",
+      "isFile": false,
+      "isDir": true,
+      "file": "premium",
+      "filepath": "/premium",
       "name": "premium",
-      "ext": "svelte",
+      "ext": "",
       "badExt": false,
-      "absolutePath": "/home/user/webflix/src/pages/premium.svelte",
-      "importPath": "../src/pages/premium.svelte",
+      "absolutePath": "/home/user/webflix/src/pages/premium",
+      "children": [
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "checkout.svelte",
+          "filepath": "/premium/checkout.svelte",
+          "name": "checkout",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "/home/user/webflix/src/pages/premium/checkout.svelte",
+          "importPath": "../src/pages/premium/checkout.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": "proximity",
+            "prerender": true
+          },
+          "path": "/premium/checkout",
+          "id": "_premium_checkout",
+          "component": () => import('../src/pages/premium/checkout.svelte').then(m => m.default)
+        },
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "index.svelte",
+          "filepath": "/premium/index.svelte",
+          "name": "index",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "/home/user/webflix/src/pages/premium/index.svelte",
+          "importPath": "../src/pages/premium/index.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": true,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": "proximity",
+            "prerender": true
+          },
+          "path": "/premium/index",
+          "id": "_premium_index",
+          "component": () => import('../src/pages/premium/index.svelte').then(m => m.default)
+        }
+      ],
       "isLayout": false,
       "isReset": false,
       "isIndex": false,
       "isFallback": false,
-      "isPage": true,
+      "isPage": false,
       "ownMeta": {},
       "meta": {
         "recursive": true,
         "preload": "proximity",
         "prerender": true
       },
-      "path": "/premium",
-      "id": "_premium",
-      "component": () => import('../src/pages/premium.svelte').then(m => m.default)
-    },
-    {
-      "isFile": true,
-      "isDir": false,
-      "file": "register.svelte",
-      "filepath": "/register.svelte",
-      "name": "register",
-      "ext": "svelte",
-      "badExt": false,
-      "absolutePath": "/home/user/webflix/src/pages/register.svelte",
-      "importPath": "../src/pages/register.svelte",
-      "isLayout": false,
-      "isReset": false,
-      "isIndex": false,
-      "isFallback": false,
-      "isPage": true,
-      "ownMeta": {},
-      "meta": {
-        "recursive": true,
-        "preload": "proximity",
-        "prerender": true
-      },
-      "path": "/register",
-      "id": "_register",
-      "component": () => import('../src/pages/register.svelte').then(m => m.default)
+      "path": "/premium"
     },
     {
       "isFile": true,

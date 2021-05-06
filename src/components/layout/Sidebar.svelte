@@ -39,7 +39,7 @@
     <List>
       {#if $user.id}
         <Item
-          href={$url("./shows")}
+          href={$url("/shows")}
           on:click={() => setActive("TV Shows")}
           activated={active === "TV Shows"}
         >
@@ -47,7 +47,7 @@
           <Text>TV Shows</Text>
         </Item>
         <Item
-          href={$url("./movies")}
+          href={$url("/movies")}
           on:click={() => setActive("Movies")}
           activated={active === "Movies"}
         >
@@ -57,7 +57,7 @@
         {#if !$user.paid}
           <Separator />
           <Item
-            href={$url("./premium")}
+            href={$url("/premium/index")}
             on:click={() => setActive("Premium")}
             activated={active === "Premium"}
           >
@@ -72,7 +72,7 @@
         <Separator />
         <Subheader component={H6}>Labels</Subheader>
         <Item
-          href={$url("./watch")}
+          href={$url("/watch")}
           on:click={() => setActive("Player")}
           activated={active === "Player"}
         >
@@ -80,7 +80,7 @@
           <Text>Player</Text>
         </Item>
         <Item
-          href={$url("./watch")}
+          href={$url("/watch")}
           on:click={() => setActive("Youtube Player")}
           activated={active === "Youtube Player"}
         >
@@ -91,7 +91,7 @@
       <Separator />
       {#if $user.id}
         <Item
-          href={$url("./logout")}
+          href={$url("/auth/logout")}
           on:click={() => {
             setActive("Logout");
           }}
@@ -121,7 +121,7 @@
         </Item>
       {:else}
         <Item
-          href={$url("./login")}
+          href={$url("./auth/login")}
           on:click={() => setActive("Login")}
           activated={active === "Login"}
         >
@@ -129,7 +129,7 @@
           <Text>Login</Text>
         </Item>
         <Item
-          href={$url("./forgot-password")}
+          href={$url("./auth/forgot-password")}
           on:click={() => setActive("Forgot Password")}
           activated={active === "Forgot Password"}
         >
@@ -137,7 +137,7 @@
           <Text>Forgot Password</Text>
         </Item>
         <Item
-          href={$url("./register")}
+          href={$url("./auth/register")}
           on:click={() => {
             setActive("Register");
           }}

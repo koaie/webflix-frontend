@@ -1,5 +1,5 @@
 <script>
-  import { API_URL, user, rememberMe } from "../logic/stores";
+  import { API_URL, user } from "../../logic/stores";
   import axios from "axios";
   import { goto } from "@roxi/routify";
 
@@ -7,23 +7,18 @@
   import Textfield from "@smui/textfield";
   import Icon from "@smui/textfield/icon";
   import HelperText from "@smui/textfield/helper-text/index";
-  import FormField from "@smui/form-field";
-  import Checkbox from "@smui/checkbox";
   import Button, { Label } from "@smui/button";
-  import Tooltip, { Wrapper } from "@smui/tooltip";
 
   let email = null;
   let password = null;
+  let rememberMe = false;
   let invalid = false;
   let body = null;
-  let checkbox = false;
+  let lock = null;
 
-  $: {
-    rememberMe.update((val) => checkbox);
-  }
   const call = async () => {
     let result = await axios
-      .post(`${$API_URL}/auth/login.php`, body, {
+      .post(`${$API_URL}/auth/forgot-password.php`, body, {
         "Content-type": "application/json",
       })
       .catch((err) => {
@@ -32,16 +27,17 @@
     return result.data;
   };
 
-  const login = async () => {
+  const recover = async () => {
     body = JSON.stringify({
       email: email,
       password: password,
+      securityKey: lock,
     });
     await call().then((res) => {
       user.update((val) => res);
     });
-    if ($user.id) {
-      $goto("./shows");
+    if ($user.result == "password updated sucessfully") {
+      $goto("./login");
     }
     if ($user.error) {
       invalid = true;
@@ -67,7 +63,6 @@
     <Cell span={6}>
       <Textfield
         type="password"
-        bind:invalid
         bind:value={password}
         label="Password"
         input$autocomplete="password"
@@ -77,24 +72,27 @@
       </Textfield>
     </Cell>
     <Cell span={6}>
-      <Wrapper>
-        <FormField>
-          <Checkbox bind:checked={checkbox} />
-          <span type="Label"> Remember me </span>
-        </FormField>
-        <Tooltip>Remember me</Tooltip>
-      </Wrapper>
+      <Textfield
+        type="text"
+        bind:invalid
+        bind:value={lock}
+        label="Security key"
+      >
+        <Icon class="material-icons" slot="leadingIcon">lock</Icon>
+        <HelperText validationMsg slot="helper">Invalid key or email</HelperText
+        >
+      </Textfield>
     </Cell>
-
-    <Cell span={6}>
+    <Cell span={6} />
+    <Cell span={12}>
       <div class="right">
         <Button
           on:click={() => {
-            login();
+            recover();
           }}
           variant="outlined"
         >
-          <Label>Login</Label>
+          <Label>Recover</Label>
         </Button>
       </div>
     </Cell>
