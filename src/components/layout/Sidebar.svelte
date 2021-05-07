@@ -139,6 +139,14 @@
           <Text>Register</Text>
         </Item>
       {/if}
+      <div class="footer" />
     </List>
   </Content>
 </Drawer>
+
+<style>
+  .footer {
+    height: 4rem;
+    background-color: transparent;
+  }
+</style>
