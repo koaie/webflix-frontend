@@ -5,6 +5,7 @@
   import TopMenu from "../../components/layout/TopMenu.svelte";
   import ActionCard from "../../components/card/action.svelte";
   import DataTable, { Head, Body, Row, Cell } from "@smui/data-table";
+
 </script>
 
 {#if $user.id}

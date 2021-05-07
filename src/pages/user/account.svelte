@@ -13,7 +13,6 @@
   import Button, { Label } from "@smui/button";
 
   let password = null;
-  let name = null;
   let key = null;
   let body = null;
   let error;

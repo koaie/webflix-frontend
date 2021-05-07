@@ -1,5 +1,5 @@
 <script>
-  import { goto } from "@roxi/routify";
+  import { goto, ready } from "@roxi/routify";
   import axios from "axios";
   import Card, {
     PrimaryAction,
@@ -52,6 +52,7 @@
   const fetch = async () => {
     let res = await call();
     data.update((val) => res);
+    $ready();
   };
   if ($user.id) {
     fetch();
