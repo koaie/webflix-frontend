@@ -1,7 +1,14 @@
 [
+  "/auth/forgot-password",
+  "/auth/login",
+  "/auth/logout",
+  "/auth/register",
+  "/feed/movies",
+  "/feed/shows",
   "/index",
-  "/login",
-  "/logout",
-  "/register",
-  "/shows"
+  "/premium/checkout",
+  "/premium/index",
+  "/user/account",
+  "/user/edit",
+  "/user/profile"
 ]

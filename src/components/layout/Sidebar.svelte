@@ -23,7 +23,6 @@
       open = false;
     }
   }
-  console.log($user);
 </script>
 
 <Drawer variant="modal" bind:open>
@@ -40,7 +39,7 @@
     <List>
       {#if $user.id}
         <Item
-          href={$url("./shows")}
+          href={$url("/feed/shows")}
           on:click={() => setActive("TV Shows")}
           activated={active === "TV Shows"}
         >
@@ -48,19 +47,32 @@
           <Text>TV Shows</Text>
         </Item>
         <Item
-          href={$url("./movies")}
+          href={$url("/feed/movies")}
           on:click={() => setActive("Movies")}
           activated={active === "Movies"}
         >
           <Graphic class="material-icons" aria-hidden="true">movie</Graphic>
           <Text>Movies</Text>
         </Item>
+        {#if !$user.paid}
+          <Separator />
+          <Item
+            href={$url("/premium/index")}
+            on:click={() => setActive("Premium")}
+            activated={active === "Premium"}
+          >
+            <Graphic class="material-icons" aria-hidden="true"
+              >local_activity</Graphic
+            >
+            <Text>Premium</Text>
+          </Item>
+        {/if}
       {/if}
       {#if $user.admin}
         <Separator />
         <Subheader component={H6}>Labels</Subheader>
         <Item
-          href={$url("./watch")}
+          href={$url("/watch")}
           on:click={() => setActive("Player")}
           activated={active === "Player"}
         >
@@ -68,7 +80,7 @@
           <Text>Player</Text>
         </Item>
         <Item
-          href={$url("./watch")}
+          href={$url("/watch")}
           on:click={() => setActive("Youtube Player")}
           activated={active === "Youtube Player"}
         >
@@ -79,7 +91,7 @@
       <Separator />
       {#if $user.id}
         <Item
-          href={$url("./logout")}
+          href={$url("/auth/logout")}
           on:click={() => {
             setActive("Logout");
           }}
@@ -90,26 +102,16 @@
           <Text>Logout</Text>
         </Item>
         <Item
-          href="javascript:void(0)"
+          href={$url("/user/profile")}
           on:click={() => setActive("Profile")}
           activated={active === "Profile"}
         >
-          <Graphic class="material-icons" aria-hidden="true"
-            >manage_accounts</Graphic
-          >
+          <Graphic class="material-icons" aria-hidden="true">person</Graphic>
           <Text>Profile</Text>
-        </Item>
-        <Item
-          href={$url("./settings")}
-          on:click={() => setActive("Settings")}
-          activated={active === "Settings"}
-        >
-          <Graphic class="material-icons" aria-hidden="true">settings</Graphic>
-          <Text>Settings</Text>
         </Item>
       {:else}
         <Item
-          href={$url("./login")}
+          href={$url("/auth/login")}
           on:click={() => setActive("Login")}
           activated={active === "Login"}
         >
@@ -117,7 +119,15 @@
           <Text>Login</Text>
         </Item>
         <Item
-          href={$url("./register")}
+          href={$url("/auth/forgot-password")}
+          on:click={() => setActive("Forgot Password")}
+          activated={active === "Forgot Password"}
+        >
+          <Graphic class="material-icons" aria-hidden="true">vpn_key</Graphic>
+          <Text>Forgot Password</Text>
+        </Item>
+        <Item
+          href={$url("/auth/register")}
           on:click={() => {
             setActive("Register");
           }}
@@ -129,6 +139,14 @@
           <Text>Register</Text>
         </Item>
       {/if}
+      <div class="footer" />
     </List>
   </Content>
 </Drawer>
+
+<style>
+  .footer {
+    height: 4rem;
+    background-color: transparent;
+  }
+</style>

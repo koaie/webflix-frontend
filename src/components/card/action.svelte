@@ -6,19 +6,15 @@
 
   export let text = "Whoops something went wrong!";
   export let icon = "arrow_forward";
-  export let direct = "./";
   export let action = "Go back";
 </script>
 
 <Card>
   <Content>{text}</Content>
   <Actions fullBleed>
-    <Button
-      on:click={() => {
-        $goto(direct);
-      }}
+    <Button on:click
     >
-      <Label>{action}</Label>
+      <Label><slot name="action">{action}</slot></Label>
       <i class="material-icons" aria-hidden="true">{icon}</i>
     </Button>
   </Actions>

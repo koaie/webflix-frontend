@@ -1,6 +1,6 @@
 <script>
-  import { user } from "../logic/stores";
   import { goto } from "@roxi/routify";
+  import { user } from "../../logic/stores";
 
   import Card, { Content, Media, MediaContent } from "@smui/card";
   import Button, { Label } from "@smui/button";
@@ -10,8 +10,6 @@
 
   if ($user.paid) {
     $goto("/feed/shows");
-  } else if ($user.id) {
-    $goto("/premium/index");
   }
 </script>
 
@@ -21,17 +19,18 @@
       <Paper>
         <div class="flexCentered">
           <div class="title">Webflix</div>
-          <Title>Basic</Title>
+          <Title>Premium</Title>
         </div>
         <div class="text flexXCentered">
           Improve your content consumption experince and join us today.
         </div>
+        <div class="subtext flexXCentered">£99 yearly</div>
       </Paper>
     </Cell>
     <Cell span={12}>
       <div class="flexCentered">
-        <Button on:click={() => $goto("/auth/login")} variant="raised">
-          <Label>Join Webflix</Label>
+        <Button on:click={() => $goto("./checkout")} variant="raised">
+          <Label>upgrade now</Label>
         </Button>
       </div>
     </Cell>

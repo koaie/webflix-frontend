@@ -1,15 +1,13 @@
 <script>
   import axios from "axios";
 
-  import Player from "../components/player/player.svelte";
-  import YoutubePlayer from "../components/player/youtubePlayer.svelte";
+  import Plyr from "../components/player/Plyr.svelte";
+  import YoutubePlyr from "../components/player/YoutubePlyr.svelte";
   import ActionCard from "../components/card/action.svelte";
   import { API_URL, user } from "../logic/stores";
-  import { params } from "@roxi/routify";
+  import { params, goto, ready } from "@roxi/routify";
 
   export let url;
-  export let cover =
-    "https://upload.wikimedia.org/wikipedia/commons/d/d5/Big_Buck_Bunny_loves_Creative_Commons.png";
   export let id = "";
 
   const body = JSON.stringify({
@@ -34,6 +32,7 @@
     } else if (res.trailer) {
       id = res.trailer;
     }
+    $ready();
   };
   if ($user.id && $params.id) {
     watch();
@@ -42,16 +41,42 @@
 
 {#if $params.id}
   {#if id}
-    <YoutubePlayer {id} />
+    <div class="youtube-plyr">
+      <YoutubePlyr {id} />
+    </div>
   {:else if url}
-    <Player {url} {cover} />
+    <div class="plyr">
+      <Plyr {url} />
+    </div>
   {:else}
     <div class="flexCentered">
-      <ActionCard />
+      <ActionCard on:click={$goto(history.back())} />
     </div>
   {/if}
 {:else}
   <div class="flexCentered">
-    <ActionCard />
+    <ActionCard on:click={$goto(history.back())} />
   </div>
 {/if}
+
+<style>
+  @media only screen and (min-width: 910px) {
+    .youtube-plyr {
+      width: 800px;
+      border-radius: 1rem;
+      padding: 0;
+      margin-left: 0.3rem;
+      margin-right: 0.3rem;
+    }
+  }
+  /* Mobile screens */
+  @media only screen and (max-width: 910px) {
+    .youtube-plyr {
+      width: 450px;
+      border-radius: 1rem;
+      padding: 0;
+      margin-left: 0.3rem;
+      margin-right: 0.3rem;
+    }
+  }
+</style>

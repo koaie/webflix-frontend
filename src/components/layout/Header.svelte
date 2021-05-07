@@ -26,7 +26,7 @@
 
     <div class="logo">
       <!-- svelte-ignore a11y-label-has-associated-control -->
-      <h1><label on:click={() => $goto("./")}>webflix</label></h1>
+      <h1><label on:click={() => $goto("/")}>webflix</label></h1>
     </div>
   </div></TopAppBar
 >
@@ -44,7 +44,7 @@
   .headerContainer {
     display: flex;
     justify-content: space-between;
-    padding: 0.5em;
+    padding: 0.7em;
     background-color: var(--mdc-theme--background);
   }
 
@@ -56,6 +56,7 @@
     color: #7f91ec;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    margin-right: 0rem;
   }
   .logo label {
     color: #7f91ec;
@@ -64,15 +65,15 @@
     text-decoration: none;
     cursor: pointer;
   }
-  @media only screen and (max-width: 850px) {
+  @media only screen and (max-width: 1100px) {
     .headerContainer {
       display: inline-flex;
       justify-content: space-between;
       position: fixed;
       top: 0;
       width: 100%;
-      padding: 0.5em;
-      background-color: var(--mdc-theme--background);
+      padding: 0.7em;
+      background-color: var(--mdc-secondary-background);
     }
 
     .logo {
@@ -83,6 +84,7 @@
       color: #7f91ec;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      margin-right: 1rem;
     }
   }
 </style>

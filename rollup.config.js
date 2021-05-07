@@ -10,6 +10,7 @@ import getConfig from '@roxi/routify/lib/utils/config'
 import autoPreprocess from 'svelte-preprocess'
 import postcssImport from 'postcss-import'
 import { injectManifest } from 'rollup-plugin-workbox'
+import postcss from 'rollup-plugin-postcss';
 
 const { distDir } = getConfig() // use Routify's distDir for SSOT
 const assetsDir = 'assets'
@@ -59,6 +60,7 @@ export default {
                 })
             ]
         }),
+        postcss(),
 
         // resolve matching modules from current working directory
         resolve({

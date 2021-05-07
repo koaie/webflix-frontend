@@ -3,7 +3,8 @@
   import Sidebar from "../components/layout/Sidebar.svelte";
   import Header from "../components/layout/Header.svelte";
   import LargeDialog from "../components/dialog/large.svelte";
-  import { sideNav, largeDialog } from "../logic/stores";
+  import ListDialog from "../components/dialog/list.svelte";
+  import { sideNav, largeDialog, listDialog } from "../logic/stores";
 
   const closeSideNav = () => {
     if ($sideNav) {
@@ -20,6 +21,7 @@
     <Header />
   </div>
 
+  <ListDialog bind:open={$listDialog} />
   <LargeDialog bind:open={$largeDialog} />
 
   <div class="desktopOnly sidebar">
@@ -48,10 +50,11 @@
 
   #header {
     grid-column: span 2;
+    z-index: 1;
   }
 
   .sidebar {
-    position: absolute;
+    position: fixed;
     top: 0px;
     height: 100%;
     background: transparent;
@@ -65,13 +68,14 @@
   }
 
   #pageContent .page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    margin-top: 2rem !important;
   }
 
-  @media only screen and (max-width: 910px) {
+  @media only screen and (max-width: 1100px) {
     .layout {
       display: grid;
       grid-template-rows: 72px 1fr;
@@ -81,20 +85,21 @@
     }
     #pageContent {
       width: 100%;
-      z-index: 4;
+      z-index: 3;
       grid-column-start: 1;
     }
 
     #header {
       grid-column: 1;
+      z-index: 5;
     }
 
     #pageContent .page {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 0rem;
-      margin-top: 5rem;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin-left: 0rem !important;
+      margin-top: 1rem !important;
     }
   }
 </style>
