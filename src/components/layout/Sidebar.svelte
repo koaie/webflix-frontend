@@ -109,14 +109,6 @@
           <Graphic class="material-icons" aria-hidden="true">person</Graphic>
           <Text>Profile</Text>
         </Item>
-        <Item
-          href={$url("/user/settings")}
-          on:click={() => setActive("Settings")}
-          activated={active === "Settings"}
-        >
-          <Graphic class="material-icons" aria-hidden="true">settings</Graphic>
-          <Text>Settings</Text>
-        </Item>
       {:else}
         <Item
           href={$url("/auth/login")}
