@@ -3,4 +3,4 @@
   import { goto } from "@roxi/routify";
 </script>
 
-<ActionCard on:click={$goto(history.back)} />;
+<ActionCard on:click={$goto(history.back)} />
