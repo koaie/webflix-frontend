@@ -25,7 +25,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin: 0;
     background-color: #333333;
     border-radius: 0.4rem 0.4rem 0rem 0rem;
   }
@@ -33,7 +33,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0;
+    margin-bottom: 1rem;
     background-color: #232324;
     border-radius: 0rem 0rem 0.4rem 0.4rem;
   }
