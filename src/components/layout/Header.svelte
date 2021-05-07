@@ -26,7 +26,7 @@
 
     <div class="logo">
       <!-- svelte-ignore a11y-label-has-associated-control -->
-      <h1><label on:click={() => $goto("./")}>webflix</label></h1>
+      <h1><label on:click={() => $goto("/")}>webflix</label></h1>
     </div>
   </div></TopAppBar
 >
