@@ -7,5 +7,7 @@
   "/feed/shows",
   "/index",
   "/premium/checkout",
-  "/premium/index"
+  "/premium/index",
+  "/user/edit",
+  "/user/profile"
 ]

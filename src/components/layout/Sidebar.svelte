@@ -102,17 +102,15 @@
           <Text>Logout</Text>
         </Item>
         <Item
-          href="javascript:void(0)"
+          href={$url("/user/profile")}
           on:click={() => setActive("Profile")}
           activated={active === "Profile"}
         >
-          <Graphic class="material-icons" aria-hidden="true"
-            >manage_accounts</Graphic
-          >
+          <Graphic class="material-icons" aria-hidden="true">person</Graphic>
           <Text>Profile</Text>
         </Item>
         <Item
-          href={$url("./settings")}
+          href={$url("/user/settings")}
           on:click={() => setActive("Settings")}
           activated={active === "Settings"}
         >
@@ -121,7 +119,7 @@
         </Item>
       {:else}
         <Item
-          href={$url("./auth/login")}
+          href={$url("/auth/login")}
           on:click={() => setActive("Login")}
           activated={active === "Login"}
         >
@@ -129,7 +127,7 @@
           <Text>Login</Text>
         </Item>
         <Item
-          href={$url("./auth/forgot-password")}
+          href={$url("/auth/forgot-password")}
           on:click={() => setActive("Forgot Password")}
           activated={active === "Forgot Password"}
         >
@@ -137,7 +135,7 @@
           <Text>Forgot Password</Text>
         </Item>
         <Item
-          href={$url("./auth/register")}
+          href={$url("/auth/register")}
           on:click={() => {
             setActive("Register");
           }}

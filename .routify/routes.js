@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.15.1
- * File generated Fri May 07 2021 00:39:11 GMT+0100 (British Summer Time)
+ * File generated Fri May 07 2021 01:41:19 GMT+0100 (British Summer Time)
  */
 
 export const __version = "2.15.1"
-export const __timestamp = "2021-05-06T23:39:11.644Z"
+export const __timestamp = "2021-05-07T00:41:19.056Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -395,6 +395,80 @@ export const _tree = {
         "prerender": true
       },
       "path": "/premium"
+    },
+    {
+      "isFile": false,
+      "isDir": true,
+      "file": "user",
+      "filepath": "/user",
+      "name": "user",
+      "ext": "",
+      "badExt": false,
+      "absolutePath": "/home/user/webflix/src/pages/user",
+      "children": [
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "edit.svelte",
+          "filepath": "/user/edit.svelte",
+          "name": "edit",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "/home/user/webflix/src/pages/user/edit.svelte",
+          "importPath": "../src/pages/user/edit.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": "proximity",
+            "prerender": true
+          },
+          "path": "/user/edit",
+          "id": "_user_edit",
+          "component": () => import('../src/pages/user/edit.svelte').then(m => m.default)
+        },
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "profile.svelte",
+          "filepath": "/user/profile.svelte",
+          "name": "profile",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "/home/user/webflix/src/pages/user/profile.svelte",
+          "importPath": "../src/pages/user/profile.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": "proximity",
+            "prerender": true
+          },
+          "path": "/user/profile",
+          "id": "_user_profile",
+          "component": () => import('../src/pages/user/profile.svelte').then(m => m.default)
+        }
+      ],
+      "isLayout": false,
+      "isReset": false,
+      "isIndex": false,
+      "isFallback": false,
+      "isPage": false,
+      "ownMeta": {},
+      "meta": {
+        "recursive": true,
+        "preload": "proximity",
+        "prerender": true
+      },
+      "path": "/user"
     }
   ],
   "isLayout": true,

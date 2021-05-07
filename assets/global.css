@@ -69,13 +69,26 @@ body {
 .mdc-top-app-bar {
   background-color: var(--mdc-theme--background);
 }
+#profile .mdc-data-table__header-cell {
+  background-color: transparent;
+}
 
+#profile .mdc-data-table {
+  background-color: transparent;
+  -webkit-overflow-scrolling: touch;
+  display: inline-flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+  border-style: none;
+}
 .mdc-card__media-content h2 {
   margin: 0px;
   text-shadow: #000 1px 0 10px;
 }
 
-#list :not(.mdc-deprecated-list-item--disabled).mdc-deprecated-list-item.mdc-ripple-upgraded {
+#list
+  :not(.mdc-deprecated-list-item--disabled).mdc-deprecated-list-item.mdc-ripple-upgraded {
   --mdc-ripple-fg-opacity: var(--mdc-ripple-press-opacity, 0.24);
   padding-bottom: 1rem;
 }
