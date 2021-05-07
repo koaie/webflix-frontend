@@ -74,6 +74,7 @@
             bind:value={password}
             label="Password"
             input$autocomplete="password"
+            required
           >
             <Icon class="material-icons" slot="leadingIcon">password</Icon>
           </Textfield>
@@ -84,6 +85,7 @@
             updateInvalid
             bind:value={key}
             label="Security Key"
+            required
           >
             <Icon class="material-icons" slot="leadingIcon">perm_identity</Icon>
           </Textfield>
