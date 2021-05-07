@@ -3,7 +3,7 @@
   import TabBar from "@smui/tab-bar";
   import { goto } from "@roxi/routify";
 
-  let tabs = ["Profile", "Edit", "Settings"];
+  let tabs = ["Profile", "Edit", "Account"];
 </script>
 
 <!--

@@ -8,7 +8,7 @@
   "/index",
   "/premium/checkout",
   "/premium/index",
+  "/user/account",
   "/user/edit",
-  "/user/profile",
-  "/user/settings"
+  "/user/profile"
 ]
