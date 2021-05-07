@@ -5,7 +5,7 @@
   import YoutubePlyr from "../components/player/YoutubePlyr.svelte";
   import ActionCard from "../components/card/action.svelte";
   import { API_URL, user } from "../logic/stores";
-  import { params, goto } from "@roxi/routify";
+  import { params, goto, ready } from "@roxi/routify";
 
   export let url;
   export let id = "";
@@ -32,6 +32,7 @@
     } else if (res.trailer) {
       id = res.trailer;
     }
+    $ready();
   };
   if ($user.id && $params.id) {
     watch();
