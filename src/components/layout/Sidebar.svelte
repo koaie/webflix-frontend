@@ -39,7 +39,7 @@
     <List>
       {#if $user.id}
         <Item
-          href={$url("/shows")}
+          href={$url("/feed/shows")}
           on:click={() => setActive("TV Shows")}
           activated={active === "TV Shows"}
         >
@@ -47,7 +47,7 @@
           <Text>TV Shows</Text>
         </Item>
         <Item
-          href={$url("/movies")}
+          href={$url("/feed/movies")}
           on:click={() => setActive("Movies")}
           activated={active === "Movies"}
         >
