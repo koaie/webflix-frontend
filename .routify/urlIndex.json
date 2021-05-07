@@ -9,5 +9,6 @@
   "/premium/checkout",
   "/premium/index",
   "/user/edit",
-  "/user/profile"
+  "/user/profile",
+  "/user/settings"
 ]

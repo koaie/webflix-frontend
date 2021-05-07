@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.15.1
- * File generated Fri May 07 2021 01:41:19 GMT+0100 (British Summer Time)
+ * File generated Fri May 07 2021 02:03:45 GMT+0100 (British Summer Time)
  */
 
 export const __version = "2.15.1"
-export const __timestamp = "2021-05-07T00:41:19.056Z"
+export const __timestamp = "2021-05-07T01:03:45.618Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -455,6 +455,31 @@ export const _tree = {
           "path": "/user/profile",
           "id": "_user_profile",
           "component": () => import('../src/pages/user/profile.svelte').then(m => m.default)
+        },
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "settings.svelte",
+          "filepath": "/user/settings.svelte",
+          "name": "settings",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "/home/user/webflix/src/pages/user/settings.svelte",
+          "importPath": "../src/pages/user/settings.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": "proximity",
+            "prerender": true
+          },
+          "path": "/user/settings",
+          "id": "_user_settings",
+          "component": () => import('../src/pages/user/settings.svelte').then(m => m.default)
         }
       ],
       "isLayout": false,
