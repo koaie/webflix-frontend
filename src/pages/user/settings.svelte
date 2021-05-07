@@ -10,7 +10,6 @@
   import LayoutGrid, { Cell } from "@smui/layout-grid";
   import Textfield from "@smui/textfield";
   import Icon from "@smui/textfield/icon";
-  import HelperText from "@smui/textfield/helper-text/index";
   import Button, { Label } from "@smui/button";
 
   let password = null;

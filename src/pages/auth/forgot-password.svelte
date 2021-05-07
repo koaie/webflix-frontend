@@ -11,7 +11,6 @@
 
   let email = null;
   let password = null;
-  let rememberMe = false;
   let invalid = false;
   let body = null;
   let lock = null;
