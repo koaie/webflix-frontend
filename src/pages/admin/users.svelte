@@ -1,10 +1,3 @@
-<!--
-!TODO
-
-ui
-edit users
-delete users
--->
 <script>
   import { API_URL, user } from "../../logic/stores";
   import { goto } from "@roxi/routify";
@@ -18,7 +11,7 @@ delete users
   import Icon from "@smui/textfield/icon";
   import HelperText from "@smui/textfield/helper-text/index";
 
-  import ActionCard from "../../components/card/action.svelte";
+  import ActionCard from "../../compo∫nents/card/action.svelte";
   import Dialog from "../../components/dialog/form.svelte";
 
   let email = null;
@@ -35,7 +28,7 @@ delete users
   let open = false;
   let data;
   let _user;
-  let viewMenu
+  let viewMenu;
 
   let error;
   let errorText;
@@ -126,45 +119,45 @@ delete users
 </script>
 
 {#if _user}
-<Dialog
-  title="View"
-  open={viewMenu}
-  on:click={() => {
-    viewMenu = false;
-  }}
-  buttonText="Done"
->
-  <Head>
-    <Row>
-      <Cell>Email</Cell>
-      <Cell>{_user.email}</Cell>
-    </Row>
-    <Row>
-      <Cell>Name</Cell>
-      <Cell>{_user.name}</Cell>
-    </Row>
-    <Row>
-      <Cell>Surname</Cell>
-      <Cell>{_user.surname}</Cell>
-    </Row>
-    <Row>
-      <Cell>Date of Birth</Cell>
-      <Cell>{_user.dob}</Cell>
-    </Row>
-    <Row>
-      <Cell>Country</Cell>
-      <Cell>{_user.country}</Cell>
-    </Row>
-    <Row>
-      <Cell>Paid At</Cell>
-      <Cell>{_user.paidAt}</Cell>
-    </Row>
-    <Row>
-      <Cell>Admin</Cell>
-      <Cell>{_user.admin}</Cell>
-    </Row>
-  </Head>
-</Dialog>
+  <Dialog
+    title="View"
+    open={viewMenu}
+    on:click={() => {
+      viewMenu = false;
+    }}
+    buttonText="Done"
+  >
+    <Head>
+      <Row>
+        <Cell>Email</Cell>
+        <Cell>{_user.email}</Cell>
+      </Row>
+      <Row>
+        <Cell>Name</Cell>
+        <Cell>{_user.name}</Cell>
+      </Row>
+      <Row>
+        <Cell>Surname</Cell>
+        <Cell>{_user.surname}</Cell>
+      </Row>
+      <Row>
+        <Cell>Date of Birth</Cell>
+        <Cell>{_user.dob}</Cell>
+      </Row>
+      <Row>
+        <Cell>Country</Cell>
+        <Cell>{_user.country}</Cell>
+      </Row>
+      <Row>
+        <Cell>Paid At</Cell>
+        <Cell>{_user.paidAt}</Cell>
+      </Row>
+      <Row>
+        <Cell>Admin</Cell>
+        <Cell>{_user.admin}</Cell>
+      </Row>
+    </Head>
+  </Dialog>
 {/if}
 
 <Dialog
