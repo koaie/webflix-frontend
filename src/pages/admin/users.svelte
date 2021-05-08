@@ -236,20 +236,20 @@ delete users
   {/if}
 </Dialog>
 
-{#if $user.id}
-  {#if errorText}
-    <Snackbar bind:this={error}>
-      <LabelSnack>
-        {errorText}</LabelSnack
-      >
-      <Actions>
-        <IconButton class="material-icons" title="Dismiss">close</IconButton>
-      </Actions>
-    </Snackbar>
-  {/if}
-  {#await view()}
-    <CircularProgress style="height: 32px; width: 32px;" indeterminate />
-  {:then users}
+{#if errorText}
+  <Snackbar bind:this={error}>
+    <LabelSnack>
+      {errorText}</LabelSnack
+    >
+    <Actions>
+      <IconButton class="material-icons" title="Dismiss">close</IconButton>
+    </Actions>
+  </Snackbar>
+{/if}
+{#await view()}
+  <CircularProgress style="height: 32px; width: 32px;" indeterminate />
+{:then users}
+  {#if $user.id}
     <div class="container" id="profile">
       <DataTable style="max-width: 100%;">
         <Head>
@@ -300,16 +300,16 @@ delete users
         </Body>
       </DataTable>
     </div>
-  {/await}
-{:else}
-  <div class="card-container">
-    <ActionCard
-      on:click={$goto("/auth/login")}
-      text="Whoops, you are not logged in!"
-      icon="login"
-      action="Login"
-    />
-  </div>{/if}
+  {:else}
+    <div class="card-container">
+      <ActionCard
+        on:click={$goto("/auth/login")}
+        text="Whoops, you are not logged in!"
+        icon="login"
+        action="Login"
+      />
+    </div>{/if}
+{/await}
 
 <style>
   .card-container {
