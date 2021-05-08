@@ -1,11 +1,9 @@
 <script>
-  import { API_URL, user } from "../logic/stores";
+  import { API_URL, user, loading } from "../logic/stores";
   import { params, goto } from "@roxi/routify";
   import axios from "axios";
 
   import ActionCard from "../components/card/action.svelte";
-  import CircularProgress from "@smui/circular-progress";
-  import LinearProgress from "@smui/linear-progress";
 
   import Plyr from "../components/player/Plyr.svelte";
   import YoutubePlyr from "../components/player/YoutubePlyr.svelte";
@@ -16,10 +14,12 @@
   });
 
   const call = async () => {
+    loading.update((val) => true);
     let result = await axios
       .post(`${$API_URL}/content/play.php`, body, {
         "Content-type": "application/json",
       })
+      .then(loading.update((val) => false))
       .catch((err) => {
         console.log(err);
       });
@@ -28,8 +28,7 @@
 </script>
 
 {#await call()}
-  <CircularProgress style="height: 32px; width: 32px;" indeterminate />
-  <LinearProgress indeterminate />
+  <!-- <CircularProgress style="height: 32px; width: 32px;" indeterminate /> -->
 {:then data}
   {#if $params.id}
     {#if data.trailer}
