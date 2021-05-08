@@ -66,6 +66,10 @@ body {
   background-color: transparent;
 }
 
+.mdc-dialog--open .mdc-dialog__scrim {
+  opacity: 0;
+}
+
 .mdc-top-app-bar {
   background-color: var(--mdc-theme--background);
 }
