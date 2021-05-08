@@ -28,7 +28,7 @@
     "@material/typography": "^11.0.0",
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
-    "@roxi/routify": "^2.12.4",
+    "@roxi/routify": "^2.18.0",
     "@smui/card": "^4.0.0",
     "@smui/checkbox": "^4.0.0",
     "@smui/chips": "^4.1.0",
@@ -94,6 +94,7 @@
     "@vime/core": "^5.0.28",
     "@vime/svelte": "^5.0.28",
     "axios": "^0.21.1",
+    "core-js": "^3.12.0",
     "plyr": "^3.6.7",
     "svelte-plyr-fixed": "^0.1.3"
   }
