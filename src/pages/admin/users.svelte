@@ -294,7 +294,6 @@ delete users
       <DataTable style="max-width: 100%;">
         <Head>
           <Row>
-            <Cell>Name</Cell>
             <Cell>Email</Cell>
             <Cell>View</Cell>
             <Cell>Edit</Cell>
@@ -304,7 +303,6 @@ delete users
         <Body>
           {#each data as user}
             <Row>
-              <Cell>{user.name}</Cell>
               <Cell>{user.email}</Cell>
               <Cell>
                 <IconButton
