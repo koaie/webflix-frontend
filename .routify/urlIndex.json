@@ -1,4 +1,6 @@
 [
+  "/admin/content",
+  "/admin/genre",
   "/admin/users",
   "/auth/forgot-password",
   "/auth/login",

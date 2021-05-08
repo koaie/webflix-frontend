@@ -35,6 +35,7 @@ delete users
   let open = false;
   let data;
   let _user;
+  let viewMenu
 
   let error;
   let errorText;
@@ -123,6 +124,48 @@ delete users
     return res.data;
   };
 </script>
+
+{#if _user}
+<Dialog
+  title="View"
+  open={viewMenu}
+  on:click={() => {
+    viewMenu = false;
+  }}
+  buttonText="Done"
+>
+  <Head>
+    <Row>
+      <Cell>Email</Cell>
+      <Cell>{_user.email}</Cell>
+    </Row>
+    <Row>
+      <Cell>Name</Cell>
+      <Cell>{_user.name}</Cell>
+    </Row>
+    <Row>
+      <Cell>Surname</Cell>
+      <Cell>{_user.surname}</Cell>
+    </Row>
+    <Row>
+      <Cell>Date of Birth</Cell>
+      <Cell>{_user.dob}</Cell>
+    </Row>
+    <Row>
+      <Cell>Country</Cell>
+      <Cell>{_user.country}</Cell>
+    </Row>
+    <Row>
+      <Cell>Paid At</Cell>
+      <Cell>{_user.paidAt}</Cell>
+    </Row>
+    <Row>
+      <Cell>Admin</Cell>
+      <Cell>{_user.admin}</Cell>
+    </Row>
+  </Head>
+</Dialog>
+{/if}
 
 <Dialog
   title="Edit"
@@ -252,14 +295,8 @@ delete users
         <Head>
           <Row>
             <Cell>Name</Cell>
-            <Cell>Surname</Cell>
             <Cell>Email</Cell>
-            <Cell>Birth Date</Cell>
-            <Cell>Country</Cell>
-            <Cell>Phone numbers</Cell>
-            <Cell>Created At</Cell>
-            <Cell>Paid At</Cell>
-            <Cell>Admin</Cell>
+            <Cell>View</Cell>
             <Cell>Edit</Cell>
             <Cell>Remove</Cell>
           </Row>
@@ -268,14 +305,17 @@ delete users
           {#each data as user}
             <Row>
               <Cell>{user.name}</Cell>
-              <Cell>{user.surname}</Cell>
               <Cell>{user.email}</Cell>
-              <Cell>{user.dob}</Cell>
-              <Cell>{user.country}</Cell>
-              <Cell>{user.phoneNumber}</Cell>
-              <Cell>{user.createdAt}</Cell>
-              <Cell>{user.paidAt}</Cell>
-              <Cell>{user.admin}</Cell>
+              <Cell>
+                <IconButton
+                  class="material-icons"
+                  on:click={() => {
+                    _user = user;
+                    viewMenu = false;
+                    viewMenu = true;
+                  }}>person</IconButton
+                ></Cell
+              >
               <Cell>
                 <IconButton
                   class="material-icons"
