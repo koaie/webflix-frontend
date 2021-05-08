@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.15.1
- * File generated Fri May 07 2021 03:27:32 GMT+0100 (British Summer Time)
+ * File generated Fri May 07 2021 21:10:55 GMT+0100 (British Summer Time)
  */
 
 export const __version = "2.15.1"
-export const __timestamp = "2021-05-07T02:27:32.385Z"
+export const __timestamp = "2021-05-07T20:10:55.190Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -85,7 +85,33 @@ export const _tree = {
       "ext": "",
       "badExt": false,
       "absolutePath": "/home/user/webflix/src/pages/admin",
-      "children": [],
+      "children": [
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "users.svelte",
+          "filepath": "/admin/users.svelte",
+          "name": "users",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "/home/user/webflix/src/pages/admin/users.svelte",
+          "importPath": "../src/pages/admin/users.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": "proximity",
+            "prerender": true
+          },
+          "path": "/admin/users",
+          "id": "_admin_users",
+          "component": () => import('../src/pages/admin/users.svelte').then(m => m.default)
+        }
+      ],
       "isLayout": false,
       "isReset": false,
       "isIndex": false,
