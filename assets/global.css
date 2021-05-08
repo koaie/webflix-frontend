@@ -62,14 +62,6 @@ body {
   min-width: 250px;
 }
 
-.mdc-dialog .mdc-dialog__scrim {
-  background-color: transparent;
-}
-
-.mdc-dialog--open .mdc-dialog__scrim {
-  opacity: 0;
-}
-
 .mdc-top-app-bar {
   background-color: var(--mdc-theme--background);
 }
