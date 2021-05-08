@@ -4,7 +4,6 @@
   import axios from "axios";
 
   import ActionCard from "../components/card/action.svelte";
-  import CircularProgress from "@smui/circular-progress";
 
   import Plyr from "../components/player/Plyr.svelte";
   import YoutubePlyr from "../components/player/YoutubePlyr.svelte";
@@ -26,9 +25,7 @@
   };
 </script>
 
-{#await call()}
-  <CircularProgress style="height: 32px; width: 32px;" indeterminate />
-{:then data}
+{#await call() then data}
   {#if $params.id}
     {#if data.trailer}
       <div class="youtube-plyr">

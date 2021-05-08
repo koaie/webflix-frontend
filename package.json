@@ -40,6 +40,7 @@
     "@smui/form-field": "^4.0.0",
     "@smui/image-list": "^4.1.0",
     "@smui/layout-grid": "^4.0.0",
+    "@smui/linear-progress": "^4.2.0",
     "@smui/menu": "^4.1.0",
     "@smui/menu-surface": "^4.1.0",
     "@smui/paper": "^4.0.0",
