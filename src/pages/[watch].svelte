@@ -1,14 +1,13 @@
 <script>
+  import { API_URL, user } from "../logic/stores";
+  import { params, goto } from "@roxi/routify";
   import axios from "axios";
+
+  import ActionCard from "../components/card/action.svelte";
+  import CircularProgress from "@smui/circular-progress";
 
   import Plyr from "../components/player/Plyr.svelte";
   import YoutubePlyr from "../components/player/YoutubePlyr.svelte";
-  import ActionCard from "../components/card/action.svelte";
-  import { API_URL, user } from "../logic/stores";
-  import { params, goto, ready } from "@roxi/routify";
-
-  export let url;
-  export let id = "";
 
   const body = JSON.stringify({
     id: $user.id,
@@ -25,34 +24,26 @@
       });
     return result.data[0];
   };
-  const watch = async () => {
-    const res = await call();
-    if (res.path) {
-      url = res.path;
-    } else if (res.trailer) {
-      id = res.trailer;
-    }
-    $ready();
-  };
-  if ($user.id && $params.id) {
-    watch();
-  }
 </script>
 
 {#if $params.id}
-  {#if id}
-    <div class="youtube-plyr">
-      <YoutubePlyr {id} />
-    </div>
-  {:else if url}
-    <div class="plyr">
-      <Plyr {url} />
-    </div>
-  {:else}
-    <div class="flexCentered">
-      <ActionCard on:click={$goto(history.back())} />
-    </div>
-  {/if}
+  {#await call()}
+    <CircularProgress style="height: 32px; width: 32px;" indeterminate />
+  {:then data}
+    {#if data.trailer}
+      <div class="youtube-plyr">
+        <YoutubePlyr trailer={data.trailer} />
+      </div>
+    {:else if data.path}
+      <div class="plyr">
+        <Plyr path={data.path} />
+      </div>
+    {:else}
+      <div class="flexCentered">
+        <ActionCard on:click={$goto(history.back())} />
+      </div>
+    {/if}
+  {/await}
 {:else}
   <div class="flexCentered">
     <ActionCard on:click={$goto(history.back())} />
