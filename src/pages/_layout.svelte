@@ -1,10 +1,10 @@
 <script>
-  // Component imports:
+  import { sideNav, largeDialog, listDialog } from "../logic/stores";
+
   import Sidebar from "../components/layout/Sidebar.svelte";
   import Header from "../components/layout/Header.svelte";
   import LargeDialog from "../components/dialog/large.svelte";
   import ListDialog from "../components/dialog/list.svelte";
-  import { sideNav, largeDialog, listDialog } from "../logic/stores";
 
   const closeSideNav = () => {
     if ($sideNav) {

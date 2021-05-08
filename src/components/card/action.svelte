@@ -1,7 +1,5 @@
 <script>
-  import { goto } from "@roxi/routify";
   import Button, { Label } from "@smui/button";
-
   import Card, { Content, Actions } from "@smui/card";
 
   export let text = "Whoops something went wrong!";
@@ -12,8 +10,7 @@
 <Card>
   <Content>{text}</Content>
   <Actions fullBleed>
-    <Button on:click
-    >
+    <Button on:click>
       <Label><slot name="action">{action}</slot></Label>
       <i class="material-icons" aria-hidden="true">{icon}</i>
     </Button>

@@ -1,12 +1,9 @@
 <script>
   import { goto } from "@roxi/routify";
-  // Components:
-  import TopAppBar from "@smui/top-app-bar";
-
-  // Logic imports:
   import { sideNav } from "../../logic/stores";
 
-  // Funcs:
+  import TopAppBar from "@smui/top-app-bar";
+
   function toggleSideNav() {
     sideNav.update((val) => !val);
   }
@@ -22,14 +19,12 @@
       </div>
     </div>
 
-    <div class="desktopOnly=" />
-
     <div class="logo">
       <!-- svelte-ignore a11y-label-has-associated-control -->
       <h1><label on:click={() => $goto("/")}>webflix</label></h1>
     </div>
-  </div></TopAppBar
->
+  </div>
+</TopAppBar>
 
 <style>
   .icoBot {

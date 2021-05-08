@@ -3,8 +3,6 @@
   import { goto } from "@roxi/routify";
   import axios from "axios";
 
-  import TopMenu from "../../components/layout/TopMenu.svelte";
-  import ActionCard from "../../components/card/action.svelte";
   import Snackbar, { Actions, Label as LabelSnack } from "@smui/snackbar";
   import IconButton from "@smui/icon-button";
   import LayoutGrid, { Cell } from "@smui/layout-grid";
@@ -12,6 +10,9 @@
   import Icon from "@smui/textfield/icon";
   import HelperText from "@smui/textfield/helper-text/index";
   import Button, { Label } from "@smui/button";
+
+  import TopMenu from "../../components/layout/TopMenu.svelte";
+  import ActionCard from "../../components/card/action.svelte";
 
   let email = null;
   let name = null;
