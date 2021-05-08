@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.18.0
- * File generated Sat May 08 2021 17:55:58 GMT+0100 (British Summer Time)
+ * File generated Sat May 08 2021 20:27:11 GMT+0100 (British Summer Time)
  */
 
 export const __version = "2.18.0"
-export const __timestamp = "2021-05-08T16:55:58.558Z"
+export const __timestamp = "2021-05-08T19:27:11.123Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -86,6 +86,56 @@ export const _tree = {
       "badExt": false,
       "absolutePath": "/home/user/webflix/src/pages/admin",
       "children": [
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "content.svelte",
+          "filepath": "/admin/content.svelte",
+          "name": "content",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "/home/user/webflix/src/pages/admin/content.svelte",
+          "importPath": "../src/pages/admin/content.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": "proximity",
+            "prerender": true
+          },
+          "path": "/admin/content",
+          "id": "_admin_content",
+          "component": () => import('../src/pages/admin/content.svelte').then(m => m.default)
+        },
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "genre.svelte",
+          "filepath": "/admin/genre.svelte",
+          "name": "genre",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "/home/user/webflix/src/pages/admin/genre.svelte",
+          "importPath": "../src/pages/admin/genre.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": "proximity",
+            "prerender": true
+          },
+          "path": "/admin/genre",
+          "id": "_admin_genre",
+          "component": () => import('../src/pages/admin/genre.svelte').then(m => m.default)
+        },
         {
           "isFile": true,
           "isDir": false,
