@@ -56,10 +56,10 @@
 </script>
 
 <div class="container" id="media">
-  {#if $user.id}
-    {#await call()}
-      <CircularProgress style="height: 32px; width: 32px;" indeterminate />
-    {:then data}
+  {#await call()}
+    <CircularProgress style="height: 32px; width: 32px;" indeterminate />
+  {:then data}
+    {#if $user.id}
       {#if data}
         <LayoutGrid>
           {#each data as card}
@@ -125,17 +125,17 @@
           {/each}
         </LayoutGrid>
       {/if}
-    {/await}
-  {:else}
-    <div class="container">
-      <ActionCard
-        on:click={$goto("/auth/login")}
-        text="Whoops, you are not logged in!"
-        icon="login"
-        action="Login"
-      />
-    </div>
-  {/if}
+    {:else}
+      <div class="container">
+        <ActionCard
+          on:click={$goto("/auth/login")}
+          text="Whoops, you are not logged in!"
+          icon="login"
+          action="Login"
+        />
+      </div>
+    {/if}
+  {/await}
 </div>
 
 <style>

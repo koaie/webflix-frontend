@@ -26,10 +26,10 @@
   };
 </script>
 
-{#if $params.id}
-  {#await call()}
-    <CircularProgress style="height: 32px; width: 32px;" indeterminate />
-  {:then data}
+{#await call()}
+  <CircularProgress style="height: 32px; width: 32px;" indeterminate />
+{:then data}
+  {#if $params.id}
     {#if data.trailer}
       <div class="youtube-plyr">
         <YoutubePlyr trailer={data.trailer} />
@@ -43,12 +43,12 @@
         <ActionCard on:click={$goto(history.back())} />
       </div>
     {/if}
-  {/await}
-{:else}
-  <div class="flexCentered">
-    <ActionCard on:click={$goto(history.back())} />
-  </div>
-{/if}
+  {:else}
+    <div class="flexCentered">
+      <ActionCard on:click={$goto(history.back())} />
+    </div>
+  {/if}
+{/await}
 
 <style>
   @media only screen and (min-width: 910px) {
