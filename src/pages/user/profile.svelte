@@ -2,9 +2,10 @@
   import { user } from "../../logic/stores";
   import { goto } from "@roxi/routify";
 
+  import DataTable, { Head, Row, Cell } from "@smui/data-table";
+
   import TopMenu from "../../components/layout/TopMenu.svelte";
   import ActionCard from "../../components/card/action.svelte";
-  import DataTable, { Head, Row, Cell } from "@smui/data-table";
 </script>
 
 {#if $user.id}

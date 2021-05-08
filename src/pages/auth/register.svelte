@@ -1,10 +1,10 @@
 <script>
   import { API_URL, user } from "../../logic/stores";
+  import { goto } from "@roxi/routify";
   import axios from "axios";
 
   import Snackbar, { Actions, Label as LabelSnack } from "@smui/snackbar";
   import IconButton from "@smui/icon-button";
-  import { goto } from "@roxi/routify";
   import LayoutGrid, { Cell } from "@smui/layout-grid";
   import Textfield from "@smui/textfield";
   import Icon from "@smui/textfield/icon";

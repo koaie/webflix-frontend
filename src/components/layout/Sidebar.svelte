@@ -1,17 +1,10 @@
 <script>
-  import { url, isActive, params } from "@roxi/routify";
-  import Drawer, {
-    AppContent,
-    Content,
-    Header,
-    Title,
-    Subtitle,
-    Scrim,
-  } from "@smui/drawer";
+  import { url } from "@roxi/routify";
+  import { user } from "../../logic/stores";
+
   import List, { Item, Text, Graphic, Separator, Subheader } from "@smui/list";
   import H6 from "@smui/common/H6.svelte";
-
-  import { user } from "../../logic/stores";
+  import Drawer, { Content, Header, Title, Subtitle } from "@smui/drawer";
 
   export let open = false;
   export let desktop = false;

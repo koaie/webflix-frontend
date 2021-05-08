@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.15.1
- * File generated Fri May 07 2021 21:10:55 GMT+0100 (British Summer Time)
+ * File generated Sat May 08 2021 14:14:55 GMT+0100 (British Summer Time)
  */
 
 export const __version = "2.15.1"
-export const __timestamp = "2021-05-07T20:10:55.190Z"
+export const __timestamp = "2021-05-08T13:14:55.365Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"

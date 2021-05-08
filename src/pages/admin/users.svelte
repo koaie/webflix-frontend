@@ -13,7 +13,6 @@ delete users
 -->
 <script>
   import { API_URL, user, users } from "../../logic/stores";
-
   import { goto } from "@roxi/routify";
   import axios from "axios";
 
