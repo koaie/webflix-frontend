@@ -159,6 +159,10 @@ delete users
       <Cell>Paid At</Cell>
       <Cell>{_user.paidAt}</Cell>
     </Row>
+    <Row>
+      <Cell>Admin</Cell>
+      <Cell>{_user.admin}</Cell>
+    </Row>
   </Head>
 </Dialog>
 {/if}
