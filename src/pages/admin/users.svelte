@@ -143,100 +143,102 @@ delete users
   buttonText="Save"
 >
   {#if data}
-    <LayoutGrid>
-      <GridCell span={6}>
-        <Textfield
-          type="email"
-          bind:invalid
-          updateInvalid
-          bind:value={email}
-          label="Email"
-          input$autocomplete="email"
+    <div id="form">
+      <LayoutGrid>
+        <GridCell span={6}>
+          <Textfield
+            type="email"
+            bind:invalid
+            updateInvalid
+            bind:value={email}
+            label="Email"
+            input$autocomplete="email"
+          >
+            <Icon class="material-icons" slot="leadingIcon">email</Icon>
+            <HelperText validationMsg slot="helper">Invalid email</HelperText>
+          </Textfield>
+        </GridCell>
+        <GridCell span={6}>
+          <Textfield
+            type="password"
+            bind:invalid
+            updateInvalid
+            bind:value={password}
+            label="Password"
+            input$autocomplete="password"
+            required
+          >
+            <Icon class="material-icons" slot="leadingIcon">password</Icon>
+          </Textfield></GridCell
         >
-          <Icon class="material-icons" slot="leadingIcon">email</Icon>
-          <HelperText validationMsg slot="helper">Invalid email</HelperText>
-        </Textfield>
-      </GridCell>
-      <GridCell span={6}>
-        <Textfield
-          type="password"
-          bind:invalid
-          updateInvalid
-          bind:value={password}
-          label="Password"
-          input$autocomplete="password"
-          required
-        >
-          <Icon class="material-icons" slot="leadingIcon">password</Icon>
-        </Textfield></GridCell
-      >
-      <GridCell span={6}>
-        <Textfield
-          type="text"
-          bind:invalid
-          updateInvalid
-          bind:value={name}
-          label="First name"
-        >
-          <Icon class="material-icons" slot="leadingIcon">perm_identity</Icon>
-        </Textfield>
-      </GridCell>
-      <GridCell span={6}>
-        <Textfield
-          type="text"
-          bind:invalid
-          updateInvalid
-          bind:value={surname}
-          label="Last name"
-        >
-          <Icon class="material-icons" slot="leadingIcon">perm_identity</Icon>
-        </Textfield>
-      </GridCell>
-      <GridCell span={6}>
-        <Textfield
-          type="text"
-          bind:invalid={invalidDate}
-          bind:value={dob}
-          label="Date of birth"
-        >
-          <Icon class="material-icons" slot="leadingIcon">today</Icon>
-          <HelperText slot="helper">yyyy-mm-dd</HelperText>
-        </Textfield>
-      </GridCell>
-      <GridCell span={6}>
-        <Textfield
-          type="text"
-          bind:invalid
-          updateInvalid
-          bind:value={phone}
-          label="Phone number"
-        >
-          <Icon class="material-icons" slot="leadingIcon">phone</Icon>
-        </Textfield>
-      </GridCell>
-      <GridCell span={6}>
-        <Textfield
-          type="text"
-          bind:invalid
-          updateInvalid
-          bind:value={key}
-          label="Security key"
-        >
-          <Icon class="material-icons" slot="leadingIcon">lock</Icon>
-        </Textfield>
-      </GridCell>
-      <GridCell span={6}>
-        <Textfield
-          type="text"
-          bind:invalid
-          updateInvalid
-          bind:value={country}
-          label="Country"
-        >
-          <Icon class="material-icons" slot="leadingIcon">place</Icon>
-        </Textfield>
-      </GridCell>
-    </LayoutGrid>
+        <GridCell span={6}>
+          <Textfield
+            type="text"
+            bind:invalid
+            updateInvalid
+            bind:value={name}
+            label="First name"
+          >
+            <Icon class="material-icons" slot="leadingIcon">perm_identity</Icon>
+          </Textfield>
+        </GridCell>
+        <GridCell span={6}>
+          <Textfield
+            type="text"
+            bind:invalid
+            updateInvalid
+            bind:value={surname}
+            label="Last name"
+          >
+            <Icon class="material-icons" slot="leadingIcon">perm_identity</Icon>
+          </Textfield>
+        </GridCell>
+        <GridCell span={6}>
+          <Textfield
+            type="text"
+            bind:invalid={invalidDate}
+            bind:value={dob}
+            label="Date of birth"
+          >
+            <Icon class="material-icons" slot="leadingIcon">today</Icon>
+            <HelperText slot="helper">yyyy-mm-dd</HelperText>
+          </Textfield>
+        </GridCell>
+        <GridCell span={6}>
+          <Textfield
+            type="text"
+            bind:invalid
+            updateInvalid
+            bind:value={phone}
+            label="Phone number"
+          >
+            <Icon class="material-icons" slot="leadingIcon">phone</Icon>
+          </Textfield>
+        </GridCell>
+        <GridCell span={6}>
+          <Textfield
+            type="text"
+            bind:invalid
+            updateInvalid
+            bind:value={key}
+            label="Security key"
+          >
+            <Icon class="material-icons" slot="leadingIcon">lock</Icon>
+          </Textfield>
+        </GridCell>
+        <GridCell span={6}>
+          <Textfield
+            type="text"
+            bind:invalid
+            updateInvalid
+            bind:value={country}
+            label="Country"
+          >
+            <Icon class="material-icons" slot="leadingIcon">place</Icon>
+          </Textfield>
+        </GridCell>
+      </LayoutGrid>
+    </div>
   {/if}
 </Dialog>
 
@@ -286,6 +288,7 @@ delete users
                   class="material-icons"
                   on:click={() => {
                     data = user;
+                    open = false;
                     open = true;
                   }}>edit</IconButton
                 ></Cell
