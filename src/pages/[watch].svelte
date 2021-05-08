@@ -5,6 +5,7 @@
 
   import ActionCard from "../components/card/action.svelte";
   import CircularProgress from "@smui/circular-progress";
+  import LinearProgress from "@smui/linear-progress";
 
   import Plyr from "../components/player/Plyr.svelte";
   import YoutubePlyr from "../components/player/YoutubePlyr.svelte";
@@ -28,6 +29,7 @@
 
 {#await call()}
   <CircularProgress style="height: 32px; width: 32px;" indeterminate />
+  <LinearProgress indeterminate />
 {:then data}
   {#if $params.id}
     {#if data.trailer}
