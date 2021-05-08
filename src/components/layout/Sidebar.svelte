@@ -70,22 +70,24 @@
       {/if}
       {#if $user.admin}
         <Separator />
-        <Subheader component={H6}>Labels</Subheader>
+        <Subheader component={H6}>Admin</Subheader>
         <Item
-          href={$url("/watch")}
-          on:click={() => setActive("Player")}
-          activated={active === "Player"}
+          href={$url("/admin/users")}
+          on:click={() => setActive("users")}
+          activated={active === "users"}
         >
-          <Graphic class="material-icons" aria-hidden="true">tv</Graphic>
-          <Text>Player</Text>
+          <Graphic class="material-icons" aria-hidden="true">people</Graphic>
+          <Text>Users</Text>
         </Item>
         <Item
           href={$url("/watch")}
           on:click={() => setActive("Youtube Player")}
           activated={active === "Youtube Player"}
         >
-          <Graphic class="material-icons" aria-hidden="true">tv</Graphic>
-          <Text>Youtube Player</Text>
+          <Graphic class="material-icons" aria-hidden="true"
+            >subscriptions</Graphic
+          >
+          <Text>Content</Text>
         </Item>
       {/if}
       <Separator />

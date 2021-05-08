@@ -135,9 +135,12 @@ delete users
   title="Edit"
   {open}
   on:click={() => {
-    console.log("click");
+    if (password && data) {
+      edit(data);
+    }
     open = false;
   }}
+  buttonText="Save"
 >
   {#if data}
     <LayoutGrid>
@@ -233,21 +236,6 @@ delete users
           <Icon class="material-icons" slot="leadingIcon">place</Icon>
         </Textfield>
       </GridCell>
-      <GridCell span={12}>
-        <div class="right">
-          <Button
-            width={120}
-            variant="outlined"
-            on:click={() => {
-              if (password) {
-                edit(data);
-              }
-            }}
-          >
-            <Label>Save</Label>
-          </Button>
-        </div>
-      </GridCell>
     </LayoutGrid>
   {/if}
 </Dialog>
@@ -337,8 +325,5 @@ delete users
     margin: 0;
     background-color: #232324;
     border-radius: 0.4rem;
-  }
-  .right {
-    float: right;
   }
 </style>
