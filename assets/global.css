@@ -33,13 +33,6 @@ body {
 .whiteText {
   color: #fff;
 }
-.load {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  z-index: 10;
-}
 
 .hide {
   display: none;

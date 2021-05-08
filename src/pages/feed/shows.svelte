@@ -44,12 +44,10 @@
   };
 
   const call = async () => {
-    loading.update((val) => true);
     let result = await axios
       .post(`${$API_URL}/content/view.php`, body, {
         "Content-type": "application/json",
       })
-      .then(loading.update((val) => false))
       .catch((err) => {
         console.log(err);
       });
@@ -59,7 +57,7 @@
 
 <div class="container" id="media">
   {#await call()}
-    <!-- <CircularProgress style="height: 32px; width: 32px;" indeterminate /> -->
+    <CircularProgress style="height: 32px; width: 32px;" indeterminate />
   {:then data}
     {#if $user.id}
       {#if data}

@@ -1,11 +1,10 @@
 <script>
-  import { sideNav, largeDialog, listDialog, loading } from "../logic/stores";
+  import { sideNav, largeDialog, listDialog } from "../logic/stores";
 
   import Sidebar from "../components/layout/Sidebar.svelte";
   import Header from "../components/layout/Header.svelte";
   import LargeDialog from "../components/dialog/large.svelte";
   import ListDialog from "../components/dialog/list.svelte";
-  import LinearProgress from "@smui/linear-progress";
 
   const closeSideNav = () => {
     if ($sideNav) {
@@ -16,12 +15,6 @@
     sideNav.update((val) => !val);
   }
 </script>
-
-{#if $loading}
-  <div class="load">
-    <LinearProgress indeterminate />
-  </div>
-{/if}
 
 <div class="layout">
   <div id="header" class="flexCentered bgPrimary">
