@@ -1,7 +1,7 @@
 <script>
   import Dialog, { Header, Title, Content, Actions } from "@smui/dialog";
   import Chip, { Set, Text } from "@smui/chips";
-  import YoutubePlyr from "../player/YoutubePlyr.svelte"
+  import YoutubePlyr from "../player/YoutubePlyr.svelte";
   import Paper, {
     Title as PaperTitle,
     Subtitle,
@@ -9,11 +9,10 @@
   } from "@smui/paper";
   import { content } from "../../logic/stores";
   import Button, { Label } from "@smui/button";
-  import { Plyr } from "svelte-plyr-fixed";
-  let player;
+
   export let open = false;
   export let buttonText = "Done";
-  
+
   let genres;
   let id;
   $: {
@@ -22,6 +21,7 @@
     }
   }
 </script>
+
 {#if open}
   <Dialog
     bind:open
@@ -36,7 +36,7 @@
         <Paper>
           <PaperContent>
             {#if $content.trailer}
-            <YoutubePlyr id={$content.trailer} />
+              <YoutubePlyr id={$content.trailer} />
             {/if}
           </PaperContent>
 
@@ -65,7 +65,6 @@
         action="accept"
         on:click={() => {
           open = false;
-          player = null;
         }}
       >
         <Label>{buttonText}</Label>
