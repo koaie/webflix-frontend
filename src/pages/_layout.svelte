@@ -1,6 +1,5 @@
 <script>
-  import { sideNav, largeDialog, listDialog, user } from "../logic/stores";
-  import LinearProgress from "@smui/linear-progress";
+  import { sideNav, largeDialog, listDialog } from "../logic/stores";
 
   import Sidebar from "../components/layout/Sidebar.svelte";
   import Header from "../components/layout/Header.svelte";
@@ -16,12 +15,6 @@
     sideNav.update((val) => !val);
   }
 </script>
-
-{#if !$user.id}
-  <div class="load">
-    <LinearProgress indeterminate />
-  </div>
-{/if}
 
 <div class="layout">
   <div id="header" class="flexCentered bgPrimary">

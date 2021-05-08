@@ -18,7 +18,6 @@
   } from "@smui/card";
   import Button, { Label } from "@smui/button";
   import LayoutGrid, { Cell } from "@smui/layout-grid";
-  import CircularProgress from "@smui/circular-progress";
 
   import ActionCard from "../../components/card/action.svelte";
 
@@ -54,9 +53,7 @@
 </script>
 
 <div class="container" id="media">
-  {#await call()}
-    <CircularProgress style="height: 32px; width: 32px;" indeterminate />
-  {:then data}
+  {#await call() then data}
     {#if $user.id}
       {#if data}
         <LayoutGrid>

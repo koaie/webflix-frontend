@@ -38,14 +38,6 @@ body {
   display: none;
 }
 
-.load {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  z-index: 10;
-}
-
 .page .plyr {
   align-items: center;
   direction: ltr;

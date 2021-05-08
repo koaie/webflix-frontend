@@ -17,7 +17,6 @@ delete users
   import Textfield from "@smui/textfield";
   import Icon from "@smui/textfield/icon";
   import HelperText from "@smui/textfield/helper-text/index";
-  import CircularProgress from "@smui/circular-progress";
 
   import ActionCard from "../../components/card/action.svelte";
   import Dialog from "../../components/dialog/form.svelte";
@@ -40,7 +39,7 @@ delete users
   let error;
   let errorText;
 
-  function updateData(x) {
+  function setData(x) {
     data = x;
     return data;
   }
@@ -74,10 +73,10 @@ delete users
           "Content-type": "application/json",
         }
       )
-      .then((x) => updateData(x.data))
       .catch((err) => {
         console.log(err);
       });
+    setData(result.data);
     return result.data;
   };
 
@@ -246,9 +245,7 @@ delete users
     </Actions>
   </Snackbar>
 {/if}
-{#await view()}
-  <CircularProgress style="height: 32px; width: 32px;" indeterminate />
-{:then users}
+{#await view() then users}
   {#if $user.id}
     <div class="container" id="profile">
       <DataTable style="max-width: 100%;">
