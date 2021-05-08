@@ -1,5 +1,5 @@
 <script>
-  import { goto } from "@roxi/routify";
+  import { goto, ready } from "@roxi/routify";
   import axios from "axios";
   import {
     user,
@@ -7,7 +7,6 @@
     API_URL,
     content,
     episodes,
-    loading,
   } from "../../logic/stores";
 
   import Card, {
