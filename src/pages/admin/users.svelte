@@ -24,7 +24,6 @@ delete users
   import Textfield from "@smui/textfield";
   import Icon from "@smui/textfield/icon";
   import HelperText from "@smui/textfield/helper-text/index";
-  import Button, { Label } from "@smui/button";
 
   import ActionCard from "../../components/card/action.svelte";
   import Dialog from "../../components/dialog/form.svelte";
