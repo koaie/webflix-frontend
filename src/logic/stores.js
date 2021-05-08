@@ -17,6 +17,7 @@ export const listDialog = writable(false);
 export const sideNav = writable(false);
 export const path = writable(false);
 export const user = writable(getUser());
+export const users = writable(false);
 export const data = writable(false);
 export const content = writable(false);
 export const episodes = writable(false);

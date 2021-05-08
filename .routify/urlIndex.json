@@ -1,4 +1,5 @@
 [
+  "/admin/users",
   "/auth/forgot-password",
   "/auth/login",
   "/auth/logout",
