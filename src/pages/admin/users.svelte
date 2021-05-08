@@ -2,17 +2,11 @@
 !TODO
 
 ui
-view users
-edit users
-delete users
-
-api
-view users
 edit users
 delete users
 -->
 <script>
-  import { API_URL, user, users } from "../../logic/stores";
+  import { API_URL, user } from "../../logic/stores";
   import { goto } from "@roxi/routify";
   import axios from "axios";
 
@@ -23,6 +17,7 @@ delete users
   import Textfield from "@smui/textfield";
   import Icon from "@smui/textfield/icon";
   import HelperText from "@smui/textfield/helper-text/index";
+  import CircularProgress from "@smui/circular-progress";
 
   import ActionCard from "../../components/card/action.svelte";
   import Dialog from "../../components/dialog/form.svelte";
@@ -40,10 +35,15 @@ delete users
   let invalidDate = false;
   let open = false;
   let data;
-  let body = null;
-  let error;
+  let _user;
 
+  let error;
   let errorText;
+
+  function updateData(x) {
+    data = x;
+    return data;
+  }
 
   $: {
     if ($user.error) {
@@ -63,27 +63,23 @@ delete users
     }
   }
 
-  const call = async () => {
+  const view = async () => {
     let result = await axios
-      .post(`${$API_URL}/admin/users/view.php`, body, {
-        "Content-type": "application/json",
-      })
+      .post(
+        `${$API_URL}/admin/users/view.php`,
+        JSON.stringify({
+          id: $user.id,
+        }),
+        {
+          "Content-type": "application/json",
+        }
+      )
+      .then((x) => updateData(x.data))
       .catch((err) => {
         console.log(err);
       });
     return result.data;
   };
-
-  const view = async () => {
-    body = JSON.stringify({
-      id: $user.id,
-    });
-    let res = await call();
-    users.update((val) => res);
-  };
-  if ($user.admin) {
-    view();
-  }
 
   const del = async (userId) => {
     let res = await axios.post(
@@ -97,35 +93,35 @@ delete users
       }
     );
     view();
-  };
-
-  const editCall = async () => {
-    let result = await axios
-      .post(`${$API_URL}/admin/users/edit.php`, body, {
-        "Content-type": "application/json",
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    return result.data;
+    return res.data;
   };
 
   const edit = async (obj) => {
-    body = JSON.stringify({
-      id: $user.id,
-      userId: obj.id,
-      email: email ? email : obj.email,
-      name: name ? name : obj.name,
-      surname: surname ? surname : obj.surname,
-      dob: dob ? dob : obj.dob,
-      country: country ? country : obj.country,
-      phoneNumber: phone ? phone : obj.phoneNumber,
-      password: password ? password : obj.password,
-      securityKey: key ? key : obj.securityKey,
-      status: obj.status,
-    });
-    await editCall();
+    let res = await axios
+      .post(
+        `${$API_URL}/admin/users/edit.php`,
+        JSON.stringify({
+          id: $user.id,
+          userId: obj.id,
+          email: email ? email : obj.email,
+          name: name ? name : obj.name,
+          surname: surname ? surname : obj.surname,
+          dob: dob ? dob : obj.dob,
+          country: country ? country : obj.country,
+          phoneNumber: phone ? phone : obj.phoneNumber,
+          password: password ? password : obj.password,
+          securityKey: key ? key : obj.securityKey,
+          status: obj.status,
+        }),
+        {
+          "Content-type": "application/json",
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
     view();
+    return res.data;
   };
 </script>
 
@@ -133,14 +129,14 @@ delete users
   title="Edit"
   {open}
   on:click={() => {
-    if (password && data) {
-      edit(data);
+    if (password && _user) {
+      edit(_user);
     }
     open = false;
   }}
   buttonText="Save"
 >
-  {#if data}
+  {#if _user}
     <div id="form">
       <LayoutGrid>
         <GridCell span={6}>
@@ -251,7 +247,9 @@ delete users
       </Actions>
     </Snackbar>
   {/if}
-  {#if $users}
+  {#await view()}
+    <CircularProgress style="height: 32px; width: 32px;" indeterminate />
+  {:then users}
     <div class="container" id="profile">
       <DataTable style="max-width: 100%;">
         <Head>
@@ -270,7 +268,7 @@ delete users
           </Row>
         </Head>
         <Body>
-          {#each $users as user}
+          {#each data as user}
             <Row>
               <Cell>{user.name}</Cell>
               <Cell>{user.surname}</Cell>
@@ -285,15 +283,16 @@ delete users
                 <IconButton
                   class="material-icons"
                   on:click={() => {
-                    data = user;
+                    _user = user;
                     open = false;
                     open = true;
                   }}>edit</IconButton
                 ></Cell
               >
               <Cell>
-                <IconButton class="material-icons" on:click={() => del(user.id)}
-                  >delete</IconButton
+                <IconButton
+                  class="material-icons"
+                  on:click={async () => await del(user.id)}>delete</IconButton
                 ></Cell
               >
             </Row>
@@ -301,7 +300,7 @@ delete users
         </Body>
       </DataTable>
     </div>
-  {/if}
+  {/await}
 {:else}
   <div class="card-container">
     <ActionCard
