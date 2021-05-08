@@ -32,11 +32,11 @@
   {#if $params.id}
     {#if data.trailer}
       <div class="youtube-plyr">
-        <YoutubePlyr trailer={data.trailer} />
+        <YoutubePlyr id={data.trailer} />
       </div>
     {:else if data.path}
       <div class="plyr">
-        <Plyr path={data.path} />
+        <Plyr url={data.path} />
       </div>
     {:else}
       <div class="flexCentered">
