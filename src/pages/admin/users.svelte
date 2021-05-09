@@ -11,7 +11,7 @@
   import Icon from "@smui/textfield/icon";
   import HelperText from "@smui/textfield/helper-text/index";
 
-  import ActionCard from "../../compo∫nents/card/action.svelte";
+  import ActionCard from "../../components/card/action.svelte";
   import Dialog from "../../components/dialog/form.svelte";
 
   let email = null;
