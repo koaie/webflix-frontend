@@ -17,23 +17,19 @@
   import ActionCard from "../../components/card/action.svelte";
   import Dialog from "../../components/dialog/form.svelte";
 
+  let date;
   let email = null;
-  let name = null;
-  let surname = null;
-  let dob = null;
-  let country = null;
-  let phone = null;
-  let password = null;
-  let key = null;
   let invalid = false;
   let dateRegex = /(201[0-7]|200[0-9]|[0-1][0-9]{3})[-.\/](1[0-2]|0[1-9])[-.\/](3[01]|[0-2][1-9]|[12]0)/;
   let invalidDate = false;
-  let open = false;
+
   let data;
   let _content;
   let _genres;
   let genres;
+
   let viewMenu;
+  let editMenu;
 
   let error;
   let errorText;
@@ -70,8 +66,8 @@
   }
 
   $: {
-    if (dob) {
-      if (dob.match(dateRegex)) {
+    if (date) {
+      if (date.match(dateRegex)) {
         invalidDate = false;
       } else {
         invalidDate = true;
@@ -120,14 +116,6 @@
           id: $user.id,
           userId: obj.id,
           email: email ? email : obj.email,
-          name: name ? name : obj.name,
-          surname: surname ? surname : obj.surname,
-          dob: dob ? dob : obj.dob,
-          country: country ? country : obj.country,
-          phoneNumber: phone ? phone : obj.phoneNumber,
-          password: password ? password : obj.password,
-          securityKey: key ? key : obj.securityKey,
-          status: obj.status,
         }),
         {
           "Content-type": "application/json",
@@ -187,12 +175,12 @@
 
 <Dialog
   title="Edit"
-  {open}
+  open={editMenu}
   on:click={() => {
-    if (password && _content) {
+    if (_content) {
       edit(_content);
     }
-    open = false;
+    editMenu = false;
   }}
   buttonText="Save"
 >
@@ -210,85 +198,6 @@
           >
             <Icon class="material-icons" slot="leadingIcon">email</Icon>
             <HelperText validationMsg slot="helper">Invalid email</HelperText>
-          </Textfield>
-        </GridCell>
-        <GridCell span={6}>
-          <Textfield
-            type="password"
-            bind:invalid
-            updateInvalid
-            bind:value={password}
-            label="Password"
-            input$autocomplete="password"
-            required
-          >
-            <Icon class="material-icons" slot="leadingIcon">password</Icon>
-          </Textfield></GridCell
-        >
-        <GridCell span={6}>
-          <Textfield
-            type="text"
-            bind:invalid
-            updateInvalid
-            bind:value={name}
-            label="First name"
-          >
-            <Icon class="material-icons" slot="leadingIcon">perm_identity</Icon>
-          </Textfield>
-        </GridCell>
-        <GridCell span={6}>
-          <Textfield
-            type="text"
-            bind:invalid
-            updateInvalid
-            bind:value={surname}
-            label="Last name"
-          >
-            <Icon class="material-icons" slot="leadingIcon">perm_identity</Icon>
-          </Textfield>
-        </GridCell>
-        <GridCell span={6}>
-          <Textfield
-            type="text"
-            bind:invalid={invalidDate}
-            bind:value={dob}
-            label="Date of birth"
-          >
-            <Icon class="material-icons" slot="leadingIcon">today</Icon>
-            <HelperText slot="helper">yyyy-mm-dd</HelperText>
-          </Textfield>
-        </GridCell>
-        <GridCell span={6}>
-          <Textfield
-            type="text"
-            bind:invalid
-            updateInvalid
-            bind:value={phone}
-            label="Phone number"
-          >
-            <Icon class="material-icons" slot="leadingIcon">phone</Icon>
-          </Textfield>
-        </GridCell>
-        <GridCell span={6}>
-          <Textfield
-            type="text"
-            bind:invalid
-            updateInvalid
-            bind:value={key}
-            label="Security key"
-          >
-            <Icon class="material-icons" slot="leadingIcon">lock</Icon>
-          </Textfield>
-        </GridCell>
-        <GridCell span={6}>
-          <Textfield
-            type="text"
-            bind:invalid
-            updateInvalid
-            bind:value={country}
-            label="Country"
-          >
-            <Icon class="material-icons" slot="leadingIcon">place</Icon>
           </Textfield>
         </GridCell>
       </LayoutGrid>
@@ -336,9 +245,9 @@
                 <IconButton
                   class="material-icons"
                   on:click={() => {
-                    _user = user;
-                    open = false;
-                    open = true;
+                    _content = content;
+                    editMenu = false;
+                    editMenu = true;
                   }}>edit</IconButton
                 ></Cell
               >
