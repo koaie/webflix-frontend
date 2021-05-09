@@ -93,12 +93,12 @@
     return result.data;
   };
 
-  const del = async (userId) => {
+  const del = async (contentId) => {
     let res = await axios.post(
-      `${$API_URL}/admin/users/remove.php`,
+      `${$API_URL}/admin/content/remove.php`,
       JSON.stringify({
         id: $user.id,
-        userId: userId,
+        contentId: contentId,
       }),
       {
         "Content-type": "application/json",
@@ -254,7 +254,8 @@
               <Cell>
                 <IconButton
                   class="material-icons"
-                  on:click={async () => await del(user.id)}>delete</IconButton
+                  on:click={async () => await del(_content.contentId)}
+                  >delete</IconButton
                 ></Cell
               >
             </Row>
