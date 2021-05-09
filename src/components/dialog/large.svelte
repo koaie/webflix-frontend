@@ -15,7 +15,7 @@
   $: {
     if ($content.genres) {
       genres = $content.genres.split(",").map((el) => {
-        const res = el.match(/([\w-]+):(\w+)/);
+        const res = el.match(/(.+):(.+)/);
         return res[2];
       });
     }

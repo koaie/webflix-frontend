@@ -73,17 +73,17 @@
           <Text>Users</Text>
         </Item>
         <Item
-        href={$url("/admin/genre")}
-        on:click={() => setActive("genre")}
-        activated={active === "genre"}
-      >
-        <Graphic class="material-icons" aria-hidden="true">receipt</Graphic>
-        <Text>Genres</Text>
-      </Item>
+          href={$url("/admin/genre")}
+          on:click={() => setActive("genre")}
+          activated={active === "genre"}
+        >
+          <Graphic class="material-icons" aria-hidden="true">receipt</Graphic>
+          <Text>Genres</Text>
+        </Item>
         <Item
-          href={$url("/watch")}
-          on:click={() => setActive("Youtube Player")}
-          activated={active === "Youtube Player"}
+          href={$url("/admin/content")}
+          on:click={() => setActive("Content")}
+          activated={active === "Content"}
         >
           <Graphic class="material-icons" aria-hidden="true"
             >subscriptions</Graphic
