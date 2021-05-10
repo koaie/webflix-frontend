@@ -37,6 +37,7 @@
   let editMenu;
   let editEpisodeMenu;
   let deleteEpisode;
+  let deleteSeason;
 
   let error;
   let errorText;
@@ -92,10 +93,19 @@
   $: {
     if (deleteEpisode) {
       _episodes = _episodes.filter(
-        (episode) => episode.episodeId != _episode.episodeId
+        (episode) => episode.episodeId != deleteEpisode.episodeId
       );
       view();
       deleteEpisode = null;
+    }
+  }
+
+  $: {
+    if (deleteSeason) {
+      _seasons.delete(deleteSeason.id);
+      seasons = Array.from(_seasons, ([id, season]) => ({ id, season }));
+      view();
+      deleteSeason = null;
     }
   }
 
@@ -154,7 +164,6 @@
       .catch((err) => {
         console.log(err);
       });
-    view();
     return result.data;
   };
 
@@ -172,7 +181,6 @@
       .catch((err) => {
         console.log(err);
       });
-    view();
     return result.data;
   };
 
@@ -190,7 +198,6 @@
       .catch((err) => {
         console.log(err);
       });
-    view();
     return result.data;
   };
 
@@ -208,7 +215,6 @@
       .catch((err) => {
         console.log(err);
       });
-    view();
     return result.data;
   };
 
@@ -226,7 +232,6 @@
       .catch((err) => {
         console.log(err);
       });
-    view();
     return result.data;
   };
 
@@ -297,6 +302,7 @@
       .catch((err) => {
         console.log(err);
       });
+      
     return result.data;
   };
 
@@ -408,6 +414,7 @@
           <IconButton
             class="material-icons"
             on:click={() => {
+              deleteSeason = season;
               delSeason(season.id);
             }}>delete</IconButton
           >
@@ -440,7 +447,6 @@
                     <IconButton
                       class="material-icons"
                       on:click={() => {
-                        _episode = content;
                         deleteEpisode = content;
                         delEpisode(content.episodeId);
                       }}>delete</IconButton
@@ -509,7 +515,6 @@
                     _content = content;
                     editMenu = false;
                     editMenu = true;
-                    console.log(content);
                   }}>edit</IconButton
                 ></Cell
               >
