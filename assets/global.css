@@ -70,7 +70,6 @@ body {
 }
 
 #profile .mdc-data-table {
-  background-color: transparent;
   -webkit-overflow-scrolling: touch;
   display: inline-flex;
   flex-direction: column;
@@ -78,6 +77,20 @@ body {
   position: relative;
   border-style: none;
 }
+
+#contentEdit .mdc-data-table__header-cell {
+  background-color: transparent;
+}
+
+#contentEdit .mdc-data-table {
+  -webkit-overflow-scrolling: touch;
+  display: inline-flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+  border-style: none;
+}
+
 .mdc-card__media-content h2 {
   margin: 0px;
   text-shadow: #000 1px 0 10px;

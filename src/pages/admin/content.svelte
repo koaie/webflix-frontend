@@ -57,12 +57,11 @@
           const res = el.match(contentRegex);
           return {
             episodeId: res[1],
-            episode: res[3],
+            episode: res[2],
+            seadonId: res[3],
             season: res[4],
-            duration: res[2],
           };
         });
-        console.log(_episodes);
       }
     }
   }
@@ -104,7 +103,7 @@
       .catch((err) => {
         console.log(err);
       });
-    setData(result.data);
+      view();
     return result.data;
   };
 
@@ -122,7 +121,7 @@
       .catch((err) => {
         console.log(err);
       });
-    setData(result.data);
+      view();
     return result.data;
   };
 
@@ -140,7 +139,7 @@
       .catch((err) => {
         console.log(err);
       });
-    setData(result.data);
+      view();
     return result.data;
   };
 
@@ -158,7 +157,7 @@
       .catch((err) => {
         console.log(err);
       });
-    setData(result.data);
+      view();
     return result.data;
   };
 
@@ -176,11 +175,11 @@
       .catch((err) => {
         console.log(err);
       });
-    setData(result.data);
+      view();
     return result.data;
   };
 
-  const removeSeason = async () => {
+  const delSeason = async () => {
     let result = await axios
       .post(
         `${$API_URL}/content/view.php`,
@@ -194,7 +193,7 @@
       .catch((err) => {
         console.log(err);
       });
-    setData(result.data);
+      view();
     return result.data;
   };
 
@@ -212,7 +211,7 @@
       .catch((err) => {
         console.log(err);
       });
-    setData(result.data);
+      view();
     return result.data;
   };
 
@@ -230,16 +229,17 @@
       .catch((err) => {
         console.log(err);
       });
-    setData(result.data);
+      view();
     return result.data;
   };
 
-  const removeEpisode = async () => {
+  const delEpisode = async (episodeId) => {
     let result = await axios
       .post(
-        `${$API_URL}/content/view.php`,
+        `${$API_URL}/admin/content/episodes/remove.php`,
         JSON.stringify({
           id: $user.id,
+          episodeId: episodeId
         }),
         {
           "Content-type": "application/json",
@@ -248,7 +248,7 @@
       .catch((err) => {
         console.log(err);
       });
-    setData(result.data);
+      view();
     return result.data;
   };
 
@@ -362,22 +362,51 @@
   buttonText="Save"
 >
   {#if _content}
-    <div id="form">
-      <LayoutGrid>
-        <GridCell span={6}>
-          <Textfield
-            type="email"
-            bind:invalid
-            updateInvalid
-            bind:value={email}
-            label="Email"
-            input$autocomplete="email"
-          >
-            <Icon class="material-icons" slot="leadingIcon">email</Icon>
-            <HelperText validationMsg slot="helper">Invalid email</HelperText>
-          </Textfield>
-        </GridCell>
-      </LayoutGrid>
+    <div class="container" id="contentEdit">
+      <DataTable style="max-width: 100%;">
+        <Head>
+          <Row>
+            <Cell>Season</Cell>
+            <Cell>Episode</Cell>
+            <Cell>Edit</Cell>
+            <Cell>Remove</Cell>
+          </Row>
+        </Head>
+        <Body>
+          {#each _episodes as content}
+            <Row>
+              <Cell>{content.season}</Cell>
+              <Cell>{content.episode}</Cell>
+              <Cell>
+                <IconButton
+                  class="material-icons"
+                  on:click={() => {
+                    _content = content;
+                    editMenu = false;
+                    editMenu = true;
+                  }}>edit</IconButton
+                >
+              </Cell>
+              <Cell>
+                <IconButton
+                  class="material-icons"
+                  on:click={async () => await delEpisode(_content.episodeId)}
+                  >delete</IconButton
+                ></Cell
+              >
+            </Row>
+          {/each}
+        </Body>
+      </DataTable>
+    </div>
+  {:else}
+    <div class="card-container">
+      <ActionCard
+        on:click={$goto("/auth/login")}
+        text="Whoops, you are not logged in!"
+        icon="login"
+        action="Login"
+      />
     </div>
   {/if}
 </Dialog>
