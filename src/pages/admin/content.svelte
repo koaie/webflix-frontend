@@ -6,7 +6,7 @@
   import Snackbar, { Actions, Label as LabelSnack } from "@smui/snackbar";
   import IconButton from "@smui/icon-button";
   import Paper, { Subtitle, Content as PaperContent } from "@smui/paper";
-  import Chip, { Set, Text } from "@smui/chips";
+  import Chip, { Set as ChipSet, Text } from "@smui/chips";
   import { Content } from "@smui/dialog";
   import DataTable, { Head, Body, Row, Cell } from "@smui/data-table";
   import LayoutGrid, { Cell as GridCell } from "@smui/layout-grid";
@@ -25,7 +25,8 @@
   let invalidDate = false;
 
   let data;
-  let _seasons;
+  const _seasons = new Map();
+  let _episode
   let _episodes;
   let _content;
   let _genres;
@@ -33,6 +34,7 @@
 
   let viewMenu;
   let editMenu;
+  let editEpisodeMenu;
 
   let error;
   let errorText;
@@ -58,9 +60,20 @@
           return {
             episodeId: res[1],
             episode: res[2],
-            seadonId: res[3],
+            seasonId: res[3],
             season: res[4],
           };
+        });
+      }
+      if (_episodes) {
+        let temp = _episodes.map((el) => {
+          return { seasonId: el.seasonId, season: el.season };
+        });
+        temp.forEach(el => {
+          if(!_seasons.has(el.seaonId))
+          {
+            _seasons.set(el.seasonId, el.season);
+          }
         });
       }
     }
@@ -103,7 +116,7 @@
       .catch((err) => {
         console.log(err);
       });
-      view();
+    view();
     return result.data;
   };
 
@@ -121,7 +134,7 @@
       .catch((err) => {
         console.log(err);
       });
-      view();
+    view();
     return result.data;
   };
 
@@ -139,7 +152,7 @@
       .catch((err) => {
         console.log(err);
       });
-      view();
+    view();
     return result.data;
   };
 
@@ -157,7 +170,7 @@
       .catch((err) => {
         console.log(err);
       });
-      view();
+    view();
     return result.data;
   };
 
@@ -175,7 +188,7 @@
       .catch((err) => {
         console.log(err);
       });
-      view();
+    view();
     return result.data;
   };
 
@@ -193,7 +206,7 @@
       .catch((err) => {
         console.log(err);
       });
-      view();
+    view();
     return result.data;
   };
 
@@ -211,7 +224,7 @@
       .catch((err) => {
         console.log(err);
       });
-      view();
+    view();
     return result.data;
   };
 
@@ -229,7 +242,7 @@
       .catch((err) => {
         console.log(err);
       });
-      view();
+    view();
     return result.data;
   };
 
@@ -239,7 +252,7 @@
         `${$API_URL}/admin/content/episodes/remove.php`,
         JSON.stringify({
           id: $user.id,
-          episodeId: episodeId
+          episodeId: episodeId,
         }),
         {
           "Content-type": "application/json",
@@ -248,7 +261,7 @@
       .catch((err) => {
         console.log(err);
       });
-      view();
+    view();
     return result.data;
   };
 
@@ -332,11 +345,11 @@
         Genres
         <Content>
           {#if genres}
-            <Set chips={genres} let:chip nonInteractive>
+            <ChipSet chips={genres} let:chip nonInteractive>
               <Chip {chip}>
                 <Text>{chip}</Text>
               </Chip>
-            </Set>
+            </ChipSet>
           {/if}
         </Content>
         <PaperContent>
@@ -362,11 +375,12 @@
   buttonText="Save"
 >
   {#if _content}
+  {#each Array.from(_seasons, ([id, season]) => ({ id, season })) as season}
+  Season {season.season}
     <div class="container" id="contentEdit">
       <DataTable style="max-width: 100%;">
         <Head>
           <Row>
-            <Cell>Season</Cell>
             <Cell>Episode</Cell>
             <Cell>Edit</Cell>
             <Cell>Remove</Cell>
@@ -374,16 +388,16 @@
         </Head>
         <Body>
           {#each _episodes as content}
+          {#if content.season == season.season}
             <Row>
-              <Cell>{content.season}</Cell>
               <Cell>{content.episode}</Cell>
               <Cell>
                 <IconButton
                   class="material-icons"
                   on:click={() => {
-                    _content = content;
+                    _episode = content;
                     editMenu = false;
-                    editMenu = true;
+                    editEpisodeMenu = true;
                   }}>edit</IconButton
                 >
               </Cell>
@@ -395,10 +409,12 @@
                 ></Cell
               >
             </Row>
+            {/if}
           {/each}
         </Body>
       </DataTable>
     </div>
+    {/each}
   {:else}
     <div class="card-container">
       <ActionCard
@@ -441,6 +457,7 @@
                 <IconButton
                   class="material-icons"
                   on:click={() => {
+                    _seasons.clear();
                     _content = content;
                     viewMenu = false;
                     viewMenu = true;
@@ -451,6 +468,7 @@
                 <IconButton
                   class="material-icons"
                   on:click={() => {
+                    _seasons.clear();
                     _content = content;
                     editMenu = false;
                     editMenu = true;
