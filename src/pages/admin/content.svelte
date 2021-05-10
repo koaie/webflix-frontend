@@ -1,5 +1,5 @@
 <script>
-  import { API_URL, user } from "../../logic/stores";
+  import { API_URL, episodes, user } from "../../logic/stores";
   import { goto } from "@roxi/routify";
   import axios from "axios";
 
@@ -26,7 +26,8 @@
 
   let data;
   const _seasons = new Map();
-  let _episode
+  let seasons;
+  let _episode;
   let _episodes;
   let _content;
   let _genres;
@@ -35,6 +36,7 @@
   let viewMenu;
   let editMenu;
   let editEpisodeMenu;
+  let deleteEpisode;
 
   let error;
   let errorText;
@@ -54,7 +56,26 @@
           return res[2];
         });
       }
+    }
+  }
+
+  $: {
+    if (_episodes) {
+      let temp = _episodes.map((el) => {
+        return { seasonId: el.seasonId, season: el.season };
+      });
+      temp.forEach((el) => {
+        if (!_seasons.has(el.seaonId)) {
+          _seasons.set(el.seasonId, el.season);
+        }
+      });
+      seasons = Array.from(_seasons, ([id, season]) => ({ id, season }));
+    }
+  }
+  $: {
+    if (_content) {
       if (_content.data) {
+        view();
         _episodes = _content.data.split(",").map((el) => {
           const res = el.match(contentRegex);
           return {
@@ -65,17 +86,16 @@
           };
         });
       }
-      if (_episodes) {
-        let temp = _episodes.map((el) => {
-          return { seasonId: el.seasonId, season: el.season };
-        });
-        temp.forEach(el => {
-          if(!_seasons.has(el.seaonId))
-          {
-            _seasons.set(el.seasonId, el.season);
-          }
-        });
-      }
+    }
+  }
+
+  $: {
+    if (deleteEpisode) {
+      _episodes = _episodes.filter(
+        (episode) => episode.episodeId != _episode.episodeId
+      );
+      view();
+      deleteEpisode = null;
     }
   }
 
@@ -101,6 +121,24 @@
       }
     }
   }
+
+  const view = async () => {
+    let result = await axios
+      .post(
+        `${$API_URL}/content/view.php`,
+        JSON.stringify({
+          id: $user.id,
+        }),
+        {
+          "Content-type": "application/json",
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    setData(result.data);
+    return result.data;
+  };
 
   const link = async () => {
     let result = await axios
@@ -192,12 +230,13 @@
     return result.data;
   };
 
-  const delSeason = async () => {
+  const delSeason = async (seasonId) => {
     let result = await axios
       .post(
-        `${$API_URL}/content/view.php`,
+        `${$API_URL}/admin/content/seasons/remove.php`,
         JSON.stringify({
           id: $user.id,
+          seasonId: seasonId,
         }),
         {
           "Content-type": "application/json",
@@ -206,7 +245,6 @@
       .catch((err) => {
         console.log(err);
       });
-    view();
     return result.data;
   };
 
@@ -224,7 +262,6 @@
       .catch((err) => {
         console.log(err);
       });
-    view();
     return result.data;
   };
 
@@ -242,7 +279,6 @@
       .catch((err) => {
         console.log(err);
       });
-    view();
     return result.data;
   };
 
@@ -261,25 +297,6 @@
       .catch((err) => {
         console.log(err);
       });
-    view();
-    return result.data;
-  };
-
-  const view = async () => {
-    let result = await axios
-      .post(
-        `${$API_URL}/content/view.php`,
-        JSON.stringify({
-          id: $user.id,
-        }),
-        {
-          "Content-type": "application/json",
-        }
-      )
-      .catch((err) => {
-        console.log(err);
-      });
-    setData(result.data);
     return result.data;
   };
 
@@ -299,6 +316,7 @@
   };
 
   const edit = async (obj) => {
+
     let res = await axios
       .post(
         `${$API_URL}/admin/users/edit.php`,
@@ -375,45 +393,65 @@
   buttonText="Save"
 >
   {#if _content}
-  {#each Array.from(_seasons, ([id, season]) => ({ id, season })) as season}
-  Season {season.season}
-    <div class="container" id="contentEdit">
-      <DataTable style="max-width: 100%;">
-        <Head>
-          <Row>
-            <Cell>Episode</Cell>
-            <Cell>Edit</Cell>
-            <Cell>Remove</Cell>
-          </Row>
-        </Head>
-        <Body>
-          {#each _episodes as content}
-          {#if content.season == season.season}
+    {#each seasons ?? [] as season}
+      <div class="top">
+        <div class="left">
+          Season {season.season}
+        </div>
+        <div class="item right">
+          <IconButton
+            class="material-icons"
+            on:click={() => {
+             
+            }}>add</IconButton
+          >
+          <IconButton
+            class="material-icons"
+            on:click={() => {
+              delSeason(season.id);
+            }}>delete</IconButton
+          >
+        </div>
+      </div>
+
+      <div class="container" id="contentEdit">
+        <DataTable style="max-width: 100%;">
+          <Head>
             <Row>
-              <Cell>{content.episode}</Cell>
-              <Cell>
-                <IconButton
-                  class="material-icons"
-                  on:click={() => {
-                    _episode = content;
-                    editMenu = false;
-                    editEpisodeMenu = true;
-                  }}>edit</IconButton
-                >
-              </Cell>
-              <Cell>
-                <IconButton
-                  class="material-icons"
-                  on:click={async () => await delEpisode(_content.episodeId)}
-                  >delete</IconButton
-                ></Cell
-              >
+              <Cell>Episode</Cell>
+              <Cell>Edit</Cell>
+              <Cell>Remove</Cell>
             </Row>
-            {/if}
-          {/each}
-        </Body>
-      </DataTable>
-    </div>
+          </Head>
+          <Body>
+            {#each _episodes as content}
+              {#if content.season == season.season}
+                <Row>
+                  <Cell>{content.episode}</Cell>
+                  <Cell>
+                    <IconButton
+                      class="material-icons"
+                      on:click={() => {
+                        _episode = content;
+                      }}>edit</IconButton
+                    >
+                  </Cell>
+                  <Cell>
+                    <IconButton
+                      class="material-icons"
+                      on:click={() => {
+                        _episode = content;
+                        deleteEpisode = content;
+                        delEpisode(content.episodeId);
+                      }}>delete</IconButton
+                    ></Cell
+                  >
+                </Row>
+              {/if}
+            {/each}
+          </Body>
+        </DataTable>
+      </div>
     {/each}
   {:else}
     <div class="card-container">
@@ -457,7 +495,6 @@
                 <IconButton
                   class="material-icons"
                   on:click={() => {
-                    _seasons.clear();
                     _content = content;
                     viewMenu = false;
                     viewMenu = true;
@@ -472,13 +509,14 @@
                     _content = content;
                     editMenu = false;
                     editMenu = true;
+                    console.log(content);
                   }}>edit</IconButton
                 ></Cell
               >
               <Cell>
                 <IconButton
                   class="material-icons"
-                  on:click={async () => await del(_content.contentId)}
+                  on:click={async () => await del(content.contentId)}
                   >delete</IconButton
                 ></Cell
               >
@@ -510,7 +548,24 @@
     align-items: center;
     justify-content: center;
     margin: 0;
-    background-color: #232324;
     border-radius: 0.4rem;
+  }
+  .top {
+    display: flex;
+    justify-content: space-between;
+  }
+  .right {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .left {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 0.7rem;
+  }
+  .item {
+    display: flex;
+    align-items: center;
   }
 </style>
