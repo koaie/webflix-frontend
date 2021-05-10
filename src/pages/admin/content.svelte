@@ -20,10 +20,13 @@
   let date;
   let email = null;
   let invalid = false;
-  let dateRegex = /(201[0-7]|200[0-9]|[0-1][0-9]{3})[-.\/](1[0-2]|0[1-9])[-.\/](3[01]|[0-2][1-9]|[12]0)/;
+  const dateRegex = /(201[0-7]|200[0-9]|[0-1][0-9]{3})[-.\/](1[0-2]|0[1-9])[-.\/](3[01]|[0-2][1-9]|[12]0)/;
+  const contentRegex = /([\w-]{36}):(\d+)@([\w-]{36}):(\d+)/;
   let invalidDate = false;
 
   let data;
+  let _seasons;
+  let _episodes;
   let _content;
   let _genres;
   let genres;
@@ -48,6 +51,18 @@
           const res = el.match(/(.+):(.+)/);
           return res[2];
         });
+      }
+      if (_content.data) {
+        _episodes = _content.data.split(",").map((el) => {
+          const res = el.match(contentRegex);
+          return {
+            episodeId: res[1],
+            episode: res[3],
+            season: res[4],
+            duration: res[2],
+          };
+        });
+        console.log(_episodes);
       }
     }
   }
@@ -74,6 +89,168 @@
       }
     }
   }
+
+  const link = async () => {
+    let result = await axios
+      .post(
+        `${$API_URL}/content/view.php`,
+        JSON.stringify({
+          id: $user.id,
+        }),
+        {
+          "Content-type": "application/json",
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    setData(result.data);
+    return result.data;
+  };
+
+  const unlink = async () => {
+    let result = await axios
+      .post(
+        `${$API_URL}/content/view.php`,
+        JSON.stringify({
+          id: $user.id,
+        }),
+        {
+          "Content-type": "application/json",
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    setData(result.data);
+    return result.data;
+  };
+
+  const addContent = async () => {
+    let result = await axios
+      .post(
+        `${$API_URL}/content/view.php`,
+        JSON.stringify({
+          id: $user.id,
+        }),
+        {
+          "Content-type": "application/json",
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    setData(result.data);
+    return result.data;
+  };
+
+  const addSeason = async () => {
+    let result = await axios
+      .post(
+        `${$API_URL}/content/view.php`,
+        JSON.stringify({
+          id: $user.id,
+        }),
+        {
+          "Content-type": "application/json",
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    setData(result.data);
+    return result.data;
+  };
+
+  const editSeason = async () => {
+    let result = await axios
+      .post(
+        `${$API_URL}/content/view.php`,
+        JSON.stringify({
+          id: $user.id,
+        }),
+        {
+          "Content-type": "application/json",
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    setData(result.data);
+    return result.data;
+  };
+
+  const removeSeason = async () => {
+    let result = await axios
+      .post(
+        `${$API_URL}/content/view.php`,
+        JSON.stringify({
+          id: $user.id,
+        }),
+        {
+          "Content-type": "application/json",
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    setData(result.data);
+    return result.data;
+  };
+
+  const addEpisode = async () => {
+    let result = await axios
+      .post(
+        `${$API_URL}/content/view.php`,
+        JSON.stringify({
+          id: $user.id,
+        }),
+        {
+          "Content-type": "application/json",
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    setData(result.data);
+    return result.data;
+  };
+
+  const editEpisode = async () => {
+    let result = await axios
+      .post(
+        `${$API_URL}/content/view.php`,
+        JSON.stringify({
+          id: $user.id,
+        }),
+        {
+          "Content-type": "application/json",
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    setData(result.data);
+    return result.data;
+  };
+
+  const removeEpisode = async () => {
+    let result = await axios
+      .post(
+        `${$API_URL}/content/view.php`,
+        JSON.stringify({
+          id: $user.id,
+        }),
+        {
+          "Content-type": "application/json",
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    setData(result.data);
+    return result.data;
+  };
 
   const view = async () => {
     let result = await axios

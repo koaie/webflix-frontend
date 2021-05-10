@@ -24,7 +24,7 @@
   const body = JSON.stringify({
     id: $user.id,
   });
-  const contentRegex = /([\w-]{36}).(\d+):(\d+)@(\d+)/;
+  const contentRegex = /([\w-]{36}):(\d+)@([\w-]{36}):(\d+)/;
 
   const updateEpisodes = async () => {
     episodes.update((val) =>
@@ -32,9 +32,9 @@
         const res = el.match(contentRegex);
         return {
           episodeId: res[1],
-          episode: res[3],
+          episode: res[2],
+          seasonId: res[3],
           season: res[4],
-          duration: res[2],
         };
       })
     );
