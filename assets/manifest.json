@@ -1,8 +1,8 @@
 {
-  "background_color": "#ffffff",
-  "theme_color": "#E938C2",
-  "name": "Routify app",
-  "short_name": "Routify app",
+  "background_color": "#151515",
+  "theme_color": "#7f91ec",
+  "name": "Webflix",
+  "short_name": "Webflix",
   "start_url": "/",
   "display": "standalone",
   "icons": [
