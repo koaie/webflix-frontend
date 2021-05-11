@@ -104,6 +104,12 @@
   }
 
   $: {
+    if (_episodes) {
+      _episodes = _episodes.sort((a, b) => (a.episode > b.episode ? 1 : -1));
+    }
+  }
+
+  $: {
     if (deleteSeason) {
       seasons = seasons.filter(
         (season) => season.seasonId != deleteSeason.seasonId
