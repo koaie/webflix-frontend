@@ -14,7 +14,10 @@
   let genres;
   $: {
     if ($content.genres) {
-      genres = $content.genres.split(",");
+      genres = $content.genres.split(",").map((el) => {
+        const res = el.match(/(.+):(.+)/);
+        return res[2];
+      });
     }
   }
 </script>
