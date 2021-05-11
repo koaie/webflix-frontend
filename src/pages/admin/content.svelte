@@ -515,7 +515,7 @@
           <div class="right">
             <div class="botMarginRows">
               <IconButton class="material-icons" on:click={() => {}}
-                >save</IconButton
+                >add</IconButton
               >
             </div>
           </div>
