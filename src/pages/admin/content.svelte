@@ -98,7 +98,6 @@
       seasons = seasons.filter(
         (season) => season.seasonId != deleteSeason.seasonId
       );
-      console.log(seasons);
       deleteSeason = null;
     }
   }
@@ -423,6 +422,9 @@
         </div>
         <div class="item right">
           <IconButton class="material-icons" on:click={() => {}}>add</IconButton
+          >
+          <IconButton class="material-icons" on:click={() => {}}
+            >edit</IconButton
           >
           <IconButton
             class="material-icons"
