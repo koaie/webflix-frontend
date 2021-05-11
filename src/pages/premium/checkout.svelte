@@ -63,7 +63,7 @@
                   {
                     amount: {
                       currency_code: "GBP",
-                      value: "99",
+                      value: "99.99",
                     },
                     description: "Webflix Premium",
                     custom_id: "64735",
