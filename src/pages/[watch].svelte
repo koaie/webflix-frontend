@@ -26,7 +26,7 @@
 </script>
 
 {#await call() then data}
-  {#if $params.id}
+  {#if $params.id && !(data.error) && $user}
     {#if data.trailer}
       <div class="youtube-plyr">
         <YoutubePlyr id={data.trailer} />
@@ -46,6 +46,12 @@
     </div>
   {/if}
 {/await}
+
+{#if !$user}
+<div class="flexCentered">
+  <ActionCard text="Whoops, you are not logged in!" icon="login" action="login" on:click={$goto("/auth/login")} />
+</div>
+{/if}
 
 <style>
   @media only screen and (min-width: 910px) {
