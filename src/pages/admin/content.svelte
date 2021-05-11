@@ -9,24 +9,27 @@
   import Chip, { Set as ChipSet, Text } from "@smui/chips";
   import { Content } from "@smui/dialog";
   import DataTable, { Head, Body, Row, Cell } from "@smui/data-table";
-  import LayoutGrid, { Cell as GridCell } from "@smui/layout-grid";
+  import Select, { Option } from "@smui/select";
+
   import Textfield from "@smui/textfield";
   import Icon from "@smui/textfield/icon";
-  import HelperText from "@smui/textfield/helper-text/index";
 
   import ActionCard from "../../components/card/action.svelte";
   import Dialog from "../../components/dialog/form.svelte";
 
-  let date;
+  let date = null;
   let email = null;
   let invalid = false;
   const dateRegex = /(201[0-7]|200[0-9]|[0-1][0-9]{3})[-.\/](1[0-2]|0[1-9])[-.\/](3[01]|[0-2][1-9]|[12]0)/;
   const contentRegex = /([\w-]{36}):(\d+)@([\w-]{36}):(\d+)/;
   let invalidDate = false;
+  let number = null;
+  let dropbox = null;
 
   let data;
   const _seasons = new Map();
   let seasons;
+  let _season;
   let _episode;
   let _episodes;
   let _content;
@@ -34,6 +37,7 @@
   let genres;
 
   let viewMenu;
+  let seasonMenu;
   let editMenu;
   let editEpisodeMenu;
   let deleteEpisode;
@@ -90,6 +94,12 @@
         )
         .join(",");
       deleteEpisode = null;
+    }
+  }
+
+  $: {
+    if (seasons) {
+      seasons = seasons.sort((a, b) => (a.number > b.number ? 1 : -1));
     }
   }
 
@@ -199,13 +209,32 @@
     return result.data;
   };
 
+  const editSeason = async (season) => {
+    let result = await axios
+      .post(
+        `${$API_URL}/admin/content/seasons/edit.php`,
+        JSON.stringify({
+          id: $user.id,
+          contentId: season.contentId,
+          seasonId: season.seasonId,
+          number: number ? number : season.number,
+        }),
+        {
+          "Content-type": "application/json",
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    return result.data;
+  };
+
   const viewSeason = async (contentId) => {
     let result = await axios
       .post(
         `${$API_URL}/admin/content/seasons/view.php`,
         JSON.stringify({
           id: $user.id,
-          contentId: contentId,
         }),
         {
           "Content-type": "application/json",
@@ -218,12 +247,14 @@
     return result.data;
   };
 
-  const addSeason = async () => {
+  const addSeason = async (contentId, number) => {
     let result = await axios
       .post(
-        `${$API_URL}/content/view.php`,
+        `${$API_URL}/admin/content/seasons/add.php`,
         JSON.stringify({
           id: $user.id,
+          contentId: contentId,
+          number: number,
         }),
         {
           "Content-type": "application/json",
@@ -232,23 +263,7 @@
       .catch((err) => {
         console.log(err);
       });
-    return result.data;
-  };
-
-  const editSeason = async () => {
-    let result = await axios
-      .post(
-        `${$API_URL}/content/view.php`,
-        JSON.stringify({
-          id: $user.id,
-        }),
-        {
-          "Content-type": "application/json",
-        }
-      )
-      .catch((err) => {
-        console.log(err);
-      });
+    viewSeason(contentId);
     return result.data;
   };
 
@@ -359,6 +374,20 @@
   };
 </script>
 
+<Dialog
+  title="Edit"
+  open={seasonMenu}
+  on:click={() => {
+    if (_season) {
+      editSeason(_season);
+    }
+    seasonMenu = false;
+  }}
+  buttonText="Save"
+>
+  <Textfield bind:value={number} label="Season number" />
+</Dialog>
+
 {#if _content}
   <Dialog
     title="View"
@@ -423,8 +452,14 @@
         <div class="item right">
           <IconButton class="material-icons" on:click={() => {}}>add</IconButton
           >
-          <IconButton class="material-icons" on:click={() => {}}
-            >edit</IconButton
+          <IconButton
+            class="material-icons"
+            on:click={() => {
+              _season = season;
+              editMenu = false;
+              seasonMenu = false;
+              seasonMenu = true;
+            }}>edit</IconButton
           >
           <IconButton
             class="material-icons"
@@ -474,6 +509,19 @@
         </DataTable>
       </div>
     {/each}
+    <div class="right">
+      <div class="width">
+        <Textfield bind:value={number} label="Number" />
+      </div>
+      <IconButton
+        class="material-icons"
+        on:click={() => {
+          if (number > 0) {
+            addSeason(_content.contentId, number);
+          }
+        }}>add</IconButton
+      >
+    </div>
   {:else if !$user}
     <div class="card-container">
       <ActionCard
