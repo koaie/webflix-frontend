@@ -17,6 +17,8 @@
   import ActionCard from "../../components/card/action.svelte";
   import Dialog from "../../components/dialog/form.svelte";
 
+  import { clickOutside } from "../../components/layout/Outside.js";
+
   let date = null;
   let email = null;
   let invalid = false;
@@ -42,6 +44,8 @@
   let editEpisodeMenu;
   let deleteEpisode;
   let deleteSeason;
+  let showEpisode = false;
+  let showSeason = false;
 
   let error;
   let errorText;
@@ -232,6 +236,7 @@
       .catch((err) => {
         console.log(err);
       });
+    viewSeason(season.contentId);
     return result.data;
   };
 
@@ -451,20 +456,19 @@
 >
   {#if _content}
     {#each seasons ?? [] as season}
-      <div class="top">
+      <div class="con">
         <div class="left">
           Season {season.number}
         </div>
         <div class="item right">
-          <IconButton class="material-icons" on:click={() => {}}>add</IconButton
+          <IconButton
+            class="material-icons"
+            on:click={() => (showEpisode = !showEpisode)}>add</IconButton
           >
           <IconButton
             class="material-icons"
             on:click={() => {
-              _season = season;
-              editMenu = false;
-              seasonMenu = false;
-              seasonMenu = true;
+              showSeason = !showSeason;
             }}>edit</IconButton
           >
           <IconButton
@@ -476,7 +480,47 @@
           >
         </div>
       </div>
-
+      {#if showSeason}
+        <div
+          class="con"
+          use:clickOutside
+          on:click_outside={() => (showSeason = false)}
+        >
+          <div class="left">
+            <Textfield bind:value={number} label="Season number" />
+          </div>
+          <div class="right">
+            <div class="botMargin">
+              <IconButton
+                class="material-icons"
+                on:click={() => {
+                  editSeason(season);
+                }}>save</IconButton
+              >
+            </div>
+          </div>
+        </div>
+      {/if}
+      {#if showEpisode}
+        <div
+          use:clickOutside
+          on:click_outside={() => (showEpisode = false)}
+        >
+            <div class="top">
+            <Textfield bind:value={number} label="Episode number" />
+          </div>
+          <div class="bot">
+            <Textfield bind:value={number} label="Url" />
+          </div>
+          <div class="right">
+            <div class="botMarginRows">
+              <IconButton class="material-icons" on:click={() => {}}
+                >save</IconButton
+              >
+            </div>
+          </div>
+        </div>
+      {/if}
       <div class="container" id="contentEdit">
         <DataTable style="max-width: 100%;">
           <Head>
@@ -624,9 +668,18 @@
     margin: 0;
     border-radius: 0.4rem;
   }
-  .top {
+  .con {
     display: flex;
     justify-content: space-between;
+  }
+  .top {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .bot {
+    display: flex;
+    align-items: flex-end;
   }
   .right {
     display: flex;
@@ -641,5 +694,13 @@
   .item {
     display: flex;
     align-items: center;
+  }
+
+  .botMargin {
+    margin-top: 1rem;
+  }
+
+  .botMarginRows {
+    margin-top: 0rem;
   }
 </style>
