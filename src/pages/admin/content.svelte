@@ -1,5 +1,5 @@
 <script>
-  import { API_URL, episodes, user } from "../../logic/stores";
+  import { API_URL, user } from "../../logic/stores";
   import { goto } from "@roxi/routify";
   import axios from "axios";
 
@@ -76,7 +76,6 @@
   $: {
     if (_content) {
       if (_content.data) {
-        view();
         _episodes = _content.data.split(",").map((el) => {
           const res = el.match(contentRegex);
           return {
@@ -87,6 +86,9 @@
           };
         });
       }
+      else {
+        _episodes = [];
+      }
     }
   }
 
@@ -95,16 +97,18 @@
       _episodes = _episodes.filter(
         (episode) => episode.episodeId != deleteEpisode.episodeId
       );
-      view();
+      _content.data = _content.data
+        .split(",")
+        .filter(
+          (episode) => episode.match(contentRegex)[1] != deleteEpisode.episodeId
+        )
+        .join(",");
       deleteEpisode = null;
     }
   }
 
   $: {
     if (deleteSeason) {
-      _seasons.delete(deleteSeason.id);
-      seasons = Array.from(_seasons, ([id, season]) => ({ id, season }));
-      view();
       deleteSeason = null;
     }
   }
@@ -302,7 +306,7 @@
       .catch((err) => {
         console.log(err);
       });
-      
+
     return result.data;
   };
 
@@ -322,7 +326,6 @@
   };
 
   const edit = async (obj) => {
-
     let res = await axios
       .post(
         `${$API_URL}/admin/users/edit.php`,
@@ -405,11 +408,7 @@
           Season {season.season}
         </div>
         <div class="item right">
-          <IconButton
-            class="material-icons"
-            on:click={() => {
-             
-            }}>add</IconButton
+          <IconButton class="material-icons" on:click={() => {}}>add</IconButton
           >
           <IconButton
             class="material-icons"
@@ -459,7 +458,7 @@
         </DataTable>
       </div>
     {/each}
-  {:else}
+  {:else if !$user}
     <div class="card-container">
       <ActionCard
         on:click={$goto("/auth/login")}
@@ -530,7 +529,7 @@
         </Body>
       </DataTable>
     </div>
-  {:else}
+  {:else if !$user}
     <div class="card-container">
       <ActionCard
         on:click={$goto("/auth/login")}
