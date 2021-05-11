@@ -61,19 +61,6 @@
   }
 
   $: {
-    if (_episodes) {
-      let temp = _episodes.map((el) => {
-        return { seasonId: el.seasonId, season: el.season };
-      });
-      temp.forEach((el) => {
-        if (!_seasons.has(el.seaonId)) {
-          _seasons.set(el.seasonId, el.season);
-        }
-      });
-      seasons = Array.from(_seasons, ([id, season]) => ({ id, season }));
-    }
-  }
-  $: {
     if (_content) {
       if (_content.data) {
         _episodes = _content.data.split(",").map((el) => {
@@ -85,8 +72,7 @@
             season: res[4],
           };
         });
-      }
-      else {
+      } else {
         _episodes = [];
       }
     }
@@ -109,8 +95,17 @@
 
   $: {
     if (deleteSeason) {
+      seasons = seasons.filter(
+        (season) => season.seasonId != deleteSeason.seasonId
+      );
+      console.log(seasons);
       deleteSeason = null;
     }
+  }
+
+  function setSeasons(x) {
+    seasons = x;
+    return seasons;
   }
 
   function setData(x) {
@@ -202,6 +197,25 @@
       .catch((err) => {
         console.log(err);
       });
+    return result.data;
+  };
+
+  const viewSeason = async (contentId) => {
+    let result = await axios
+      .post(
+        `${$API_URL}/admin/content/seasons/view.php`,
+        JSON.stringify({
+          id: $user.id,
+          contentId: contentId,
+        }),
+        {
+          "Content-type": "application/json",
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    setSeasons(result.data.filter((season) => season.contentId == contentId));
     return result.data;
   };
 
@@ -405,7 +419,7 @@
     {#each seasons ?? [] as season}
       <div class="top">
         <div class="left">
-          Season {season.season}
+          Season {season.number}
         </div>
         <div class="item right">
           <IconButton class="material-icons" on:click={() => {}}>add</IconButton
@@ -414,7 +428,7 @@
             class="material-icons"
             on:click={() => {
               deleteSeason = season;
-              delSeason(season.id);
+              delSeason(season.seasonId);
             }}>delete</IconButton
           >
         </div>
@@ -431,7 +445,7 @@
           </Head>
           <Body>
             {#each _episodes as content}
-              {#if content.season == season.season}
+              {#if content.seasonId === season.seasonId}
                 <Row>
                   <Cell>{content.episode}</Cell>
                   <Cell>
@@ -510,8 +524,8 @@
                 <IconButton
                   class="material-icons"
                   on:click={() => {
-                    _seasons.clear();
                     _content = content;
+                    viewSeason(content.contentId);
                     editMenu = false;
                     editMenu = true;
                   }}>edit</IconButton
