@@ -48,6 +48,7 @@
   let deleteSeason;
   let showEpisode = false;
   let showSeason = false;
+  let showEditEpisode = false;
 
   let error;
   let errorText;
@@ -345,12 +346,17 @@
     return result.data;
   };
 
-  const editEpisode = async () => {
+  const editEpisode = async (contentId, episode, number, path) => {
     let result = await axios
       .post(
-        `${$API_URL}/content/view.php`,
+        `${$API_URL}/admin/content/episodes/edit.php`,
         JSON.stringify({
           id: $user.id,
+          episodeId: episode.episodeId,
+          seasonId: episode.seasonId,
+          duration: 200,
+          number: number ? number : episode.number,
+          path: path,
         }),
         {
           "Content-type": "application/json",
@@ -359,6 +365,8 @@
       .catch((err) => {
         console.log(err);
       });
+    console.log(result);
+    viewEpisodes(contentId);
     return result.data;
   };
 
@@ -495,7 +503,10 @@
         <div class="item right">
           <IconButton
             class="material-icons"
-            on:click={() => (showEpisode = !showEpisode)}>add</IconButton
+            on:click={() => {
+              showEpisode = !showEpisode;
+              path = "";
+            }}>add</IconButton
           >
           <IconButton
             class="material-icons"
@@ -572,6 +583,8 @@
                       class="material-icons"
                       on:click={() => {
                         _episode = content;
+                        path = "";
+                        showEditEpisode = !showEditEpisode;
                       }}>edit</IconButton
                     >
                   </Cell>
@@ -588,6 +601,34 @@
               {/if}
             {/each}
           </Body>
+          {#if showEditEpisode}
+            <div
+              use:clickOutside
+              on:click_outside={() => {
+                showEpisode = false;
+                path = "";
+              }}
+            >
+              <div class="top">
+                <Textfield bind:value={number} label="Episode number" />
+              </div>
+              <div class="bot">
+                <Textfield bind:value={path} label="Url" />
+              </div>
+              <div class="right">
+                <div class="botMarginRows">
+                  <IconButton
+                    class="material-icons"
+                    on:click={() => {
+                      if (path) {
+                        editEpisode(season.contentId, _episode, number, path);
+                      }
+                    }}>add</IconButton
+                  >
+                </div>
+              </div>
+            </div>
+          {/if}
         </DataTable>
       </div>
     {/each}
