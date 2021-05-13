@@ -22,7 +22,8 @@
   let date = null;
   let email = null;
   let invalid = false;
-  const dateRegex = /(201[0-7]|200[0-9]|[0-1][0-9]{3})[-.\/](1[0-2]|0[1-9])[-.\/](3[01]|[0-2][1-9]|[12]0)/;
+  const dateRegex =
+    /(201[0-7]|200[0-9]|[0-1][0-9]{3})[-.\/](1[0-2]|0[1-9])[-.\/](3[01]|[0-2][1-9]|[12]0)/;
   const contentRegex = /([\w-]{36}):(\d+)@([\w-]{36}):(\d+)/;
   let invalidDate = false;
   let number = null;
@@ -37,6 +38,7 @@
   let _content;
   let _genres;
   let genres;
+  let path = null;
 
   let viewMenu;
   let seasonMenu;
@@ -127,6 +129,11 @@
     return seasons;
   }
 
+  function setEpisodes(x) {
+    _episodes = x;
+    return seasons;
+  }
+
   function setData(x) {
     data = x;
     return data;
@@ -202,12 +209,16 @@
     return result.data;
   };
 
-  const addContent = async () => {
+  const addEpisode = async (contentId, seasonId, path, number) => {
     let result = await axios
       .post(
-        `${$API_URL}/content/view.php`,
+        `${$API_URL}/admin/content/episodes/add.php`,
         JSON.stringify({
           id: $user.id,
+          seasonId: seasonId,
+          duration: 1,
+          number: number,
+          path: path,
         }),
         {
           "Content-type": "application/json",
@@ -216,6 +227,7 @@
       .catch((err) => {
         console.log(err);
       });
+    viewEpisodes(contentId);
     return result.data;
   };
 
@@ -296,7 +308,27 @@
     return result.data;
   };
 
-  const addEpisode = async () => {
+  const viewEpisodes = async (contentId) => {
+    let result = await axios
+      .post(
+        `${$API_URL}/admin/content/episodes/view.php`,
+        JSON.stringify({
+          id: $user.id,
+          contentId: contentId,
+        }),
+        {
+          "Content-type": "application/json",
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(result.data);
+    setEpisodes(result.data);
+    return result.data;
+  };
+
+  const addContent = async () => {
     let result = await axios
       .post(
         `${$API_URL}/content/view.php`,
@@ -502,20 +534,20 @@
         </div>
       {/if}
       {#if showEpisode}
-        <div
-          use:clickOutside
-          on:click_outside={() => (showEpisode = false)}
-        >
-            <div class="top">
+        <div use:clickOutside on:click_outside={() => (showEpisode = false)}>
+          <div class="top">
             <Textfield bind:value={number} label="Episode number" />
           </div>
           <div class="bot">
-            <Textfield bind:value={number} label="Url" />
+            <Textfield bind:value={path} label="Url" />
           </div>
           <div class="right">
             <div class="botMarginRows">
-              <IconButton class="material-icons" on:click={() => {}}
-                >add</IconButton
+              <IconButton
+                class="material-icons"
+                on:click={() => {
+                  addEpisode(season.contentId, season.seasonId, path, number);
+                }}>add</IconButton
               >
             </div>
           </div>
@@ -642,6 +674,9 @@
           {/each}
         </Body>
       </DataTable>
+    </div>
+    <div class="right">
+      <IconButton class="material-icons" on:click={() => {}}>add</IconButton>
     </div>
   {:else if !$user}
     <div class="card-container">
