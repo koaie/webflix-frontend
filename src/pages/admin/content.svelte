@@ -605,7 +605,7 @@
             <div
               use:clickOutside
               on:click_outside={() => {
-                showEpisode = false;
+                showEditEpisode = false;
                 path = "";
               }}
             >
