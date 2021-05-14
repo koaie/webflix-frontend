@@ -535,6 +535,7 @@
         </Select></GridCell
       >
     </LayoutGrid>
+    <!-- List all genres and bind selected genres to selected -->
     {#await viewGenres() then genres}
       <ChipSet chips={genres} let:chip filter bind:selected>
         <Chip {chip} touch>

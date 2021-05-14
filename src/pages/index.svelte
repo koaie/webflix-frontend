@@ -24,7 +24,7 @@
           <Title>Basic</Title>
         </div>
         <div class="text flexXCentered">
-          Improve your content consumption experince and join us today.
+          Improve your content consumption experience and join us today.
         </div>
       </Paper>
     </Cell>
