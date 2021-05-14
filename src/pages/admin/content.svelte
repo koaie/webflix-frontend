@@ -10,7 +10,6 @@
   import { Content } from "@smui/dialog";
   import DataTable, { Head, Body, Row, Cell } from "@smui/data-table";
   import Select, { Option } from "@smui/select";
-  import Button, { Label as ButLabel } from "@smui/button";
 
   import LayoutGrid, { Cell as GridCell } from "@smui/layout-grid";
 
@@ -29,13 +28,11 @@
   let date = null;
   let email = null;
   let type = null;
-  let invalid = false;
   const dateRegex =
     /(201[0-7]|200[0-9]|[0-1][0-9]{3})[-.\/](1[0-2]|0[1-9])[-.\/](3[01]|[0-2][1-9]|[12]0)/;
   const contentRegex = /([\w-]{36}):(\d+)@([\w-]{36}):(\d+)/;
   let invalidDate = false;
   let number = null;
-  let dropbox = null;
   let selected = [];
   let mode = true;
 
@@ -46,7 +43,6 @@
   let _episode;
   let _episodes;
   let _content;
-  let _genres;
   let genres;
   let path = null;
 
