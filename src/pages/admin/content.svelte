@@ -623,7 +623,7 @@
                       if (path) {
                         editEpisode(season.contentId, _episode, number, path);
                       }
-                    }}>add</IconButton
+                    }}>save</IconButton
                   >
                 </div>
               </div>
