@@ -22,7 +22,7 @@
           <Title>Premium</Title>
         </div>
         <div class="text flexXCentered">
-          Improve your content consumption experince and join us today.
+          Improve your content consumption experience and join us today.
         </div>
         <div class="subtext flexXCentered">£99.99 yearly</div>
       </Paper>
