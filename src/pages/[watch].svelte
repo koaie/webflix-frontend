@@ -24,9 +24,9 @@
     return result.data[0];
   };
 </script>
-
+{#if user}
 {#await call() then data}
-  {#if $params.id && !(data.error) && $user}
+  {#if $params.id && !(data.error)}
     {#if data.trailer}
       <div class="youtube-plyr">
         <YoutubePlyr id={data.trailer} />
@@ -46,6 +46,7 @@
     </div>
   {/if}
 {/await}
+{/if}
 
 {#if !$user}
 <div class="flexCentered">
