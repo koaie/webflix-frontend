@@ -43,6 +43,7 @@
   let _episode;
   let _episodes;
   let _content;
+  let _genres;
   let genres;
   let path = null;
 
